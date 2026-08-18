@@ -16,8 +16,8 @@ export const Footer = () => {
 
             </div>
             <div className={styles['footer-text']}>
-                
-                <span>2026 Suprise Nkosi. All rights reserved.</span>
+
+                <span>2026 Supreme One. All rights reserved.</span>
                 
             </div>
             

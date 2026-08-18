@@ -1,6 +1,6 @@
 footer {
     position: absolute;
-    width: 100%;
+    width: 100vw;
     height: 50px;
     bottom: 0;
     background-color: #ffffff;
@@ -12,8 +12,7 @@ footer {
 }
 
 .footer-text-cont {
-    max-width: 1200px;
-    width: 100%;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
