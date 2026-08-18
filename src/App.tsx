@@ -5,6 +5,7 @@ import heroImg from './assets/hero.png'
 import './App.css'
 import { Navbar } from './components/Navbar/Navbar'
 import { Footer } from './components/Footer/Footer'
+import { Body } from './components/Body/Body'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,7 +16,7 @@ function App() {
       <div id='scrollable'>
 
         <Navbar />
-
+        <Body />
       </div>
 
       <Footer />
