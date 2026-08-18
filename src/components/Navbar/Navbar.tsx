@@ -1,5 +1,7 @@
 import React from 'react'
 
+import search from '../../assets/shopping.png';
+
 import styles from './Navbar.module.css'
 
 export const Navbar = () => {
@@ -13,6 +15,9 @@ export const Navbar = () => {
         </div>
         <div className={styles['nav-search']}>
 
+            <div className={styles['nav-search-icon']}>
+
+            </div>
             Search
 
         </div>
