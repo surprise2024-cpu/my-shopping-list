@@ -1,0 +1,20 @@
+.nav-cont {
+    background-color: blueviolet;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 5px 5px 5px;
+    height: 40px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-link:hover {
+    color: gray;
+    cursor: pointer;
+}
