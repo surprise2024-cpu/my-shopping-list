@@ -1,7 +1,15 @@
+#root {
+    min-height: 100vh;
+}
 #app-cont {
+    min-height: 100vh;
     background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
 }
 
 #scrollable {
+    flex: 1;
     background-color: #ffffff;
+    overflow: auto;
 }
