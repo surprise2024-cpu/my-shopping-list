@@ -3,6 +3,7 @@ import React from 'react'
 import search from '../../assets/shopping.png';
 
 import styles from './Navbar.module.css'
+import { Search } from '../Search/Search';
 
 export const Navbar = () => {
   return (
@@ -21,7 +22,7 @@ export const Navbar = () => {
 
                 </div>
                 
-                Search
+                <Search />
 
             </div>
             <div className={styles['nav-links']}>

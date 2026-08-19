@@ -1,4 +1,5 @@
 copyright icon - <a href="https://www.flaticon.com/free-icons/copyright-symbol" title="copyright symbol icons">Copyright symbol icons created by Prosymbols Premium - Flaticon</a>
 empty state - <a href="https://www.flaticon.com/free-icons/empty" title="empty icons">Empty icons created by kerismaker - Flaticon</a>
 add icon - <a href="https://www.flaticon.com/free-icons/create" title="create icons">Create icons created by Anggara - Flaticon</a>
-search icon - <a target="_blank" href="https://icons8.com/icon/132/search">Search</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+search icon white - <a target="_blank" href="https://icons8.com/icon/132/search">Search</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+search icon black - <a href="https://www.flaticon.com/free-icons/magnifying-glass" title="magnifying glass icons">Magnifying glass icons created by Royyan Wijaya - Flaticon</a>
