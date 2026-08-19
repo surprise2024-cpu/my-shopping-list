@@ -2,13 +2,12 @@
 #app-cont {
     min-height: 100vh;
     background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
+    /*display: flex;
+    flex-direction: column;*/
     font-family: "Playfair Display", serif;
 }
 
 #scrollable {
-    flex: 1;
-    background-color: #ffffff;
-    overflow: auto;
+    /*background-color: #ffffff;*/
+    
 }
