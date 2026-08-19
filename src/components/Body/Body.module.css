@@ -9,6 +9,11 @@
     font-size: 30px;
 }
 
+.body-image img {
+    width: 450px;
+    height: 450px;
+}
+
 .holder {
     padding-top: 175px;
     display: flex;
@@ -18,7 +23,7 @@
 }
 
 .body-btn {
-    padding-top: 10px;
+    padding-top: 40px;
 }
 
 .add-btn {
@@ -27,5 +32,19 @@
     background-color: #000000;
     border-radius: 30px;
     border: none;
+    cursor: pointer;
 }
+
+.add-btn-holder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.add-btn-icon img {
+    height: 25px;
+    width: 25px;
+}
+
 

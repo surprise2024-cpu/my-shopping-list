@@ -2,6 +2,7 @@ import React from 'react'
 
 import styles from './Body.module.css'
 import emptyState from '../../assets/shopping.png'
+import addIcon from '../../assets/add-button.png'
 
 export const Body: React.FC = () => {
   return (
@@ -27,7 +28,21 @@ export const Body: React.FC = () => {
         <div className={styles['body-btn']}>
 
           <button className={styles['add-btn']}>
-            Add Item
+
+            <div className={styles['add-btn-holder']}>
+
+              <div className={styles['add-btn-icon']}>
+
+                <img src={addIcon} alt='empty state' />
+
+              </div>
+              <div className={styles['add-btn-text']}>
+
+                < span>Add Item</span>
+
+              </div>
+            
+            </div>
           </button>
 
         </div>
