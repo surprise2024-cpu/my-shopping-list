@@ -4,9 +4,15 @@
     width: 100%;
 }
 
+.body-text {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 .body-text span {
     color: #000000;
     font-size: 30px;
+    
 }
 
 .body-image img {
