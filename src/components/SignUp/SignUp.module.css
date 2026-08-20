@@ -1,5 +1,16 @@
+.form-cont {
+    padding-top: 180px;
+    color: #000000;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+}
+
 .signUp-form {
-    padding-top: 300px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    width: 500px;
 
     border-radius: 5px;
     overflow: hidden;

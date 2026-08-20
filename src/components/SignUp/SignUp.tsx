@@ -4,7 +4,8 @@ import styles from './SignUp.module.css'
 
 export const SignUp = () => {
   return (
-    <form className={styles['signUp-form']}>
+    <div className={styles['form-cont']}>
+        <form className={styles['signUp-form']}>
 
         <div className={styles['heading']}>
 
@@ -41,7 +42,7 @@ export const SignUp = () => {
                 <button className={styles['field-btn']}>
                     Sign Up
                 </button>
-                
+
             </div>
             <div className={styles['heading']}>
 
@@ -56,5 +57,7 @@ export const SignUp = () => {
             </div>
         </div>
     </form>
+    </div>
+    
   )
 }
