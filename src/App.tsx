@@ -6,6 +6,7 @@ import './App.css'
 import { Navbar } from './components/Navbar/Navbar'
 import { Footer } from './components/Footer/Footer'
 import { Body } from './components/Body/Body'
+import { SignIn } from './components/SignIn/SignIn'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,7 +17,10 @@ function App() {
       <div id='scrollable'>
 
         <Navbar />
-        <Body />
+        {/*<Body />*/}
+
+        {/*<SignIn />*/}
+
       </div>
 
       <Footer />

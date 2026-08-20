@@ -1,0 +1,18 @@
+.signIn-cont {
+    padding-top: 185px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+}
+
+.sign-holder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.form-holder {
+    border: 2px solid black;
+}   
