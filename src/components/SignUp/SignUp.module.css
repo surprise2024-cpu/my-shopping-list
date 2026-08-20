@@ -1,0 +1,28 @@
+.signUp-form {
+    padding-top: 300px;
+
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e8e6e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.heading {
+    color: black;
+}
+
+.field-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.field {
+    padding-top: 20px;
+}

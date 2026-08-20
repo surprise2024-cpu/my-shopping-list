@@ -7,6 +7,7 @@ import { Navbar } from './components/Navbar/Navbar'
 import { Footer } from './components/Footer/Footer'
 import { Body } from './components/Body/Body'
 import { SignIn } from './components/SignIn/SignIn'
+import { SignUp } from './components/SignUp/SignUp'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,7 +21,8 @@ function App() {
         {/*<Body />*/}
 
         {/*<SignIn />*/}
-
+        <SignUp />
+        
       </div>
 
       <Footer />
