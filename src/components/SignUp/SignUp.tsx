@@ -1,6 +1,7 @@
 import React from 'react'
 
 import styles from './SignUp.module.css'
+import { NavLink } from 'react-router'
 
 export const SignUp: React.FC = () => {
   return (
@@ -65,10 +66,14 @@ export const SignUp: React.FC = () => {
                     <p>
 
                         Already have an account? 
-                        <span>
+                        <NavLink 
+                            to={'/signin-page'} 
+                            className={styles['']} 
+                        >
 
-                            Sign In
-                        </span>
+                            Sign Up
+
+                        </NavLink>
                     </p>
                 </div>
             </div>
