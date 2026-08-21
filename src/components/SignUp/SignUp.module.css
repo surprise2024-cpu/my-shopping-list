@@ -77,4 +77,5 @@
 
 .field-redirect span {
     color: gray;
+    cursor: pointer;
 }
