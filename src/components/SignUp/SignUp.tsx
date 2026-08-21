@@ -54,22 +54,21 @@ export const SignUp: React.FC = () => {
                     <div className={styles['field']}>
 
                         <button className={styles['field-btn']}>
-                        Sign Up
+                            Sign Up
                         </button>
 
                     </div>
                 </div>
-                <div className={styles['heading']}>
+                <div className={styles['field-redirect']}>
 
-                    <span>
+                    <p>
 
                         Already have an account? 
                         <span>
 
                             Sign In
-                            
                         </span>
-                    </span>
+                    </p>
                 </div>
             </div>
         </form>

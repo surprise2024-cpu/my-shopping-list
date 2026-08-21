@@ -47,3 +47,32 @@
     align-items: flex-start;
     gap: 5px;
 }
+
+.field label {
+
+}
+
+.field input {
+    width: 250px;
+    height: 35px;
+    background-color: #ffffff;
+    border: 2px solid #000000;
+}
+
+.field-btn {
+    width: 255px;
+    height: 40px;
+    background-color: #000000;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.field-redirect {
+    padding-top: 25px;
+}
+
+
+.field-redirect span {
+    color: gray;
+}
