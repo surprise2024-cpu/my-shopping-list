@@ -3,3 +3,4 @@ empty state - <a href="https://www.flaticon.com/free-icons/empty" title="empty i
 add icon - <a href="https://www.flaticon.com/free-icons/create" title="create icons">Create icons created by Anggara - Flaticon</a>
 search icon white - <a target="_blank" href="https://icons8.com/icon/132/search">Search</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
 search icon black - <a href="https://www.flaticon.com/free-icons/magnifying-glass" title="magnifying glass icons">Magnifying glass icons created by Royyan Wijaya - Flaticon</a>
+profile icon - <a href="https://www.flaticon.com/free-icons/profile-picture" title="profile-picture icons">Profile-picture icons created by kliwir art - Flaticon</a>
