@@ -11,7 +11,7 @@ export const SignIn: React.FC = () => {
 
             <div className={styles['form-heading']}>
 
-                <span>Sign In</span>
+                <span>Sign In Form</span>
 
             </div>
             <div className={styles['form-section']}>
@@ -21,7 +21,10 @@ export const SignIn: React.FC = () => {
                     <div className={styles['field']}>
 
                         <label>Email:</label>
-                        <input type='text' placeholder='****@gmail.com'/>
+                        <input 
+                            type='text' 
+                            placeholder='****@gmail.com'
+                        />
 
                     </div>
                 </div>
@@ -30,7 +33,10 @@ export const SignIn: React.FC = () => {
                     <div className={styles['field']}>
 
                         <label>Password:</label>
-                        <input type='password'/>
+                        <input 
+                            type='password'
+                            placeholder='********'
+                        />
 
                     </div>
                 </div>

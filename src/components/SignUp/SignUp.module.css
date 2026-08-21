@@ -26,6 +26,7 @@
 }
 
 .heading {
+    font-size: 30px;
     color: black;
 }
 
@@ -53,6 +54,11 @@
     height: 35px;
     background-color: #ffffff;
     border: 2px solid #000000;
+    color: #000000;
+}
+
+.field input::placeholder {
+    padding-left: 5px;
 }
 
 .field-btn-cont {

@@ -18,10 +18,6 @@ export const Navbar = () => {
 
             </div>
             <div className={styles['nav-search']}>
-
-                <div className={styles['nav-search-icon']}>
-
-                </div>
                 
                 <Search />
 

@@ -10,7 +10,7 @@ export const SignUp: React.FC = () => {
 
             <div className={styles['heading']}>
 
-                <span>Sign Up</span>
+                <span>Sign Up Form</span>
                 
             </div>
             <div className={styles['field-cont']}>
@@ -47,7 +47,22 @@ export const SignUp: React.FC = () => {
                     <div className={styles['field']}>
 
                         <label>Password: </label>
-                        <input type='password' placeholder='********'/>
+                        <input 
+                            type='password' 
+                            placeholder='********'
+                        />
+
+                    </div>
+                </div>
+                <div className={styles['fields']}>
+
+                    <div className={styles['field']}>
+
+                        <label>Confirm password:</label>
+                        <input 
+                            type='password'
+                            placeholder='********'
+                        />
 
                     </div>
                 </div>
@@ -65,13 +80,13 @@ export const SignUp: React.FC = () => {
 
                     <p>
 
-                        Already have an account? 
+                        Already have an account?  
                         <NavLink 
                             to={'/signin-page'} 
                             className={styles['']} 
                         >
 
-                            Sign Up
+                            Sign In
 
                         </NavLink>
                     </p>
