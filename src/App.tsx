@@ -2,8 +2,11 @@
 import './App.css'
 import { Navbar } from './components/Navbar/Navbar'
 import { Footer } from './components/Footer/Footer'
-{/*import { Body } from './components/Body/Body'*/}
-import { SignIn } from './components/SignIn/SignIn'
+
+import { Route, Routes } from 'react-router'
+import { HomePage } from './pages/HomePage'
+import { SignInPage } from './pages/SignInPage'
+import { SignUpPage } from './pages/SignUpPage'
 
 function App() {
   {/*const [count, setCount] = useState(0)*/}
@@ -14,10 +17,11 @@ function App() {
       <div id='scrollable'>
 
         <Navbar />
-        {/*<Body />*/}
-
-        <SignIn />
-        
+        <Routes>
+          <Route index element = {<HomePage />} />
+          <Route path='signup-page' element={<SignUpPage />}/>
+          <Route path='signin-page' element={<SignInPage />}/>
+        </Routes>
         
       </div>
 

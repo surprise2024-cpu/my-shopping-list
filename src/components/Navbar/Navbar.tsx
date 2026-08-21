@@ -4,6 +4,7 @@ import search from '../../assets/shopping.png';
 
 import styles from './Navbar.module.css'
 import { Search } from '../Search/Search';
+import { NavLink } from 'react-router';
 
 export const Navbar = () => {
   return (
@@ -25,19 +26,28 @@ export const Navbar = () => {
                 <Search />
 
             </div>
-            <div className={styles['nav-links']}>
+            <div className={styles['links']}>
 
-                <div className={styles['nav-link']}>
+                    <NavLink 
+                        to={'/'} 
+                        className={ ({isActive}) => `${styles.link} ${isActive ? styles['link-active'] : ''}`}
+                    >
+                        Home
+                    </NavLink>
 
-                    <span>Sign Up</span>
+                    <NavLink 
+                        to={'/signup-page'} 
+                        className={ ({isActive}) => `${styles.link} ${isActive ? styles['link-active'] : ''}`}
+                    >
+                        Sign Up
+                    </NavLink>
 
-                </div>
-                <div className={styles['nav-link']}>
-
-                    <span>Sign In</span>
-
-                </div>
-
+                    <NavLink 
+                        to={'/signin-page'} 
+                        className={ ({isActive}) => `${styles.link} ${isActive ? styles['link-active'] : ''}`}
+                    >
+                        Sign In
+                    </NavLink>
             </div>
         </div>
     </nav>
