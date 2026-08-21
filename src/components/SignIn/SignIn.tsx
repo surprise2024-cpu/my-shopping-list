@@ -4,56 +4,61 @@ import styles from './SignIn.module.css';
 
 export const SignIn: React.FC = () => {
   return (
-    <div className={styles['signIn-cont']}>
+    <div className={styles['form-cont']}>
 
-        <div className={styles['sign-holder']}>
+        <form className={styles['signIn-form']}>
 
-            <div className={styles['sign-heading']}>
+            <div className={styles['form-heading']}>
 
                 <span>Sign In</span>
 
             </div>
-            <div className={styles['form-holder']}>
+            <div className={styles['form-section']}>
 
-                <form className={styles['form']}>
+                <div className={styles['fields']}>
 
-                    <div className={styles['form-email']}>
+                    <div className={styles['field']}>
 
                         <label>Email:</label>
-                        <input type='text'/>
+                        <input type='text' placeholder='****@gmail.com'/>
 
                     </div>
-                    <div className={styles['form-psd']}>
+                </div>
+                <div className={styles['fields']}>
+
+                    <div className={styles['field']}>
 
                         <label>Password:</label>
                         <input type='password'/>
 
                     </div>
-                    <div className={styles['form-btn']}>
+                </div>
+                <div className={styles['field-btn-cont']}>
 
-                        <button>Sign In</button>
+                    <div className={styles['field']}>
+
+                        <button className={styles['field-btn']}>
+                            Sign In
+                        </button>
 
                     </div>
-                    <div className={styles['form-text']}>
+                </div>
+                <div className={styles['field-redirect']}>
 
-                        <p className={styles['form']}>
+                    <p className={styles['']}>
 
-                            Don't have an account? 
+                        Don't have an account? 
 
-                            <span className={styles['form']}>
+                        <span className={styles['']}>
 
-                                Sign Up
+                            Sign Up
 
-                            </span>
-                            
-                        </p>
-                    </div>
-                </form>
-
+                        </span>
+                        
+                    </p>
+                </div>
             </div>
-            
-        </div>
-        
+        </form>
     </div>
   )
 }

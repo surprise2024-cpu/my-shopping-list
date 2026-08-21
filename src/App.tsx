@@ -20,8 +20,8 @@ function App() {
         <Navbar />
         {/*<Body />*/}
 
-        {/*<SignIn />*/}
-        <SignUp />
+        <SignIn />
+        
         
       </div>
 

@@ -10,6 +10,7 @@ export const SignUp: React.FC = () => {
             <div className={styles['heading']}>
 
                 <span>Sign Up</span>
+                
             </div>
             <div className={styles['field-cont']}>
 
