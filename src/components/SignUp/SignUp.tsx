@@ -13,36 +13,51 @@ export const SignUp: React.FC = () => {
             </div>
             <div className={styles['field-cont']}>
 
-                <div className={styles['field']}> 
+                <div className={styles['fields']}> 
 
-                    <label>Name: </label>
-                    <input type='text' placeholder='Name....'/>
+                    <div className={styles['field']}>
 
+                        <label>Name: </label>
+                        <input type='text' placeholder='Name....'/>
+
+                    </div>
                 </div>
-                <div className={styles['field']}> 
+                <div className={styles['fields']}> 
 
-                    <label>Surname: </label>
-                    <input type='text' placeholder='Surname....'/>
+                    <div className={styles['field']}>
 
+                        <label>Surname: </label>
+                        <input type='text' placeholder='Surname....'/>
+
+                    </div>
                 </div>
-                <div className={styles['field']}> 
+                <div className={styles['fields']}> 
 
-                    <label>Email: </label>
-                    <input type='email' placeholder='*****@gmail.com'/>
+                    <div className={styles['field']}>
 
+                        <label>Email: </label>
+                        <input type='email' placeholder='*****@gmail.com'/>
+
+                    </div>
                 </div>
-                <div className={styles['field']}> 
+                <div className={styles['fields']}> 
 
-                    <label>Password: </label>
-                    <input type='password' placeholder='********'/>
+                    <div className={styles['field']}>
 
+                        <label>Password: </label>
+                        <input type='password' placeholder='********'/>
+
+                    </div>
                 </div>
-                <div className={styles['field']}>
+                <div className={styles['fields']}>
 
-                    <button className={styles['field-btn']}>
+                    <div className={styles['field']}>
+
+                        <button className={styles['field-btn']}>
                         Sign Up
-                    </button>
+                        </button>
 
+                    </div>
                 </div>
                 <div className={styles['heading']}>
 
@@ -52,6 +67,7 @@ export const SignUp: React.FC = () => {
                         <span>
 
                             Sign In
+                            
                         </span>
                     </span>
                 </div>
