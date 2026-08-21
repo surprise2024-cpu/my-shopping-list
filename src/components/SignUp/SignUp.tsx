@@ -49,7 +49,7 @@ export const SignUp: React.FC = () => {
 
                     </div>
                 </div>
-                <div className={styles['fields']}>
+                <div className={styles['field-btn-cont']}>
 
                     <div className={styles['field']}>
 
