@@ -2,7 +2,7 @@ import React from 'react'
 
 import styles from './SignIn.module.css';
 
-export const SignIn = () => {
+export const SignIn: React.FC = () => {
   return (
     <div className={styles['signIn-cont']}>
 
