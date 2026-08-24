@@ -13,6 +13,6 @@ export const ProtectedRoute = ({ isAuthenticated }: RouteWrapperProps) => {
 
 export const PublicOnlyRoute = ({ isAuthenticated }: RouteWrapperProps) => {
 
-    return isAuthenticated ? <Outlet /> : <Navigate to='/' replace/>;
+    return isAuthenticated ? <Outlet /> : <Navigate to='/HomePage' replace/>;
 }
 

@@ -14,7 +14,7 @@ export const SignUp: React.FC = () => {
         formState: { errors, isSubmitting },
     } = useForm<signUpFormData>({
         resolver: zodResolver(signUpSchema),
-        defaultValues: { name: '', surname: '', email: '', phone: 0, password: '', confirmPassword: ''},
+        defaultValues: { name: '', surname: '', email: '', phone: '', password: '', confirmPassword: ''},
     });
 
     const onSubmit: SubmitHandler<signUpFormData> = async (data) => {
@@ -83,7 +83,7 @@ export const SignUp: React.FC = () => {
                         <input 
                             type='number'
                             {...register('phone')}
-                            placeholder='********'
+                            placeholder='0215789566'
                         />
                         {errors.phone && <p className={styles['error-text']}>{errors.phone.message}</p>}
                     </div>

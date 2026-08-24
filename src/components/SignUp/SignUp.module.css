@@ -1,5 +1,5 @@
 .form-cont {
-    padding-top: 180px;
+    padding-top: 130px;
     color: #000000;
     display: flex;
     align-items: center;
@@ -84,4 +84,8 @@
 .field-redirect span {
     color: gray;
     cursor: pointer;
+}
+
+.error-text {
+    color: red;
 }

@@ -15,7 +15,7 @@ import { ProfilePage } from './pages/ProfilePage'
 function App() {
   {/*const [count, setCount] = useState(0)*/}
 
-  const isAuthenticated = false; 
+  const isAuthenticated = true; 
 
   return (
     <div id='app-cont'>
@@ -29,12 +29,13 @@ function App() {
 
             <Route path='signup-page' element={<SignUpPage />}/>
             <Route path='signin-page' element={<SignInPage />}/>
+            <Route index element = {<HomePage />} />
 
           </Route>
 
           <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
 
-            <Route index element = {<HomePage />} />
+            
             <Route path='profile-page' element={<ProfilePage />} />
 
           </Route>

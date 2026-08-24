@@ -83,7 +83,7 @@ export const SignIn: React.FC = () => {
                             className={styles['field-btn']}
                             disabled={isSubmitting}
                         >
-                            {isSubmitting ? 'Signing In' : 'Sign In'}
+                            {isSubmitting ? 'Signing In...' : 'Sign In'}
                         </button>
 
                     </div>
