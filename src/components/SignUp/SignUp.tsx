@@ -81,7 +81,7 @@ export const SignUp: React.FC = () => {
 
                         <label>Phone Number: </label>
                         <input 
-                            type='number'
+                            type='text'
                             {...register('phone')}
                             placeholder='0215789566'
                         />
