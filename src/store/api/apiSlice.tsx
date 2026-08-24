@@ -41,7 +41,7 @@ export const apiSlice = createApi({
     tagTypes: ['List', 'Category'],
     endpoints: (builder) => ({
 
-        getList: builder.query<ShoppingList[], { search?: string; sort?: string }>({
+        getLists: builder.query<ShoppingList[], { search?: string; sort?: string }>({
             query: ({ search, sort } = {}) => {
                 const params = new URLSearchParams()
                 if (search) params.set('name_like', search)
