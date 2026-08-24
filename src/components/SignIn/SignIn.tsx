@@ -3,7 +3,7 @@ import React from 'react'
 import styles from './SignIn.module.css';
 import { NavLink } from 'react-router';
 import { useForm, type SubmitHandler } from 'react-hook-form';
-import { signInSchema, type SignInFormData } from '../../schema/authSchemas';
+import { signInSchema, type signInFormData } from '../../schema/authSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 export const SignIn: React.FC = () => {
@@ -11,13 +11,13 @@ export const SignIn: React.FC = () => {
     const {
         register, 
         handleSubmit,
-        formState: { errors, isSubmitted },
-    } = useForm<SignInFormData>({
+        formState: { errors, isSubmitting },
+    } = useForm<signInFormData>({
         resolver: zodResolver(signInSchema),
         defaultValues: { email: '', password: '' },
     });
 
-    const onSubmit: SubmitHandler<SignInFormData> = async (data) => {
+    const onSubmit: SubmitHandler<signInFormData> = async (data) => {
         await new Promise((resolve) => setTimeout(resolve, 1000));
         console.log('Sign In data: ', data)
     }
@@ -25,7 +25,10 @@ export const SignIn: React.FC = () => {
   return (
     <div className={styles['form-cont']}>
 
-        <form className={styles['signIn-form']}>
+        <form 
+            className={styles['signIn-form']}
+            onSubmit={handleSubmit(onSubmit)}
+        >
 
             <div className={styles['form-heading']}>
 
@@ -75,8 +78,12 @@ export const SignIn: React.FC = () => {
 
                     <div className={styles['field']}>
 
-                        <button className={styles['field-btn']}>
-                            Sign In
+                        <button 
+                            type='submit'
+                            className={styles['field-btn']}
+                            disabled={isSubmitting}
+                        >
+                            {isSubmitting ? 'Signing In' : 'Sign In'}
                         </button>
 
                     </div>
