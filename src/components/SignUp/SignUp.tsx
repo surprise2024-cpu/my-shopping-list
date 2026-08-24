@@ -11,6 +11,8 @@ import { setCredentials } from '../../store/authSlice'
 
 export const SignUp: React.FC = () => {
 
+    const dispatch = useDispatch();
+
     const {
         register,
         handleSubmit,
@@ -24,18 +26,23 @@ export const SignUp: React.FC = () => {
 
         try {
 
-            const response = await axios.post('http://localhost:3000/signUp', data)
+            const response = await fetch('http://localhost:8000/signUp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'applicaton/json' },
+                body: JSON.stringify(data),
+            });
 
-            const { accessToken, user } = response.data;
+            const res = await response.json();
+            if (!res.ok) throw new Error(res || 'Sign Up Failed');
 
-            dispatch(setCredentials({ token: accessToken, user }));
+            dispatch(setCredentials({ token: res.accessToken, user: res.user }));
 
-            localStorage.setItem('token', accessToken);
-            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('token', res.accessToken);
+            localStorage.setItem('user', JSON.stringify(res.user));
 
             await new Promise((resolve) => setTimeout(resolve, 1000)); 
             
-            toast.success('Sign Up was successful!')
+            toast.success('Sign Up successful!')
 
         }
         catch (error: any) {

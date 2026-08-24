@@ -1,6 +1,4 @@
 import { Navigate, Outlet } from "react-router";
-import  type { AuthState } from './store/authSlice';
-import { useAppSelector } from "./store/hooks";
 
 interface RouteWrapperProps {
     isAuthenticated: boolean;
