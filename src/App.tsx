@@ -35,7 +35,7 @@ function App() {
           <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
 
             <Route index element = {<HomePage />} />
-            <Route path='profile-page' element={<ProfilePage />}
+            <Route path='profile-page' element={<ProfilePage />} />
 
           </Route>
 
