@@ -26,7 +26,7 @@ export const SignUp: React.FC = () => {
 
         try {
 
-            const response = await fetch('http://localhost:8000/signUp', {
+            const response = await fetch('http://localhost:8000/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'applicaton/json' },
                 body: JSON.stringify(data),
