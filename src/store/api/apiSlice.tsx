@@ -1,5 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
-import type { RootState } from "../store";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export interface ShoppingListItem {
     id: string
@@ -50,7 +49,7 @@ export const apiSlice = createApi({
                     params.set('_sort', field)
                     params.set('_order', order === 'desc' ? 'desc' : 'asc')
                 }
-                return '/list?${params.toString()}'
+                return `/lists?${params.toString()}`
             },
             providesTags: (result) => 
                 result ? [
@@ -61,7 +60,7 @@ export const apiSlice = createApi({
         }),
 
         getList: builder.query<ShoppingList, number>({
-            query: (id) => `/list/${id}`,
+            query: (id) => `/lists/${id}`,
             providesTags: (_result, _error, id) => [{ type: 'List', id }],
         }),
 
@@ -128,7 +127,7 @@ export const {
     useAddListMutation, 
     useUpdateListMutation,
     useDeleteListMutation,
-    useGetCategoriesMutation,
+    useGetCategoriesQuery,
     useAddCategoryMutation, 
     useDeleteCategoryMutation
 } = apiSlice
