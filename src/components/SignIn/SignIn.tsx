@@ -2,8 +2,26 @@ import React from 'react'
 
 import styles from './SignIn.module.css';
 import { NavLink } from 'react-router';
+import { useForm, type SubmitHandler } from 'react-hook-form';
+import { signInSchema, type SignInFormData } from '../../schema/authSchemas';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 export const SignIn: React.FC = () => {
+
+    const {
+        register, 
+        handleSubmit,
+        formState: { errors, isSubmitted },
+    } = useForm<SignInFormData>({
+        resolver: zodResolver(signInSchema),
+        defaultValues: { email: '', password: '' },
+    });
+
+    const onSubmit: SubmitHandler<SignInFormData> = async (data) => {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        console.log('Sign In data: ', data)
+    }
+
   return (
     <div className={styles['form-cont']}>
 
@@ -22,9 +40,15 @@ export const SignIn: React.FC = () => {
 
                         <label>Email:</label>
                         <input 
-                            type='text' 
+                            type='email' 
+                            {...register('email')} 
                             placeholder='****@gmail.com'
                         />
+                        {
+                            errors.email 
+                            && 
+                            <p className={styles['error-text']}>{errors.email.message}</p>
+                        }
 
                     </div>
                 </div>
@@ -35,8 +59,15 @@ export const SignIn: React.FC = () => {
                         <label>Password:</label>
                         <input 
                             type='password'
+                            {...register('password')}
                             placeholder='********'
                         />
+                        
+                        {
+                            errors.password 
+                            && 
+                            <p className={styles['error-text']}>{errors.password.message}</p>
+                        }
 
                     </div>
                 </div>
