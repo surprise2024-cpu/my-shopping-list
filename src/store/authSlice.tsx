@@ -1,5 +1,6 @@
-import type { boolean } from "zod"
+import { createSlice } from "@reduxjs/toolkit"
 
+import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface AuthUser {
     id: number
@@ -45,7 +46,7 @@ const authSlice = createSlice({
         logout: (state) => {
             state.user = null
             state.token = null
-            state.authenticated = false
+            state.isAuthenticated = false
             localStorage.removeItem('token')
             localStorage.removeItem('user')
         },
