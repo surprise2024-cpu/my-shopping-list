@@ -5,6 +5,9 @@ import { NavLink } from 'react-router'
 import { signUpSchema, type signUpFormData } from '../../schema/authSchemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, type SubmitHandler } from 'react-hook-form'
+import { toast } from 'react-toastify'
+import { useDispatch } from 'react-redux'
+import { setCredentials } from '../../store/authSlice'
 
 export const SignUp: React.FC = () => {
 
@@ -19,8 +22,28 @@ export const SignUp: React.FC = () => {
 
     const onSubmit: SubmitHandler<signUpFormData> = async (data) => {
 
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        console.log('Sign up Data: ', data);
+        try {
+
+            const response = await axios.post('http://localhost:3000/signUp', data)
+
+            const { accessToken, user } = response.data;
+
+            dispatch(setCredentials({ token: accessToken, user }));
+
+            localStorage.setItem('token', accessToken);
+            localStorage.setItem('user', JSON.stringify(user));
+
+            await new Promise((resolve) => setTimeout(resolve, 1000)); 
+            
+            toast.success('Sign Up was successful!')
+
+        }
+        catch (error: any) {
+            const errMsg = error.response?.data || 'Failed to Sign up. Please try again.';
+            toast.error(errMsg);
+        }
+        {/*await new Promise((resolve) => setTimeout(resolve, 1000));
+        console.log('Sign up Data: ', data);*/}
     };
 
   return (
