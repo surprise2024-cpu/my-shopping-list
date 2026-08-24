@@ -28,17 +28,17 @@ export const SignUp: React.FC = () => {
 
             const response = await fetch('http://localhost:8000/register', {
                 method: 'POST',
-                headers: { 'Content-Type': 'applicaton/json' },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
             });
 
-            const res = await response.json();
-            if (!res.ok) throw new Error(res || 'Sign Up Failed');
+            const result = await response.json();
+            if (!response.ok) throw new Error(result || 'Sign Up Failed');
 
-            dispatch(setCredentials({ token: res.accessToken, user: res.user }));
+            dispatch(setCredentials({ token: result.accessToken, user: result.user }));
 
-            localStorage.setItem('token', res.accessToken);
-            localStorage.setItem('user', JSON.stringify(res.user)); 
+            localStorage.setItem('token', result.accessToken);
+            localStorage.setItem('user', JSON.stringify(result.user)); 
             
             toast.success('Sign Up successful!')
 
@@ -164,7 +164,7 @@ export const SignUp: React.FC = () => {
                         Already have an account?  
                         <NavLink 
                             to={'/signin-page'} 
-                            className={styles['']} 
+                            className={styles['link']} 
                         >
 
                             Sign In

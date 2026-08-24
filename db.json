@@ -1,76 +1,95 @@
 {
-    "users": [],
-    "lists": [
+  "users": [
+    {
+      "email": "johndoe@gmail.com",
+      "password": "$2a$10$..L47Xm76FyCyc4luboD/.mdQfFpyJItYFvdnmf6xZ0.3BcNdRobu",
+      "name": "john",
+      "surname": "doe",
+      "phone": "0585446514",
+      "confirmPassword": "123456789",
+      "id": 1
+    },
+    {
+      "email": "jasonborn@gmail.com",
+      "password": "$2a$10$Ju7FIajNCxqNTKQ69t3Lj.7s3X46yddKWDSODKMQgkCUvOom51MgC",
+      "name": "jason",
+      "surname": "born",
+      "phone": "0122587419",
+      "confirmPassword": "123456789",
+      "id": 2
+    }
+  ],
+  "lists": [
+    {
+      "id": 1,
+      "name": "Weekly Groceries",
+      "userId": 1,
+      "createdAt": "2026-08-01T09:00:00.000Z",
+      "items": [
         {
-            "id": 1,
-            "name": "Weekly Groceries",
-            "userId": 1,
-            "createdAt": "2026-08-01T09:00:00.000Z",
-            "items": [
-                {
-                    "id": "a1",
-                    "name": "Milk",
-                    "quantity": 2,
-                    "notes": "Full cream",
-                    "category": "Dairy",
-                    "image": ""
-                },
-                {
-                    "id": "a2",
-                    "name": "Bread",
-                    "quantity": 1,
-                    "notes": "",
-                    "category": "Bakery",
-                    "image": ""
-                }
-            ]
+          "id": "a1",
+          "name": "Milk",
+          "quantity": 2,
+          "notes": "Full cream",
+          "category": "Dairy",
+          "image": ""
+        },
+        {
+          "id": "a2",
+          "name": "Bread",
+          "quantity": 1,
+          "notes": "",
+          "category": "Bakery",
+          "image": ""
         }
-    ],
-    "categories": [
-        {
-            "id": 1,
-            "name": "Dairy",
-            "userId": 1
-        },
-        {
-            "id": 2,
-            "name": "Bakery",
-            "userId": 1
-        },
-        {
-            "id": 3,
-            "name": "Produce",
-            "userId": 1
-        },
-        {
-            "id": 4,
-            "name": "Meat & Poultry",
-            "userId": 1
-        },
-        {
-            "id": 5,
-            "name": "Frozen",
-            "userId": 1
-        },
-        {
-            "id": 6,
-            "name": "Household",
-            "userId": 1
-        },
-        {
-            "id": 7,
-            "name": "Beverages",
-            "userId": 1
-        },
-        {
-            "id": 8,
-            "name": "Snacks",
-            "userId": 1
-        },
-        {
-            "id": 9,
-            "name": "Other",
-            "userId": 1
-        }
-    ]
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Dairy",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "name": "Bakery",
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "name": "Produce",
+      "userId": 1
+    },
+    {
+      "id": 4,
+      "name": "Meat & Poultry",
+      "userId": 1
+    },
+    {
+      "id": 5,
+      "name": "Frozen",
+      "userId": 1
+    },
+    {
+      "id": 6,
+      "name": "Household",
+      "userId": 1
+    },
+    {
+      "id": 7,
+      "name": "Beverages",
+      "userId": 1
+    },
+    {
+      "id": 8,
+      "name": "Snacks",
+      "userId": 1
+    },
+    {
+      "id": 9,
+      "name": "Other",
+      "userId": 1
+    }
+  ]
 }

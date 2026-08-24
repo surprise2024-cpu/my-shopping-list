@@ -89,3 +89,9 @@
 .error-text {
     color: red;
 }
+
+.link {
+    padding-left: 3px;
+    text-decoration: none;
+    color: rgb(189, 184, 184);
+}

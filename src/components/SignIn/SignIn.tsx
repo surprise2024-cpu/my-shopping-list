@@ -39,7 +39,7 @@ export const SignIn: React.FC = () => {
             localStorage.setItem('token', result.accessToken);
             localStorage.setItem('user', JSON.stringify(result.user));
 
-            toast.success('Signed Up successfully!')
+            toast.success('Signed In successfully!')
         }
         catch (err: any) {
             const errMsg = err.response?.data || 'Failed to Sign In. Please try again.';
@@ -124,7 +124,7 @@ export const SignIn: React.FC = () => {
 
                         <NavLink 
                             to={'/signup-page'} 
-                            className={styles['']} 
+                            className={styles['link']} 
                         >
 
                             Sign Up
