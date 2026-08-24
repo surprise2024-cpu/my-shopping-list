@@ -4,7 +4,7 @@ import styles from './SignUp.module.css'
 import { NavLink } from 'react-router'
 import { signUpSchema, type signUpFormData } from '../../schema/authSchemas'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm, type SubmitHandler } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { useDispatch } from 'react-redux'
 import { setCredentials } from '../../store/authSlice'
@@ -22,7 +22,7 @@ export const SignUp: React.FC = () => {
         defaultValues: { name: '', surname: '', email: '', phone: '', password: '', confirmPassword: ''},
     });
 
-    const onSubmit: SubmitHandler<signUpFormData> = async (data) => {
+    const onSubmit = async (data: signUpFormData) => {
 
         try {
 
@@ -38,9 +38,7 @@ export const SignUp: React.FC = () => {
             dispatch(setCredentials({ token: res.accessToken, user: res.user }));
 
             localStorage.setItem('token', res.accessToken);
-            localStorage.setItem('user', JSON.stringify(res.user));
-
-            await new Promise((resolve) => setTimeout(resolve, 1000)); 
+            localStorage.setItem('user', JSON.stringify(res.user)); 
             
             toast.success('Sign Up successful!')
 
@@ -49,8 +47,9 @@ export const SignUp: React.FC = () => {
             const errMsg = error.response?.data || 'Failed to Sign up. Please try again.';
             toast.error(errMsg);
         }
-        {/*await new Promise((resolve) => setTimeout(resolve, 1000));
-        console.log('Sign up Data: ', data);*/}
+        
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        
     };
 
   return (

@@ -2,11 +2,16 @@ import React from 'react'
 
 import styles from './SignIn.module.css';
 import { NavLink } from 'react-router';
-import { useForm, type SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { signInSchema, type signInFormData } from '../../schema/authSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { setCredentials } from '../../store/authSlice';
 
 export const SignIn: React.FC = () => {
+
+    const dispatch = useDispatch();
 
     const {
         register, 
@@ -17,9 +22,32 @@ export const SignIn: React.FC = () => {
         defaultValues: { email: '', password: '' },
     });
 
-    const onSubmit: SubmitHandler<signInFormData> = async (data) => {
+    const onSubmit = async (data: signInFormData) => {
+
+        try {
+            const res = await fetch('http://loclhost:8000/signIn', {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+
+            const result = await res.json();
+            if (!res.ok) throw new Error(result || 'Invalid Details')
+
+            dispatch(setCredentials({ token: result.aaccessToken, user: result.user }));
+
+            localStorage.setItem('token', result.accessToken);
+            localStorage.setItem('user', JSON.stringify(result.user));
+
+            toast.success('Signed Up successfully!')
+        }
+        catch (err: any) {
+            const errMsg = err.response?.data || 'Failed to Sign In. Please try again.';
+            toast.error(errMsg);
+        }
+
+
         await new Promise((resolve) => setTimeout(resolve, 1000));
-        console.log('Sign In data: ', data)
     }
 
   return (
