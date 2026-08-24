@@ -8,6 +8,7 @@ import { HomePage } from './pages/HomePage'
 import { SignInPage } from './pages/SignInPage'
 import { SignUpPage } from './pages/SignUpPage'
 import { Profile } from './components/Profile/Profile'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
   {/*const [count, setCount] = useState(0)*/}
@@ -22,6 +23,7 @@ function App() {
           <Route index element = {<HomePage />} />
           <Route path='signup-page' element={<SignUpPage />}/>
           <Route path='signin-page' element={<SignInPage />}/>
+          <Route path='profile-page'element={<ProfilePage />}
         </Routes>*/}
 
         <Profile />
@@ -29,6 +31,7 @@ function App() {
       </div>
 
       <Footer />
+      <ToastContainer position='top-right' autoClose={3000} />
     </div>
   )
 }

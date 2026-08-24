@@ -7,12 +7,24 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "json-server-auth db.json --port 3001 -r routes.json"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.9.1",
+    "@reduxjs/toolkit": "^2.12.0",
+    "json-server": "^0.17.4",
+    "json-server-auth": "^2.1.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "react-router": "^8.3.0"
+    "react-hook-form": "^7.86.0",
+    "react-redux": "^9.3.0",
+    "react-router": "^8.3.0",
+    "react-toastify": "^11.1.0",
+    "zod": "^4.4.3"
+  },
+  "overrides": {
+    "jsonwebtoken": "9.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
