@@ -10,7 +10,7 @@ export interface AuthUser {
     cellNumber: string
 }
 
-interface AuthState {
+export interface AuthState {
     user: AuthUser | null
     token: string | null
     isAuthenticated: boolean

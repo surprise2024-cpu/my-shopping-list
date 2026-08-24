@@ -9,9 +9,13 @@ import { SignInPage } from './pages/SignInPage'
 import { SignUpPage } from './pages/SignUpPage'
 import { Profile } from './components/Profile/Profile'
 import { ToastContainer } from 'react-toastify'
+import { ProtectedRoute, PublicOnlyRoute } from './RouteWrappers'
+import { ProfilePage } from './pages/ProfilePage'
 
 function App() {
   {/*const [count, setCount] = useState(0)*/}
+
+  const isAuthenticated = false; 
 
   return (
     <div id='app-cont'>
@@ -19,14 +23,26 @@ function App() {
       <div id='scrollable'>
 
         <Navbar />
-        {/*<Routes>
-          <Route index element = {<HomePage />} />
-          <Route path='signup-page' element={<SignUpPage />}/>
-          <Route path='signin-page' element={<SignInPage />}/>
-          <Route path='profile-page'element={<ProfilePage />}
-        </Routes>*/}
+        <Routes>
 
-        <Profile />
+          <Route element={<PublicOnlyRoute isAuthenticated={isAuthenticated} />}>
+
+            <Route path='signup-page' element={<SignUpPage />}/>
+            <Route path='signin-page' element={<SignInPage />}/>
+
+          </Route>
+
+          <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
+
+            <Route index element = {<HomePage />} />
+            <Route path='profile-page' element={<ProfilePage />}
+
+          </Route>
+
+          
+        </Routes>
+
+        {/*<Profile />*/}
         
       </div>
 
