@@ -11,7 +11,7 @@ export function PasswordForm() {
     const { user, token } = useAppSelector((state) => state.auth);
     const { 
         register, 
-        handlesubmit, 
+        handleSubmit, 
         reset, 
         formState: { 
 
@@ -26,6 +26,7 @@ export function PasswordForm() {
 
     const onSubmit = async (data: PasswordFormData) => {
         try {
+            
             //verify old password
             const verifyRes = await fetch('http://localhost:8000/login', {
                 method: 'POST',
@@ -57,7 +58,7 @@ export function PasswordForm() {
 
     return (
         <div className={styles['form-cont']}>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <h3>Update Password</h3>
 
                 <div className={styles['']}>
@@ -99,7 +100,7 @@ export function PasswordForm() {
                     className={styles['']}
                     disabled={isSubmitting}
                 >
-                    {isSubmitting ? 'Updating...' : 'Update Password'}
+                    {isSubmitting ? 'Updating...' : 'Change Password'}
                 </button>
             </form>
         </div>
