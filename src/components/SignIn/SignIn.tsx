@@ -25,7 +25,7 @@ export const SignIn: React.FC = () => {
     const onSubmit = async (data: signInFormData) => {
 
         try {
-            const res = await fetch('http://localhost:8000/login', {
+            const res = await fetch('http://localhost:3001/login', {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
