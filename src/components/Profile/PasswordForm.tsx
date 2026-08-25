@@ -97,6 +97,7 @@ export function PasswordForm() {
                 <button     
                     type="submit"
                     className={styles['']}
+                    disabled={isSubmitting}
                 >
                     {isSubmitting ? 'Updating...' : 'Update Password'}
                 </button>
