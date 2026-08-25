@@ -26,7 +26,7 @@ export function PasswordForm() {
 
     const onSubmit = async (data: PasswordFormData) => {
         try {
-            
+
             //verify old password
             const verifyRes = await fetch('http://localhost:8000/login', {
                 method: 'POST',
@@ -104,5 +104,5 @@ export function PasswordForm() {
                 </button>
             </form>
         </div>
-    )
+    );
 }
