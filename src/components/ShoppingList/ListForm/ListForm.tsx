@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { listSchema, type ListFormValues } from "../../schema/listSchema";
+import { listSchema, type ListFormValues } from "../../../schema/listSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styles from './ListForm.module.css'
 
