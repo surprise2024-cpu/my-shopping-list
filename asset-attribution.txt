@@ -1,0 +1,12 @@
+copyright icon - <a href="https://www.flaticon.com/free-icons/copyright-symbol" title="copyright symbol icons">Copyright symbol icons created by Prosymbols Premium - Flaticon</a>
+empty state - <a href="https://www.flaticon.com/free-icons/empty" title="empty icons">Empty icons created by kerismaker - Flaticon</a>
+add icon - <a href="https://www.flaticon.com/free-icons/create" title="create icons">Create icons created by Anggara - Flaticon</a>
+search icon white - <a target="_blank" href="https://icons8.com/icon/132/search">Search</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+search icon black - <a href="https://www.flaticon.com/free-icons/magnifying-glass" title="magnifying glass icons">Magnifying glass icons created by Royyan Wijaya - Flaticon</a>
+profile icon - <a href="https://www.flaticon.com/free-icons/profile-picture" title="profile-picture icons">Profile-picture icons created by kliwir art - Flaticon</a>
+person icon - <a href="https://www.flaticon.com/free-icons/person" title="person icons">Person icons created by spaceman.design - Flaticon</a>
+settings icon - <a href="https://www.flaticon.com/free-icons/settings" title="settings icons">Settings icons created by Magnific - Flaticon</a>
+notification - <a href="https://www.flaticon.com/free-icons/notification" title="notification icons">Notification icons created by JessHG - Flaticon</a>
+logout icon - <a href="https://www.flaticon.com/free-icons/log-out" title="log out icons">Log out icons created by sonnycandra - Flaticon</a>
+greater than icon - > <a href="https://www.flaticon.com/free-icons/greater-than-symbol" title="greater than symbol icons">Greater than symbol icons created by Prosymbols Premium - Flaticon</a>
+x icon - <a href="https://www.flaticon.com/free-icons/cancel" title="cancel icons">Cancel icons created by Magnific - Flaticon</a>
