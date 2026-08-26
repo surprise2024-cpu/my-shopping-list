@@ -19,7 +19,6 @@ import type { ListFormValues } from '../../schema/listSchema'
 import { toast } from 'react-toastify'
 import { ListCard } from '../ListCard/ListCard'
 import { ListForm } from '../List/ListForm'
-import { undefined } from 'zod'
 import { ConfirmModal } from '../ConfirmModal/ConfirmModal'
 
 export const Body: React.FC = () => {
@@ -130,7 +129,10 @@ export const Body: React.FC = () => {
                   key={list.id} 
                   list={list} 
                   onOpen={() => navigate(`/lists/${list.id}`)}
-                  onEdit={() => {{setEditingList(list)} setShowForm(true)}} 
+                  onEdit={() => {
+                    setEditingList(list) 
+                    setShowForm(true)
+                  }} 
                   onDelete={() => setDeleteTarget(list)}
                 />
                   
