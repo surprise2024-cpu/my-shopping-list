@@ -11,6 +11,7 @@ import { Profile } from './components/Profile/Profile'
 import { ToastContainer } from 'react-toastify'
 import { ProtectedRoute, PublicOnlyRoute } from './RouteWrappers'
 import { ProfilePage } from './pages/ProfilePage'
+import { ListDetailsPage } from './pages/ListDetailPage'
 
 function App() {
   {/*const [count, setCount] = useState(0)*/}
@@ -20,9 +21,11 @@ function App() {
   return (
     <div id='app-cont'>
 
+      <Navbar />
+      
       <div id='scrollable'>
 
-        <Navbar />
+        
         <Routes>
 
           <Route element={<PublicOnlyRoute isAuthenticated={isAuthenticated} />}>
@@ -37,7 +40,7 @@ function App() {
 
             
             <Route path='profile-page' element={<ProfilePage />} />
-
+            <Route path='lists/:id' element={<ListDetailsPage />} />
           </Route>
 
           
