@@ -51,6 +51,7 @@ export const Body: React.FC = () => {
         await updateList({ id: editingList.id, name: values.name }).unwrap()
 
         toast.success('List Renamed')
+        
       } else {
         await addList({
           name: values.name,

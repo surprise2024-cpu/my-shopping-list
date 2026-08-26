@@ -29,7 +29,7 @@
         {
           "id": "a1",
           "name": "Milk",
-          "quantity": 2,
+          "quantity": 3,
           "notes": "Full cream",
           "category": "Dairy",
           "image": ""
@@ -38,7 +38,7 @@
           "id": "a2",
           "name": "Bread",
           "quantity": 1,
-          "notes": "",
+          "notes": "nice and soft",
           "category": "Bakery",
           "image": ""
         }
