@@ -182,7 +182,7 @@ export const Body: React.FC = () => {
 
       <ConfirmModal 
         isOpen={deletetarget !== null}
-        title='Delete list'
+        title='Delete List'
         message={`Are you sure that you want to delete the list "${deletetarget?.name}"`}
         onConfirm={handleDelete}
         onCancel={() => setDeleteTarget(null)}

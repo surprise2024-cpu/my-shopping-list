@@ -43,6 +43,13 @@
           "image": ""
         }
       ]
+    },
+    {
+      "name": "Grocery list",
+      "userId": 1,
+      "createdAt": "2026-08-26T09:26:31.045Z",
+      "items": [],
+      "id": 2
     }
   ],
   "categories": [
