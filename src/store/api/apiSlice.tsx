@@ -7,6 +7,7 @@ export interface ShoppingListItem {
     notes?: string
     category: string
     image?: string
+    createdAt?: string // for sorting with the date
 }
 
 export interface ShoppingList {
@@ -39,7 +40,7 @@ export const apiSlice = createApi({
     baseQuery,
     tagTypes: ['List', 'Category'],
     endpoints: (builder) => ({
-
+        // Shopping Lists
         getLists: builder.query<ShoppingList[], { userId: number; search?: string; sort?: string }>({
             query: ({ userId, search, sort }) => {
                 const params = new URLSearchParams()
@@ -91,7 +92,7 @@ export const apiSlice = createApi({
             invalidatesTags: (_result, _error, id) => [{ type: 'List', id }, { type: 'List', id: 'LIST' }],
         }),
 
-
+        // Categories for users are seperate
         getCategories: builder.query<Category[], number>({
             query: (userId) => `/categories?userId=${userId}`,
             providesTags: (result) =>
