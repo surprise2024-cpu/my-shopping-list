@@ -40,9 +40,10 @@ export const apiSlice = createApi({
     tagTypes: ['List', 'Category'],
     endpoints: (builder) => ({
 
-        getLists: builder.query<ShoppingList[], { search?: string; sort?: string }>({
-            query: ({ search, sort } = {}) => {
+        getLists: builder.query<ShoppingList[], { userId: number; search?: string; sort?: string }>({
+            query: ({ userId, search, sort }) => {
                 const params = new URLSearchParams()
+                params.set('userId', String(userId))
                 if (search) params.set('name_like', search)
                 if (sort) {
                     const [field, order] = sort.split(':')

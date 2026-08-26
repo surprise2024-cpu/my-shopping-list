@@ -4,8 +4,6 @@ import styles from './Body.module.css'
 import emptyState from '../../assets/shopping.png'
 import addIcon from '../../assets/add-button.png'
 
-//import { useAuth } from ''
-
 import {
   useGetListsQuery,
   useAddListMutation,
@@ -20,13 +18,16 @@ import { useAuth } from '../../store/useAuth'
 import type { ListFormValues } from '../../schema/listSchema'
 import { toast } from 'react-toastify'
 import { ListCard } from '../ListCard/ListCard'
+import { ListForm } from '../List/ListForm'
+import { undefined } from 'zod'
+import { ConfirmModal } from '../ConfirmModal/ConfirmModal'
 
 export const Body: React.FC = () => {
 
   const { user } = useAuth()
   const navigate = useNavigate()
 
-  const { data: lists, isLoading } = useGetListQuery(
+  const { data: lists, isLoading } = useGetListsQuery(
     { userId: user?.id ?? 0 },
     { skip: !user }
   )
@@ -54,7 +55,7 @@ export const Body: React.FC = () => {
         toast.success('List Renamed')
       } else {
         await addList({
-          name: value.name,
+          name: values.name,
           userId: user.id,
           createdAt: new Date().toISOString(),
           items: [],
@@ -139,45 +140,53 @@ export const Body: React.FC = () => {
               
         )
       }
-      <div className={styles['holder']}>
+      <div className={styles['body-btn']}>
 
-        <div className={styles['body-text']}>
+        <button 
+          className={styles['add-btn']}
+          onClick={openAddForm}
+        >
 
-          <span>List is Empty</span>
+          <div className={styles['add-btn-holder']}>
 
-        </div>
-        <div className={styles['body-image']}>
+            <div className={styles['add-btn-icon']}>
 
-          <img src={emptyState} alt='empty state' />
+              <img src={addIcon} alt='empty state' />
 
-        </div>
-        <div className={styles['body-text']}>
-
-          <span>Add your First item today</span>
-
-        </div>
-        <div className={styles['body-btn']}>
-
-          <button className={styles['add-btn']}>
-
-            <div className={styles['add-btn-holder']}>
-
-              <div className={styles['add-btn-icon']}>
-
-                <img src={addIcon} alt='empty state' />
-
-              </div>
-              <div className={styles['add-btn-text']}>
-
-                <span>Add Item</span>
-
-              </div>
-            
             </div>
-          </button>
+            <div className={styles['add-btn-text']}>
 
-        </div>
+              <span>Add List</span>
+
+            </div>
+          
+          </div>
+        </button>
+
       </div>
+
+      {
+        showForm && (
+          <ListForm 
+            defaultValues={editingList ? { name: editingList?.name }: undefined}
+            submitLabel={editingList ? 'Save Changes' : 'Create List'}
+            onSubmit={handleSubmit}
+            onCancel={() => {
+              setShowForm(false)
+              setEditingList(null)
+            }}
+          />
+        )
+      }
+
+      <ConfirmModal 
+        isOpen={deletetarget !== null}
+        title='Delete list'
+        message={`Are you sure that you want to delete the list "${deletetarget?.name}"`}
+        onConfirm={handleDelete}
+        onCancel={() => setDeleteTarget(null)}
+      />
     </div>
+    
   )
 }
