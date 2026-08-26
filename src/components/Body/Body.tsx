@@ -36,7 +36,7 @@ export const Body: React.FC = () => {
 
   const [showForm, setShowForm] = useState(false)
   const [editingList, setEditingList] = useState<ShoppingList | null>(null)
-  const [deletetarget, setDeleteTarget] = useState<ShoppingList | null>(null)
+  const [deleteTarget, setDeleteTarget] = useState<ShoppingList | null>(null)
 
   if (!user) return null
 
@@ -71,10 +71,10 @@ export const Body: React.FC = () => {
   }
 
   const handleDelete = async () => {
-    if (!deletetarget) return
+    if (!deleteTarget) return
 
     try {
-      await deleteList(deletetarget.id).unwrap()
+      await deleteList(deleteTarget.id).unwrap()
       toast.success('List deleted')
       setDeleteTarget(null)
     } 
@@ -181,9 +181,9 @@ export const Body: React.FC = () => {
       }
 
       <ConfirmModal 
-        isOpen={deletetarget !== null}
+        isOpen={deleteTarget !== null}
         title='Delete List'
-        message={`Are you sure that you want to delete the list "${deletetarget?.name}"`}
+        message={`Are you sure that you want to delete the list "${deleteTarget?.name}"`}
         onConfirm={handleDelete}
         onCancel={() => setDeleteTarget(null)}
       />
