@@ -53,4 +53,13 @@
     width: 25px;
 }
 
+.list-grid {
+    display: grid;
+    grid-template-columns: repeat(auti-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 40px 20px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 
