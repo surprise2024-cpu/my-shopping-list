@@ -43,7 +43,7 @@ export function ListDetailsPage() {
             }
 
             await updateList({ id: list.id, items: newItems }).unwrap()
-            toast.success(editItem ? 'Item updated')
+            toast.success(editItem ? 'Item updated' : 'Item added')
 
             setShowForm(false)
             setEditItem(null)
