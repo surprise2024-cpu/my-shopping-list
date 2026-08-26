@@ -9,7 +9,6 @@ import {
   useAddListMutation,
   useUpdateListMutation,
   useDeleteListMutation,
-  useGetListQuery,
 } from '../../store/api/apiSlice'
 
 import type { ShoppingList } from '../../store/api/apiSlice'
