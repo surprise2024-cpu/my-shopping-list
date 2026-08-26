@@ -83,22 +83,22 @@ export function CategorySelect({ userId, value, onChange }: CategorySelectProps)
                 </div>
             )
         }
-
-        return (
-            <select value={value} onChange={handleSelectChange}>
-                <option value='' disabled>
-                    Select a category
-                </option>
-                {
-                    categories?.map((c) => (
-                        <option key={c.name}>
-                            {c.name}
-                        </option>
-                    ))
-                }
-
-                <option value='__new__'>+ Add new category</option>
-            </select>
-        )
     }
+
+    return (
+        <select value={value} onChange={handleSelectChange}>
+            <option value='' disabled>
+                Select a category
+            </option>
+            {
+                categories?.map((c) => (
+                    <option key={c.name}>
+                        {c.name}
+                    </option>
+                ))
+            }
+
+            <option value='__new__'>+ Add new category</option>
+        </select>
+    )
 }
