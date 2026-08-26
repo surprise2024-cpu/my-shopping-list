@@ -16,8 +16,8 @@ import { useNavigate } from 'react-router'
 import { useAuth } from '../../store/useAuth'
 import type { ListFormValues } from '../../schema/listSchema'
 import { toast } from 'react-toastify'
-import { ListCard } from '../ListCard/ListCard'
-import { ListForm } from '../List/ListForm'
+import { ListCard } from '../ShoppingList/ListCard/ListCard'
+import { ListForm } from '../ShoppingList/ListForm/ListForm'
 import { ConfirmModal } from '../ConfirmModal/ConfirmModal'
 
 export const Body: React.FC = () => {

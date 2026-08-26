@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import { itemSchema, type ItemFormValues } from "../../schema/itemSchema";
+import { itemSchema, type ItemFormValues } from "../../../schema/itemSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styles from './ItemForm.module.css'
-import { CategorySelect } from "../Category/CategorySelect";
+import { CategorySelect } from "../../Category/CategorySelect";
 
 
 interface ItemFormProps {

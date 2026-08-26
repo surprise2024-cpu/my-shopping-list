@@ -1,4 +1,4 @@
-import type { ShoppingList } from "../../store/api/apiSlice";
+import type { ShoppingList } from "../../../store/api/apiSlice";
 import styles from './ListCard.module.css'
 
 interface ListCardProps {
