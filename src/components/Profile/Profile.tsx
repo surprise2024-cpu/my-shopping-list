@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 import styles from './Profile.module.css'
 
@@ -11,14 +11,30 @@ import { NavLink } from 'react-router'
 import { toast } from 'react-toastify'
 import { useAuth } from '../../store/useAuth'
 import { ProfileForm } from './ProfileInfo'
+import { useState } from 'react'
+import { current } from '@reduxjs/toolkit'
 
-export const Profile: React.FC = () => {
+type Panel = 'none' | 'settings' | 'notifications' 
 
-  const { logout } = useAuth();
+export function Profile() {
+
+  const { user, logout } = useAuth();
+  
+  //const { theme, toggleTheme, notificationsEnables, toggleNotifications } = useUi()
+
+  const [ isOpen, setIsOpen ] = useState(false)
+  const [ openPanel, setOpenPanel ] = useState<Panel>('none')
+
+
 
   const handleLogout = () => {
     logout()
     toast.success('Logged out')
+    setIsOpen(false)
+  }
+
+  const togglePanel = (panel: Panel) => {
+    setOpenPanel((current) => (current === panel ? 'none' : panel))
   }
 
   const handleEdit = () => {
@@ -26,73 +42,133 @@ export const Profile: React.FC = () => {
   }
 
   return (
+
     <div className={styles['profile-cont']}>
+      <button onClick={() => setIsOpen((open) => !open)}>
+        { 
+          user?.avatar ? (
+            <img src={user.avatar} alt='Profile' width={32} height={32} style={{ borderRadius: '50%' }}/>
+          ) : (
+            <div style={{width: 32,  height: 32, borderRadius: '50%', background: '#ccc'}} />
+            
+          )
+        }
+      </button>
 
-      <div className={styles['holder']}>
+      {
+        isOpen && (
+          <div className='profile-menu-dropdown'>
 
-        <div className={styles['placeholder']}>
-        
-          <img src={standIn} alt='placeholder' width={80} height={80}/>
+            <div>
 
-        </div>
-        <div className={styles['holder-text']}>
-          <div >king</div>
-          <div>king2gmail.com</div>
-          <div>0147536915</div>
-        </div>
-      </div>
+              <strong>{user?.name} {user?.surname}</strong>
+              <p>{user?.email}</p>
+              <p>{user?.cellNumber}</p>
 
-      
-      <div className={styles['profile-info']}>
+            </div>
+            
 
-        
-        <button 
-          className={styles['profile-btn']}
-          onClick={handleEdit}
-        >
-          <div >
-            <img src={person} alt='placeholder' width={30} height={30} />
-         </div>
-         <div>
-
-            Edit Profile
-
-         </div>
-         <div>
-            <img src={greater} alt='placeholder' width={10} height={10} />
-         </div>
-        </button>
-        <button className={styles['profile-btn']}>
-          <div>
-            <img src={settings} alt='placeholder' width={30} height={30} />
-         </div>
-         <div>
-            <NavLink 
-                to={'/'} 
-                className={ ({isActive}) => `${styles.link} ${isActive ? styles['link-active'] : ''}`}
+            <NavLink
+            to='/profile'
+            onClick={() => setIsOpen(false)}
             >
-              Settings
+              <button 
+                className={styles['profile-btn']}
+                onClick={handleEdit}
+              >
+                <div >
+                  <img src={person} alt='placeholder' width={30} height={30} />
+                </div>
+                <div>
+
+                  Edit Profile
+
+                </div>
+                <div>
+                  <img src={greater} alt='placeholder' width={10} height={10} />
+                </div>
+              </button>
             </NavLink>
-         </div>
-         <div>
-            <img src={greater} alt='placeholder' width={10} height={10} />
-         </div>
-        </button>
-        <button 
-          className={styles['profile-btn']}
-          onClick={handleLogout} 
-        >
-          <div>
-            <img src={Logout} alt='placeholder' width={30} height={30} />
-         </div>
-         <div>
-            Log Out
-         </div>
-         <div>
-            <img src={greater} alt='placeholder' width={10} height={10} />
-         </div>
-        </button>
-      </div>
+            <button 
+              onClick={() => togglePanel('settings')}
+              className={styles['profile-btn']}
+            >
+                <div>
+                  <img src={settings} alt='placeholder' width={30} height={30} />
+              </div>
+              <div>
+                Settings
+              </div>
+              <div>
+                  <img src={greater} alt='placeholder' width={10} height={10} />
+              </div>
+            </button>
+
+            {
+              openPanel === 'settings' && (
+                <div className='profile-menu-panel'>
+                  <span>Theme</span>
+                  <button 
+                    //onClick={toggleTheme}
+                  >
+                    {/*{theme === 'light' ? 'dark' : 'light'}*/}toggle
+                  </button>
+                </div>
+              )
+            }
+
+            <button 
+              className={styles['profile-btn']}
+              onClick={() => togglePanel('notifications')} 
+            >
+              <div>
+                <img src={Logout} alt='placeholder' width={30} height={30} />
+              </div>
+              <div>
+                Notifications
+              </div>
+              <div>
+                <img src={greater} alt='placeholder' width={10} height={10} />
+              </div>
+            </button>
+
+            {
+              openPanel === 'notifactions' && (
+                <div className='profile-menu-panel'>
+                  <span>Notifications</span>
+                  <button
+                    //onClick={toggleNotifications}
+                  >
+                    {/*{notificationsEnables ? 'Allow' : 'Deny'}*/}Notifications
+                  </button>
+                </div>
+              ) 
+            }
+
+            <button 
+              className={styles['profile-btn']}
+              onClick={handleLogout} 
+            >
+              <div>
+                <img src={Logout} alt='placeholder' width={30} height={30} />
+              </div>
+              <div>
+                Log Out
+              </div>
+              <div>
+                <img src={greater} alt='placeholder' width={10} height={10} />
+              </div>
+            </button>
+
+          </div>
+
+          
+        )
+      }
+
     </div>
+
+
+    
   )
 }
