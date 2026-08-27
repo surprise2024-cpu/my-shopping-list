@@ -13,10 +13,17 @@ import { ProfilePage } from './pages/ProfilePage'
 import { ListDetailsPage } from './pages/ListDetailPage'
 import { useAuth } from './store/useAuth'
 import { SearchResultsPage } from './pages/SearchResultsPage'
+import { useUi } from './store/useUi'
+import { useEffect } from 'react'
 
 function App() {
 
   const {isAuthenticated} = useAuth(); 
+
+  const { theme, notificationsEnabled } = useUi()
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+  }, [theme])
 
   return (
     <div id='app-cont'>
@@ -49,7 +56,12 @@ function App() {
       </div>
 
       <Footer />
-      <ToastContainer position='top-right' autoClose={3000} />
+
+      {
+        notificationsEnabled && 
+        <ToastContainer position='top-right' autoClose={3000} />
+      }
+      
     </div>
   )
 }
