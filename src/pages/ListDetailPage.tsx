@@ -17,6 +17,7 @@ export function ListDetailsPage() {
 
     const { data: list, isLoading, error } = useGetListQuery(listId, {skip: !listId })
     const [updateList] = useUpdateListMutation()
+
     const [showForm, setShowForm] = useState(false)
     const [editItem, setEditItem] = useState<ShoppingListItem | null>(null)
     const [deleteTarget, setDeleteTarget] = useState<ShoppingListItem | null>(null)
@@ -78,6 +79,21 @@ export function ListDetailsPage() {
 
     if (error || !list) return <p>List not found.</p>
 
+
+    const isOwner = list.userId === user.id
+
+    const handleShare = async () => {
+        const url = `${window.location.origin}/lists/${list.id}`
+
+        try {
+            await navigator.clipboard.writeText(url)
+            toast.success('Link copied to clipboard')
+        }
+        catch {
+            toast.error('Could not copy link')
+        }
+    }
+
     const handleSubmit = async (values: ItemFormValues) => {
         try {
             let newItems: ShoppingListItem[]
@@ -126,13 +142,20 @@ export function ListDetailsPage() {
         <div>
             <h1>{list.name}</h1>
 
-            <button onClick={() => { 
-                setEditItem(null)
-                setShowForm(true)
-            }}>
-                + Add Item
-            </button>
+            <button onClick={handleShare}>Share</button>
 
+            {
+                isOwner ? (
+                    <button onClick={() => { 
+                        setEditItem(null)
+                        setShowForm(true)
+                    }}>
+                        + Add Item
+                    </button>
+                ) : (
+                    <p><em>You're viewing a shared list (read-only)</em></p>
+                )
+            }
             {
                 showForm && (
                     <ItemForm 
@@ -149,6 +172,7 @@ export function ListDetailsPage() {
                 
             }
 
+            {/*Search/Sort for items controlled by the URL */}
             <SearchSortBar 
                 search={search}
                 sort={sort}
