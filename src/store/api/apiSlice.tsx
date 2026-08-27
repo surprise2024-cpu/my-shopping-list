@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import  type { AuthUser } from "../authSlice";
 
 export interface ShoppingListItem {
     id: string
@@ -120,6 +121,14 @@ export const apiSlice = createApi({
             invalidatesTags: [{ type: 'Category', id: 'LIST' }],
         }),
 
+        updateUser: builder.mutation<AuthUser, Partial<AuthUser> & Pick<AuthUser, 'id'>>({
+            query: ({ id, ...patch }) => ({
+                url: `/users/${id}`,
+                method: 'PATCH',
+                body: patch
+            }),
+        }),
+
     }),
 })
 
@@ -131,5 +140,6 @@ export const {
     useDeleteListMutation,
     useGetCategoriesQuery,
     useAddCategoryMutation, 
-    useDeleteCategoryMutation
+    useDeleteCategoryMutation, 
+    useUpdateUserMutation,
 } = apiSlice
