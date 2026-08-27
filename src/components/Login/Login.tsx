@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styles from './SignIn.module.css';
+import styles from './Login.module.css';
 import { NavLink } from 'react-router';
 import { useForm } from 'react-hook-form';
 import { signInSchema, type signInFormData } from '../../schema/authSchemas';

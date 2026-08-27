@@ -5,11 +5,21 @@ import styles from './Profile.module.css'
 import standIn from '../../assets/profile-picture.png'
 import person from '../../assets/person.png'
 import greater from '../../assets/greater-than-symbol.png'
-import logout from '../../assets/log-out.png'
+import Logout from '../../assets/log-out.png'
 import settings from '../../assets/setting.png'
 import { NavLink } from 'react-router'
+import { toast } from 'react-toastify'
+import { useAuth } from '../../store/useAuth'
 
 export const Profile: React.FC = () => {
+
+  const { logout } = useAuth();
+
+  const handleLogout = () => {
+          logout()
+          toast.success('Logged out')
+      }
+
   return (
     <div className={styles['profile-cont']}>
 
@@ -55,17 +65,15 @@ export const Profile: React.FC = () => {
             <img src={greater} alt='placeholder' width={10} height={10} />
          </div>
         </button>
-        <button className={styles['profile-btn']}>
+        <button 
+          className={styles['profile-btn']}
+          onClick={handleLogout} 
+        >
           <div>
-            <img src={logout} alt='placeholder' width={30} height={30} />
+            <img src={Logout} alt='placeholder' width={30} height={30} />
          </div>
          <div>
-            <NavLink 
-                to={'/'} 
-                className={ ({isActive}) => `${styles.link} ${isActive ? styles['link-active'] : ''}`}
-            >
-              Log Out
-            </NavLink>
+            Log Out
          </div>
          <div>
             <img src={greater} alt='placeholder' width={10} height={10} />

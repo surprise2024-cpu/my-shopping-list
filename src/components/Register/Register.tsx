@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styles from './SignUp.module.css'
+import styles from './Register.module.css'
 import { NavLink } from 'react-router'
 import { signUpSchema, type signUpFormData } from '../../schema/authSchemas'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -152,7 +152,7 @@ export const SignUp: React.FC = () => {
                             className={styles['field-btn']}
                             disabled={isSubmitting}
                         >
-                            {isSubmitting ? 'Signing Up...' : 'Sign Up'}
+                            {isSubmitting ? 'Registering...' : 'Register'}
                         </button>
 
                     </div>
@@ -167,7 +167,7 @@ export const SignUp: React.FC = () => {
                             className={styles['link']} 
                         >
 
-                            Sign In
+                            Register
 
                         </NavLink>
                     </p>
