@@ -37,9 +37,6 @@ export function Profile() {
     setOpenPanel((current) => (current === panel ? 'none' : panel))
   }
 
-  const handleEdit = () => {
-    <ProfileForm />
-  }
 
   return (
 
@@ -74,7 +71,7 @@ export function Profile() {
             >
               <button 
                 className={styles['profile-btn']}
-                onClick={handleEdit}
+                
               >
                 <div >
                   <img src={person} alt='placeholder' width={30} height={30} />
