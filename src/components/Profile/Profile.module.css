@@ -1,3 +1,41 @@
 .error-text {
     color: red;
 }
+
+.profile-cont {
+    width: 500px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 1px solid #e8e6e0;
+    border-radius: 12px;
+    
+}
+
+.profile-info {
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+}
+
+.profile-btn {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    justify-content: space-between;
+
+    margin-bottom: 5px;
+    background: none;
+    border-bottom: 1px solid gray;
+    color: black;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    cursor: pointer;
+}
+
+.profile-btn:hover {
+    background-color: #e8e6e0;
+}

@@ -7,28 +7,39 @@ import person from '../../assets/person.png'
 import greater from '../../assets/greater-than-symbol.png'
 import logout from '../../assets/log-out.png'
 import settings from '../../assets/setting.png'
+import { NavLink } from 'react-router'
 
 export const Profile: React.FC = () => {
   return (
     <div className={styles['profile-cont']}>
 
+
       <div className={styles['placeholder']}>
         
-        <img src={standIn} alt='placeholder' width={80} height={80}/>
+          <img src={standIn} alt='placeholder' width={80} height={80}/>
       </div>
+
+      
       <div className={styles['profile-info']}>
-        <button className={styles['actions']}>
-          <div>
+
+        
+        <button className={styles['profile-btn']}>
+          <div >
             <img src={person} alt='placeholder' width={30} height={30} />
          </div>
          <div>
-            My Profile
+            <NavLink 
+                to={'/'} 
+                className={ ({isActive}) => `${styles.link} ${isActive ? styles['link-active'] : ''}`}
+            >
+              Edit Profile
+            </NavLink>
          </div>
          <div>
             <img src={greater} alt='placeholder' width={10} height={10} />
          </div>
         </button>
-         <button>
+        <button className={styles['profile-btn']}>
           <div>
             <img src={settings} alt='placeholder' width={30} height={30} />
          </div>
@@ -39,7 +50,7 @@ export const Profile: React.FC = () => {
             <img src={greater} alt='placeholder' width={10} height={10} />
          </div>
         </button>
-        <button>
+        <button className={styles['profile-btn']}>
           <div>
             <img src={logout} alt='placeholder' width={30} height={30} />
          </div>
