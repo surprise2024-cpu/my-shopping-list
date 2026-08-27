@@ -14,10 +14,8 @@ export function PasswordForm() {
         handleSubmit, 
         reset, 
         formState: { 
-
             errors,
             isSubmitting 
-
         } 
     } = useForm<PasswordFormData>({
 
@@ -85,7 +83,7 @@ export function PasswordForm() {
                 </div>
                 <div className={styles['']}>
 
-                    <label>Confirm new Password</label>
+                    <label>Confirm new password</label>
                     <input 
                         type="text" 
                         {...register('confirmPassword')} 
