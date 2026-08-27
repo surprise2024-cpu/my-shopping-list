@@ -33,7 +33,7 @@ export function ProfileForm() {
 
     const onSubmit = async (data: ProfileFormData) => {
         try {
-            const res = await fetch(`http://localhost:8000/users/${user?.id}`, {
+            const res = await fetch(`http://localhost:3000/users/${user?.id}`, {
                 method: 'PATCH',
                 headers: {
                     "Content-Type": "application/json",
