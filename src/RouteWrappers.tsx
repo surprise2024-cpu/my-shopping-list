@@ -6,11 +6,11 @@ interface RouteWrapperProps {
 
 export const ProtectedRoute = ({ isAuthenticated }: RouteWrapperProps) => {
 
-    return isAuthenticated ? <Outlet /> : <Navigate to='/signin-page' replace/>;
+    return isAuthenticated ? <Outlet /> : <Navigate to='/login' replace/>;
 }
 
 export const PublicOnlyRoute = ({ isAuthenticated }: RouteWrapperProps) => {
 
-    return isAuthenticated ? <Outlet /> : <Navigate to='/HomePage' replace/>;
+    return !isAuthenticated ? <Outlet /> : <Navigate to='/' replace/>;
 }
 

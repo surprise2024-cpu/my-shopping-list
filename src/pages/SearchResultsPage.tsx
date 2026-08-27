@@ -25,7 +25,7 @@ export function SearchResultsPage() {
         return lists.flatMap((list) => 
         list.items
             .filter((item) => item.name.toLowerCase().includes(q))
-            .map((item) ({ item, listId: list.id, listName: list.name }))
+            .map((item) => ({ item, listId: list.id, listName: list.name }))
         )
     }, [lists, q])
 
