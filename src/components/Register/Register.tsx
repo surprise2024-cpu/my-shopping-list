@@ -40,7 +40,7 @@ export const SignUp: React.FC = () => {
             localStorage.setItem('token', result.accessToken);
             localStorage.setItem('user', JSON.stringify(result.user)); 
             
-            toast.success('Registered successful!')
+            toast.success('Successful registered!')
 
         }
         catch (error: any) {
