@@ -8,6 +8,7 @@ export interface AuthUser {
     name: string
     surname: string
     cellNumber: string
+    avatar?: string
 }
 
 export interface AuthState {

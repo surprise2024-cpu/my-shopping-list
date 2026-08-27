@@ -4,11 +4,12 @@ import styles from './ItemCard.module.css'
 
 interface ItemCardProps {
     item: ShoppingListItem
-    onEdit: () => void
-    onDelete: () => void
+    onEdit?: () => void
+    onDelete?: () => void
+    readOnly?: boolean
 }
 
-export function ItemCard({ item, onEdit, onDelete }: ItemCardProps) {
+export function ItemCard({ item, onEdit, onDelete, readOnly }: ItemCardProps) {
     return (
         <div className={styles['item-card']}>
 
@@ -21,18 +22,22 @@ export function ItemCard({ item, onEdit, onDelete }: ItemCardProps) {
             <p>Category: {item.category}</p>
             {item.notes && <p>Notes: {item.notes}</p>}
 
-            <div>
-                <button 
-                    onClick={onEdit}
-                >
-                    Edit
-                </button>
-                <button 
-                    onClick={onDelete}
-                >
-                    Delete
-                </button>
-            </div>
+            {
+                !readOnly && (
+                    <div>
+                        <button 
+                            onClick={onEdit}
+                        >
+                            Edit
+                        </button>
+                        <button 
+                            onClick={onDelete}
+                        >
+                            Delete
+                        </button>
+                    </div>
+                )
+            }
         </div>
     )
 }

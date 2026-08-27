@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import  type { AuthUser } from "../authSlice";
 
 export interface ShoppingListItem {
     id: string
@@ -7,6 +8,7 @@ export interface ShoppingListItem {
     notes?: string
     category: string
     image?: string
+    createdAt?: string // for sorting with the date
 }
 
 export interface ShoppingList {
@@ -39,7 +41,7 @@ export const apiSlice = createApi({
     baseQuery,
     tagTypes: ['List', 'Category'],
     endpoints: (builder) => ({
-
+        // Shopping Lists
         getLists: builder.query<ShoppingList[], { userId: number; search?: string; sort?: string }>({
             query: ({ userId, search, sort }) => {
                 const params = new URLSearchParams()
@@ -91,7 +93,7 @@ export const apiSlice = createApi({
             invalidatesTags: (_result, _error, id) => [{ type: 'List', id }, { type: 'List', id: 'LIST' }],
         }),
 
-
+        // Categories for users are seperate
         getCategories: builder.query<Category[], number>({
             query: (userId) => `/categories?userId=${userId}`,
             providesTags: (result) =>
@@ -119,6 +121,14 @@ export const apiSlice = createApi({
             invalidatesTags: [{ type: 'Category', id: 'LIST' }],
         }),
 
+        updateUser: builder.mutation<AuthUser, Partial<AuthUser> & Pick<AuthUser, 'id'>>({
+            query: ({ id, ...patch }) => ({
+                url: `/users/${id}`,
+                method: 'PATCH',
+                body: patch
+            }),
+        }),
+
     }),
 })
 
@@ -130,5 +140,6 @@ export const {
     useDeleteListMutation,
     useGetCategoriesQuery,
     useAddCategoryMutation, 
-    useDeleteCategoryMutation
+    useDeleteCategoryMutation, 
+    useUpdateUserMutation,
 } = apiSlice

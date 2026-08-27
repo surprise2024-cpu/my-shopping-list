@@ -14,10 +14,8 @@ export function PasswordForm() {
         handleSubmit, 
         reset, 
         formState: { 
-
             errors,
             isSubmitting 
-
         } 
     } = useForm<PasswordFormData>({
 
@@ -28,7 +26,7 @@ export function PasswordForm() {
         try {
 
             //verify old password
-            const verifyRes = await fetch('http://localhost:8000/login', {
+            const verifyRes = await fetch('http://localhost:3001/login', {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: user?.email, password: data.currentPassword }),
@@ -36,7 +34,7 @@ export function PasswordForm() {
 
             if (!verifyRes.ok) throw new Error('Password is incorrect.');
 
-            const patchRes = await fetch(`http://localhost:8000/users/${user?.id}`, {
+            const patchRes = await fetch(`http://localhost:3001/users/${user?.id}`, {
                 method: 'PATCH',
                 headers: {
                     "content-Type": "application/json",
@@ -85,7 +83,7 @@ export function PasswordForm() {
                 </div>
                 <div className={styles['']}>
 
-                    <label>Confirm new Password</label>
+                    <label>Confirm new password</label>
                     <input 
                         type="text" 
                         {...register('confirmPassword')} 

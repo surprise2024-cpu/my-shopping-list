@@ -12,21 +12,26 @@ import {
 } from '../../store/api/apiSlice'
 
 import type { ShoppingList } from '../../store/api/apiSlice'
-import { useNavigate } from 'react-router'
+import { useNavigate, useSearchParams } from 'react-router'
 import { useAuth } from '../../store/useAuth'
 import type { ListFormValues } from '../../schema/listSchema'
 import { toast } from 'react-toastify'
 import { ListCard } from '../ShoppingList/ListCard/ListCard'
 import { ListForm } from '../ShoppingList/ListForm/ListForm'
 import { ConfirmModal } from '../ConfirmModal/ConfirmModal'
+import { SearchSortBar } from '../ShoppingList/Search/SearchSortBar'
 
 export const Body: React.FC = () => {
 
   const { user } = useAuth()
   const navigate = useNavigate()
 
+  const [searchParams, setSearchParams] = useSearchParams()
+  const search = searchParams.get('search') ?? ''
+  const sort = searchParams.get('sort') ?? ''
+
   const { data: lists, isLoading } = useGetListsQuery(
-    { userId: user?.id ?? 0 },
+    { userId: user?.id ?? 0, search: search || undefined, sort: sort || undefined },
     { skip: !user }
   )
 
@@ -43,6 +48,30 @@ export const Body: React.FC = () => {
   const openAddForm = () => {
     setEditingList(null)
     setShowForm(true)
+  }
+
+  const handleSearchChange = (value: string) => {
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev)
+        if (value) next.set('search', value)
+        else next.delete('search')
+        return next
+      },
+      {replace: true}
+    )
+  }
+
+  const handleSortChange = (value: string) => {
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev)
+        if (value) next.set('sort', value)
+        else next.delete('sort')
+        return next
+      },
+      {replace: true}
+    )
   }
 
   const handleSubmit= async (values: ListFormValues) => {
@@ -100,6 +129,20 @@ export const Body: React.FC = () => {
 
   return (
     <div className={styles['body-cont']}>
+
+      <SearchSortBar 
+        search={search}
+        sort={sort}
+        onSearchChange={handleSearchChange}
+        onSortChange={handleSortChange}
+        searchPlaceholder='Search lists by name...'
+        sortOptions={[
+          { value: 'name:asc', label: 'Name (A-Z)' },
+          { value: 'name:desc', label: 'Name (Z-A)' },
+          { value: 'createdAt:desc', label: 'Date Added (Newest)' },
+          { value: 'createAt:asc', label: 'Date Added (Oldest)' },
+        ]}  
+      />
       
       {
         !hasLists ? (

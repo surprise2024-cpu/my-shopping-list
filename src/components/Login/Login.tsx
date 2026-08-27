@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styles from './SignIn.module.css';
+import styles from './Login.module.css';
 import { NavLink } from 'react-router';
 import { useForm } from 'react-hook-form';
 import { signInSchema, type signInFormData } from '../../schema/authSchemas';
@@ -39,10 +39,10 @@ export const SignIn: React.FC = () => {
             localStorage.setItem('token', result.accessToken);
             localStorage.setItem('user', JSON.stringify(result.user));
 
-            toast.success('Signed In successfully!')
+            toast.success('Successfully logged in!')
         }
         catch (err: any) {
-            const errMsg = err.response?.data || 'Failed to Sign In. Please try again.';
+            const errMsg = err.response?.data || 'Failed to Login. Please try again.';
             toast.error(errMsg);
         }
 
@@ -111,7 +111,7 @@ export const SignIn: React.FC = () => {
                             className={styles['field-btn']}
                             disabled={isSubmitting}
                         >
-                            {isSubmitting ? 'Signing In...' : 'Sign In'}
+                            {isSubmitting ? 'Logging In...' : 'Login'}
                         </button>
 
                     </div>
@@ -127,7 +127,7 @@ export const SignIn: React.FC = () => {
                             className={styles['link']} 
                         >
 
-                            Sign Up
+                            Register
 
                         </NavLink>
                     </p>
