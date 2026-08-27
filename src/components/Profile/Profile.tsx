@@ -69,7 +69,7 @@ export function Profile() {
             
 
             <NavLink
-            to='/profile'
+            to='/ProfileForm'
             onClick={() => setIsOpen(false)}
             >
               <button 
