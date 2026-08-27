@@ -45,17 +45,17 @@ export const Navbar = () => {
                     {!isAuthenticated ? (
                         <>
                             <NavLink 
-                            to={'/signup-page'} 
+                            to={'/register'} 
                             className={ ({isActive}) => `${styles.link} ${isActive ? styles['link-active'] : ''}`}
                             >
-                                Sign Up
+                                Register
                             </NavLink>
 
                             <NavLink 
-                                to={'/signin-page'} 
+                                to={'/login'} 
                                 className={ ({isActive}) => `${styles.link} ${isActive ? styles['link-active'] : ''}`}
                             >
-                                Sign In
+                                Login
                             </NavLink>
                         </>
                     ) : (
