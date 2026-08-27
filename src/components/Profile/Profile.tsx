@@ -69,8 +69,8 @@ export function Profile() {
             
 
             <NavLink
-            to='/ProfileForm'
-            onClick={() => setIsOpen(false)}
+              to='/ProfileForm'
+              onClick={() => setIsOpen(false)}
             >
               <button 
                 className={styles['profile-btn']}
