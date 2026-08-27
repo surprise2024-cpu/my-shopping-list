@@ -51,9 +51,6 @@ export function Profile() {
           )
         }
       </button>
-
-      {
-        isOpen && (
           <div className='profile-menu-dropdown'>
 
             <div>
@@ -158,10 +155,6 @@ export function Profile() {
             </button>
 
           </div>
-
-          
-        )
-      }
 
     </div>
 
