@@ -167,7 +167,7 @@ export const SignUp: React.FC = () => {
                             className={styles['link']} 
                         >
 
-                            Register
+                            Login
 
                         </NavLink>
                     </p>
