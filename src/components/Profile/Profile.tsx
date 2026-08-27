@@ -44,7 +44,12 @@ export const Profile: React.FC = () => {
             <img src={settings} alt='placeholder' width={30} height={30} />
          </div>
          <div>
-            Settings
+            <NavLink 
+                to={'/'} 
+                className={ ({isActive}) => `${styles.link} ${isActive ? styles['link-active'] : ''}`}
+            >
+              Settings
+            </NavLink>
          </div>
          <div>
             <img src={greater} alt='placeholder' width={10} height={10} />
@@ -55,7 +60,12 @@ export const Profile: React.FC = () => {
             <img src={logout} alt='placeholder' width={30} height={30} />
          </div>
          <div>
-            Log Out
+            <NavLink 
+                to={'/'} 
+                className={ ({isActive}) => `${styles.link} ${isActive ? styles['link-active'] : ''}`}
+            >
+              Log Out
+            </NavLink>
          </div>
          <div>
             <img src={greater} alt='placeholder' width={10} height={10} />
