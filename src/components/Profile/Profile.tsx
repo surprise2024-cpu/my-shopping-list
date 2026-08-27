@@ -2,7 +2,6 @@
 
 import styles from './Profile.module.css'
 
-import standIn from '../../assets/profile-picture.png'
 import person from '../../assets/person.png'
 import greater from '../../assets/greater-than-symbol.png'
 import Logout from '../../assets/log-out.png'
@@ -13,6 +12,7 @@ import { useAuth } from '../../store/useAuth'
 import { ProfileForm } from './ProfileInfo'
 import { useState } from 'react'
 import { current } from '@reduxjs/toolkit'
+import { useUi } from '../../store/useUi'
 
 type Panel = 'none' | 'settings' | 'notifications' 
 
@@ -20,7 +20,7 @@ export function Profile() {
 
   const { user, logout } = useAuth();
   
-  //const { theme, toggleTheme, notificationsEnables, toggleNotifications } = useUi()
+  const { theme, toggleTheme, notificationsEnabled, toggleNotifications } = useUi()
 
   const [ isOpen, setIsOpen ] = useState(false)
   const [ openPanel, setOpenPanel ] = useState<Panel>('none')
@@ -127,13 +127,13 @@ export function Profile() {
             </button>
 
             {
-              openPanel === 'notifactions' && (
+              openPanel === 'notifications' && (
                 <div className='profile-menu-panel'>
                   <span>Notifications</span>
                   <button
-                    //onClick={toggleNotifications}
+                    onClick={toggleNotifications}
                   >
-                    {/*{notificationsEnables ? 'Allow' : 'Deny'}*/}Notifications
+                    {notificationsEnabled ? 'Allow' : 'Deny'}
                   </button>
                 </div>
               ) 
