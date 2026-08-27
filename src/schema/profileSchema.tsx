@@ -6,6 +6,7 @@ export const profileSchema = z.object({
     surname: z.string().min(2, 'Surname must at least be 2 characters long'),
     email: z.string().email('Invalid email address'),
     phone: z.string().regex(/^\+?[1-9]\d{1,14}$/, 'Invalid phone number format'),
+    avatar: z.string().optional(),
 });
 
 export const passwordSchema = z.object({
