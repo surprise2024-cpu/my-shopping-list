@@ -163,7 +163,7 @@ export const SignUp: React.FC = () => {
 
                         Already have an account?  
                         <NavLink 
-                            to={'/signin-page'} 
+                            to={'/login'} 
                             className={styles['link']} 
                         >
 

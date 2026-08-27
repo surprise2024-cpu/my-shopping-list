@@ -123,7 +123,7 @@ export const SignIn: React.FC = () => {
                         Don't have an account? 
 
                         <NavLink 
-                            to={'/signup-page'} 
+                            to={'/register'} 
                             className={styles['link']} 
                         >
 
