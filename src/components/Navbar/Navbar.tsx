@@ -42,23 +42,23 @@ export const Navbar = () => {
                     </NavLink>
 
 
-                    {isAuthenticated ? (
+                    {!isAuthenticated ? (
                         <>
                             <NavLink 
                             to={'/signup-page'} 
                             className={ ({isActive}) => `${styles.link} ${isActive ? styles['link-active'] : ''}`}
-                        >
-                            Sign Up
-                        </NavLink>
+                            >
+                                Sign Up
+                            </NavLink>
 
-                        <NavLink 
-                            to={'/signin-page'} 
-                            className={ ({isActive}) => `${styles.link} ${isActive ? styles['link-active'] : ''}`}
-                        >
-                            Sign In
-                        </NavLink>
+                            <NavLink 
+                                to={'/signin-page'} 
+                                className={ ({isActive}) => `${styles.link} ${isActive ? styles['link-active'] : ''}`}
+                            >
+                                Sign In
+                            </NavLink>
                         </>
-                    ): (
+                    ) : (
                         <>
                             <NavLink to={'/profile'}
                             className={({isActive}) => `${styles.link} ${isActive ? styles['link-active'] : ''}`}    
