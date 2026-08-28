@@ -8,6 +8,7 @@ import { profileSchema, type ProfileFormData } from '../../schema/profileSchema'
 import { zodResolver } from '@hookform/resolvers/zod';
 import { updateUser } from '../../store/authSlice';
 import { toast } from 'react-toastify';
+import { API_BASE_URL } from '../../config';
 
 export function ProfileForm() {
     const dispatch = useDispatch();
@@ -33,7 +34,7 @@ export function ProfileForm() {
 
     const onSubmit = async (data: ProfileFormData) => {
         try {
-            const res = await fetch(`http://localhost:3001/users/${user?.id}`, {
+            const res = await fetch(API_BASE_URL, {
                 method: 'PATCH',
                 headers: {
                     "Content-Type": "application/json",

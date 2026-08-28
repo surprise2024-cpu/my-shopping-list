@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { setCredentials } from '../../store/authSlice';
+import { API_BASE_URL } from '../../config';
 
 export const SignIn: React.FC = () => {
 
@@ -25,7 +26,7 @@ export const SignIn: React.FC = () => {
     const onSubmit = async (data: signInFormData) => {
 
         try {
-            const res = await fetch('http://localhost:3001/login', {
+            const res = await fetch(API_BASE_URL, {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),

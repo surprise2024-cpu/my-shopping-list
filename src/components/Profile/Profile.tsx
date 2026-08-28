@@ -103,9 +103,9 @@ export function Profile() {
                 <div className='profile-menu-panel'>
                   <span>Theme</span>
                   <button 
-                    //onClick={toggleTheme}
+                    onClick={toggleTheme}
                   >
-                    {/*{theme === 'light' ? 'dark' : 'light'}*/}toggle
+                    {theme === 'light' ? 'dark' : 'light'}
                   </button>
                 </div>
               )

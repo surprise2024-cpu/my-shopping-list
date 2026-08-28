@@ -4,6 +4,7 @@ import { useAppSelector } from "../../store/hooks";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import styles from './Profile.module.css'
+import { API_BASE_URL } from "../../config";
 
 
 export function PasswordForm() {
@@ -26,7 +27,7 @@ export function PasswordForm() {
         try {
 
             //verify old password
-            const verifyRes = await fetch('http://localhost:3001/login', {
+            const verifyRes = await fetch(API_BASE_URL, {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: user?.email, password: data.currentPassword }),
@@ -34,7 +35,7 @@ export function PasswordForm() {
 
             if (!verifyRes.ok) throw new Error('Password is incorrect.');
 
-            const patchRes = await fetch(`http://localhost:3001/users/${user?.id}`, {
+            const patchRes = await fetch(API_BASE_URL, {
                 method: 'PATCH',
                 headers: {
                     "content-Type": "application/json",

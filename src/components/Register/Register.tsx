@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { useDispatch } from 'react-redux'
 import { setCredentials } from '../../store/authSlice'
+import { API_BASE_URL } from '../../config'
 
 export const SignUp: React.FC = () => {
 
@@ -26,7 +27,7 @@ export const SignUp: React.FC = () => {
 
         try {
 
-            const response = await fetch('http://localhost:3001/register', {
+            const response = await fetch(API_BASE_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),

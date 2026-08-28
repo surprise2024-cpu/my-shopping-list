@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import  type { AuthUser } from "../authSlice";
+import { API_BASE_URL } from "../../config";
 
 export interface ShoppingListItem {
     id: string
@@ -26,7 +27,7 @@ export interface Category {
 }
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'http://localhost:3001',
+    baseUrl: API_BASE_URL,
     prepareHeaders: (headers) => {
         const token = localStorage.getItem('token')
         if (token) {
