@@ -35,7 +35,7 @@ export function PasswordForm() {
 
             if (!verifyRes.ok) throw new Error('Password is incorrect.');
 
-            const patchRes = await fetch(API_BASE_URL, {
+            const patchRes = await fetch(`{API_BASE_URL}`, {
                 method: 'PATCH',
                 headers: {
                     "content-Type": "application/json",
