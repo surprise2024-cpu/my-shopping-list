@@ -78,7 +78,16 @@
       "name": "grocery list",
       "userId": 2,
       "createdAt": "2026-08-28T09:05:47.181Z",
-      "items": [],
+      "items": [
+        {
+          "id": "3f61fae5-d747-46c9-ae1c-a12171d9312a",
+          "name": "white",
+          "quantity": 1,
+          "notes": "zfgbgfbgf",
+          "category": "tabe",
+          "createdAt": "2026-08-28T11:10:21.053Z"
+        }
+      ],
       "id": 6
     }
   ],
@@ -127,6 +136,16 @@
       "id": 9,
       "name": "Other",
       "userId": 1
+    },
+    {
+      "name": "bread",
+      "userId": 2,
+      "id": 10
+    },
+    {
+      "name": "tabe",
+      "userId": 2,
+      "id": 11
     }
   ]
 }
