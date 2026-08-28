@@ -1,4 +1,4 @@
-import { number } from 'zod';
+
 import styles from './CategorySelect.module.css';
 import { useAddCategoryMutation, useGetCategoriesQuery } from '../../store/api/apiSlice';
 import { useState } from 'react';
@@ -39,7 +39,7 @@ export function CategorySelect({ userId, value, onChange }: CategorySelectProps)
             onChange(existing.name)
             setNewCategoryName('')
             setIsAddingNew(false)
-            toast.info(`'${existing.name}' alreadt exists - using that one`)
+            toast.info(`'${existing.name}' already exists - using that one`)
             
             return
         }
@@ -55,24 +55,29 @@ export function CategorySelect({ userId, value, onChange }: CategorySelectProps)
         catch {
             toast.error('Category could not be added')
         }
+        
+    }
 
-        if (isAddingNew) {
+    if (isAddingNew) {
             return (
-                <div>
+                <div className={styles['new-category-cont']}>
                     <input 
+                        className={styles['new-category-input']}
                         placeholder='New category name'
                         value={newCategoryName}
                         onChange={(e) => setNewCategoryName(e.target.value)}
                         autoFocus
                     />
                     <button 
+                        className={styles['save-btn']}
                         type='button'
                         onClick={handleSaveNewCategory}
                         disabled={isAdding}
                     >
                         Save
                     </button>
-                    <button 
+                    <button
+                        className={styles['cancel-btn']} 
                         type='button'
                         onClick={() => {setIsAddingNew(false)
                             setNewCategoryName('')
@@ -83,7 +88,6 @@ export function CategorySelect({ userId, value, onChange }: CategorySelectProps)
                 </div>
             )
         }
-    }
 
     return (
         <select value={value} onChange={handleSelectChange}>
