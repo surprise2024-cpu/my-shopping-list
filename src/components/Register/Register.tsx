@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { useDispatch } from 'react-redux'
 import { setCredentials } from '../../store/authSlice'
-import { API_BASE_URL } from '../../../config'
+import { API_BASE_URL } from '../../config'
 
 export const SignUp: React.FC = () => {
 

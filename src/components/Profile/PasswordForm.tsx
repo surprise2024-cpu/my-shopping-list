@@ -4,7 +4,7 @@ import { useAppSelector } from "../../store/hooks";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import styles from './Profile.module.css'
-import { API_BASE_URL } from "../../../config";
+import { API_BASE_URL } from "../../config";
 
 
 export function PasswordForm() {

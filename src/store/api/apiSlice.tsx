@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import  type { AuthUser } from "../authSlice";
-import { API_BASE_URL } from "../../../config";
+import { API_BASE_URL } from "../../config";
 
 export interface ShoppingListItem {
     id: string

@@ -8,7 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { setCredentials } from '../../store/authSlice';
-import { API_BASE_URL } from '../../../config';
+import { API_BASE_URL } from '../../config';
 
 export const SignIn: React.FC = () => {
 
