@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import search from '../../assets/shopping.png';
 
@@ -11,6 +11,8 @@ import { toast } from 'react-toastify';
 export const Navbar = () => {
 
     const { isAuthenticated, logout } = useAuth()
+
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const handleLogout = () => {
         logout()
@@ -27,12 +29,24 @@ export const Navbar = () => {
                 <h2>My Shopping List</h2>
 
             </div>
-            <div className={styles['nav-search']}>
-                
-                <Search />
 
-            </div>
-            <div className={styles['links']}>
+            <button className={styles['hamburger-btn']}
+                onClick={() => setIsMenuOpen((open) => !open)}
+                aria-label='Toggle menu'
+                aria-expanded={isMenuOpen}
+            >
+                ☰
+            </button>
+
+            <div className={`${styles['nav-collapsible']} ${isMenuOpen ? styles['nav-open'] : ''}`}>
+
+                <div className={styles['nav-search']}>
+                
+                    <Search />
+
+                </div>
+                
+                <div className={styles['links']}>
 
                     <NavLink 
                         to={'/'} 
@@ -76,7 +90,10 @@ export const Navbar = () => {
                         </>
                     )}
                     
+                </div>
+
             </div>
+            
         </div>
     </nav>
   )
