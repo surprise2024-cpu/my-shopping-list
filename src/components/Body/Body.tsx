@@ -143,6 +143,31 @@ export const Body: React.FC = () => {
           { value: 'createAt:asc', label: 'Date Added (Oldest)' },
         ]}  
       />
+
+      <div className={styles['body-btn']}>
+
+        <button 
+          className={styles['add-btn']}
+          onClick={openAddForm}
+        >
+
+          <div className={styles['add-btn-holder']}>
+
+            <div className={styles['add-btn-icon']}>
+
+              <img src={addIcon} alt='empty state' />
+
+            </div>
+            <div className={styles['add-btn-text']}>
+
+              <span>Add List</span>
+
+            </div>
+          
+          </div>
+        </button>
+
+      </div>
       
       {
         !hasLists ? (
@@ -185,31 +210,7 @@ export const Body: React.FC = () => {
               
         )
       }
-      <div className={styles['body-btn']}>
-
-        <button 
-          className={styles['add-btn']}
-          onClick={openAddForm}
-        >
-
-          <div className={styles['add-btn-holder']}>
-
-            <div className={styles['add-btn-icon']}>
-
-              <img src={addIcon} alt='empty state' />
-
-            </div>
-            <div className={styles['add-btn-text']}>
-
-              <span>Add List</span>
-
-            </div>
-          
-          </div>
-        </button>
-
-      </div>
-
+      
       {
         showForm && (
           <ListForm 

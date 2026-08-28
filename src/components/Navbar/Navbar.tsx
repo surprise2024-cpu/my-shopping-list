@@ -45,12 +45,6 @@ export const Navbar = () => {
             </button>
 
             <div className={`${styles['nav-collapsible']} ${isMenuOpen ? styles['nav-open'] : ''}`}>
-
-                <div className={styles['nav-search']}>
-                
-                    <Search />
-
-                </div>
                 
                 <div className={styles['links']}>
 
