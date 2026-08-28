@@ -73,6 +73,7 @@ export const SignUp: React.FC = () => {
                         <label>Name: </label>
                         <input 
                             type='text'
+                            className={styles['field-input']}
                             {...register('name')}
                             placeholder='Name....'
                         />

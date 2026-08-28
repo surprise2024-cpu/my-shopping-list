@@ -55,13 +55,14 @@
     gap: 5px;
     width: 100%;
     max-width: 100%;
+    
 }
 
 .field input {
     width: 100%;
     height: clamp(30px, 4.5vh, 35px);
     background-color: #ffffff;
-    border: 2px solid #000000;
+    border: 1px solid #000000;
     color: #000000;
     box-sizing: border-box;
 }
