@@ -8,7 +8,7 @@ import { profileSchema, type ProfileFormData } from '../../schema/profileSchema'
 import { zodResolver } from '@hookform/resolvers/zod';
 import { updateUser } from '../../store/authSlice';
 import { toast } from 'react-toastify';
-import { API_BASE_URL } from '../../config';
+import { API_BASE_URL } from '../../../config';
 
 export function ProfileForm() {
     const dispatch = useDispatch();
