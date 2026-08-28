@@ -8,7 +8,7 @@ import { ItemForm } from "../components/ShoppingList/ItemForm/ItemForm";
 import { ConfirmModal } from "../components/ConfirmModal/ConfirmModal";
 import { ItemCard } from "../components/ShoppingList/ItemCard/ItemCard";
 import { SearchSortBar } from "../components/ShoppingList/Search/SearchSortBar";
-
+import styles from './ListDetailPage.module.css'
 
 export function ListDetailsPage() {
     const { id } = useParams()
@@ -139,23 +139,28 @@ export function ListDetailsPage() {
     }
 
     return (
-        <div>
-            <h1>{list.name}</h1>
+        <div className={styles['page-cont']}>
+            <h1 className={styles['list-title']}>{list.name}</h1>
 
-            <button onClick={handleShare}>Share</button>
+            <div className={styles['action-row']}>
+                <button className={styles['share-btn']} onClick={handleShare}>Share</button>
 
-            {
-                isOwner ? (
-                    <button onClick={() => { 
-                        setEditItem(null)
-                        setShowForm(true)
-                    }}>
-                        + Add Item
-                    </button>
-                ) : (
-                    <p><em>You're viewing a shared list (read-only)</em></p>
-                )
-            }
+                {
+                    isOwner ? (
+                        <button 
+                            className={styles['add-item-btn']}
+                        onClick={() => { 
+                            setEditItem(null)
+                            setShowForm(true)
+                            
+                        }}>
+                            + Add Item
+                        </button>
+                    ) : (
+                        <p className={styles['readonly-text']}><em>You're viewing a shared list (read-only)</em></p>
+                    )
+                }
+            </div>
             {
                 showForm && (
                     <ItemForm 
@@ -189,9 +194,9 @@ export function ListDetailsPage() {
                 ]}
             />
 
-            {list.items.length === 0 && <p>No items added yet</p>}
+            {list.items.length === 0 && <p className={styles['status-text']}>No items added yet</p>}
             
-            {list.items.length > 0 && filteredItems.length === 0 && <p>No items match your search. Try again</p>}
+            {list.items.length > 0 && filteredItems.length === 0 && <p className={styles['status-text']}>No items match your search. Try again</p>}
 
             <div className="item-grid">
                 {
