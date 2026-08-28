@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import search from '../../assets/shopping.png';
 
 import styles from './Navbar.module.css'
 import { Search } from '../Search/Search';
-import { NavLink } from 'react-router';
+import { NavLink, useLocation } from 'react-router';
 import { useAuth } from '../../store/useAuth';
 import { toast } from 'react-toastify';
 
@@ -13,6 +13,12 @@ export const Navbar = () => {
     const { isAuthenticated, logout } = useAuth()
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+    const location = useLocation()
+
+    useEffect(() => {
+        setIsMenuOpen(false)
+    }, [location.pathname])
 
     const handleLogout = () => {
         logout()
@@ -51,6 +57,7 @@ export const Navbar = () => {
                     <NavLink 
                         to={'/'} 
                         className={ ({isActive}) => `${styles.link} ${isActive ? styles['link-active'] : ''}`}
+                        onClick={() => setIsMenuOpen(false)}
                     >
                         Home
                     </NavLink>
@@ -61,6 +68,7 @@ export const Navbar = () => {
                             <NavLink 
                             to={'/register'} 
                             className={ ({isActive}) => `${styles.link} ${isActive ? styles['link-active'] : ''}`}
+                            onClick={() => setIsMenuOpen(false)}
                             >
                                 Register
                             </NavLink>
@@ -68,6 +76,7 @@ export const Navbar = () => {
                             <NavLink 
                                 to={'/login'} 
                                 className={ ({isActive}) => `${styles.link} ${isActive ? styles['link-active'] : ''}`}
+                                onClick={() => setIsMenuOpen(false)}
                             >
                                 Login
                             </NavLink>
@@ -76,6 +85,7 @@ export const Navbar = () => {
                         <>
                             <NavLink to={'/profile'}
                             className={({isActive}) => `${styles.link} ${isActive ? styles['link-active'] : ''}`}    
+                            onClick={() => setIsMenuOpen(false)}
                             >
                                 Profile
                             </NavLink>

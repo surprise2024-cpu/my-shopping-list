@@ -53,20 +53,25 @@
     font-size: 24px;
     cursor: pointer;
     padding: 4px 8px;
+    color: #000000;
 }
 
-.nav-callapsible {
+.nav-collapsible {
     display: flex;
     align-items: center;
     gap: 20px;
+
+    z-index: 100;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 @media (max-width: 768px) {
     .hamburger-btn {
         display: block;
+        color: #000000;
     }
 
-    .nav-callapsible {
+    .nav-collapsible {
         display: none;
         position: absolute;
         top: 50px;
@@ -77,6 +82,7 @@
         gap: 15px;
         background-color: #ffffff;
         padding: 15px;
+        z-index: 100;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
