@@ -1,4 +1,4 @@
-
+import styles from './SearchSortBar.module.css'
 
 interface SortOption {
     value: string
@@ -23,8 +23,9 @@ export function SearchSortBar({
     sortOptions,
 }: SearchSortBarProps) {
     return (
-        <div className="search-sort-bar">
+        <div className={styles['search-sort-bar']}>
             <input 
+                className={styles['search-input']}
                 type="text"
                 placeholder={searchPlaceholder}
                 value={search}
@@ -32,6 +33,7 @@ export function SearchSortBar({
             />
 
             <select
+                className={styles['sort-select']}
                 value={sort}
                 onChange={(e) => onSortChange(e.target.value)}
             >

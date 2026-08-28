@@ -22,9 +22,13 @@ export function ListForm({ defaultValues, submitLabel, onSubmit, onCancel}: List
     });
 
     return (
-        <div className={styles['form-cont']}>
+        <div className={styles['overlay']} onClick={onCancel}>
+            <div className={styles['form-cont']} onClick={(e) => e.stopPropagation()}>
+            <h2 className={styles['form-title']}>
+                {defaultValues ? 'Rename List' : 'Create a New List'}
+            </h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className={styles['']}>
+                <div className={styles['list-name']}>
                     <input 
                         type="text" 
                         {...register('name')}
@@ -49,5 +53,7 @@ export function ListForm({ defaultValues, submitLabel, onSubmit, onCancel}: List
                 </div>
             </form>
         </div>
+        </div>
+        
     )
 }

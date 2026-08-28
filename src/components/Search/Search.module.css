@@ -35,3 +35,17 @@
     border-radius: 30px;
     border: none;
 }
+
+@media (max-width: 768px) {
+    .search-bar {
+        width: 100%;
+    }
+
+    .search-input {
+        flex: 1;
+    }
+
+    .search-input input {
+        width: 100%;
+    }
+}
