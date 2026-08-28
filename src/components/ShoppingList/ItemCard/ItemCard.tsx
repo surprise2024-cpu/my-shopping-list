@@ -14,23 +14,28 @@ export function ItemCard({ item, onEdit, onDelete, readOnly }: ItemCardProps) {
         <div className={styles['item-card']}>
 
             <h4>{item.name}</h4>
-            <p>Category: {item.category}</p>
 
-            {item.image && <img src={item.image} alt={item.name} width={80} height={80} />}
+            {item.image && <img className={styles['item-image']} src={item.image} alt={item.name} width={80} height={80} />}
 
-            <p>Qty: {item.quantity}</p>
-            <p>Category: {item.category}</p>
-            {item.notes && <p>Notes: {item.notes}</p>}
+            <div className={styles['item-details']}>
+                <p>Qty: {item.quantity}</p>
+                <p>Category: {item.category}</p>
+                {item.notes && <p>Notes: {item.notes}</p>}
+            </div>
+
+            
 
             {
                 !readOnly && (
-                    <div>
+                    <div className={styles['actions']}>
                         <button 
+                            className={styles['edit-btn']}
                             onClick={onEdit}
                         >
                             Edit
                         </button>
                         <button 
+                            className={styles['delete-btn']}
                             onClick={onDelete}
                         >
                             Delete

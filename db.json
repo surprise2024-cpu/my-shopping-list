@@ -68,13 +68,6 @@
       "id": 3
     },
     {
-      "name": "Bread",
-      "userId": 2,
-      "createdAt": "2026-08-28T09:05:32.277Z",
-      "items": [],
-      "id": 4
-    },
-    {
       "name": "money",
       "userId": 2,
       "createdAt": "2026-08-28T09:05:40.604Z",
