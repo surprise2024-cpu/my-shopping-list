@@ -12,9 +12,8 @@
 #scrollable {
     flex: 1;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
     padding-top: 50px;
-    overflow-y: auto;
     background-color: #ffffff;
 }

@@ -16,9 +16,9 @@ export function ListCard({ list, onOpen, onEdit, onDelete }: ListCardProps) {
             <p>{list.items.length} item{list.items.length === 1 ? '' : 's'}</p>
 
             <div className={styles['actions']}>
-                <button onClick={onOpen}>View Items</button>
-                <button onClick={onEdit}>Rename</button>
-                <button onClick={onDelete}>Delete List</button>
+                <button className={styles['view-btn']} onClick={onOpen}>View Items</button>
+                <button className={styles['rename-btn']} onClick={onEdit}>Rename</button>
+                <button className={styles['delete-btn']} onClick={onDelete}>Delete List</button>
             </div>
         </div>
     )

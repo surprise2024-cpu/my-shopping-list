@@ -66,6 +66,27 @@
       "createdAt": "2026-08-28T06:22:46.153Z",
       "items": [],
       "id": 3
+    },
+    {
+      "name": "Bread",
+      "userId": 2,
+      "createdAt": "2026-08-28T09:05:32.277Z",
+      "items": [],
+      "id": 4
+    },
+    {
+      "name": "money",
+      "userId": 2,
+      "createdAt": "2026-08-28T09:05:40.604Z",
+      "items": [],
+      "id": 5
+    },
+    {
+      "name": "grocery list",
+      "userId": 2,
+      "createdAt": "2026-08-28T09:05:47.181Z",
+      "items": [],
+      "id": 6
     }
   ],
   "categories": [
