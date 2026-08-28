@@ -1,0 +1,78 @@
+.item-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    overflow-y: auto;
+}
+
+.item-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: translateY(-2px);
+}
+
+.item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.item-name {
+    font-size: 18px;
+    color: #000000;
+    margin: 0 0 10ox 0;
+}
+
+.item-details {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.item-details p {
+    color: #555555;
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+.edit-btn, 
+.delete-btn {
+    flex: 1;
+    font-size: 13px;
+    border-radius: 30px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+
+.edit-btn {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+}
+.edit-btn:hover {
+    opacity: 0.85;
+}
+
+.delete-btn {
+    background-color: #ffffff;
+    color: #d92d20;
+    border: 1px solid #d92d20;
+}
+
+.delete-btn:hover {
+    background-color: #fdf1f0;
+}
