@@ -73,6 +73,11 @@
     margin: 0 auto;
 }
 
+.sort-search-add-cont {
+    display: flex;
+    align-items: center;
+}
+
 @media (max-width: 480px) {
     .body-image img {
         width: 220px;

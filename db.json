@@ -59,6 +59,13 @@
       "createdAt": "2026-08-26T13:00:55.636Z",
       "items": [],
       "id": 2
+    },
+    {
+      "name": "Grocery list",
+      "userId": 2,
+      "createdAt": "2026-08-28T06:22:46.153Z",
+      "items": [],
+      "id": 3
     }
   ],
   "categories": [

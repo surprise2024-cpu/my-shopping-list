@@ -130,44 +130,47 @@ export const Body: React.FC = () => {
   return (
     <div className={styles['body-cont']}>
 
-      <SearchSortBar 
-        search={search}
-        sort={sort}
-        onSearchChange={handleSearchChange}
-        onSortChange={handleSortChange}
-        searchPlaceholder='Search lists by name...'
-        sortOptions={[
-          { value: 'name:asc', label: 'Name (A-Z)' },
-          { value: 'name:desc', label: 'Name (Z-A)' },
-          { value: 'createdAt:desc', label: 'Date Added (Newest)' },
-          { value: 'createAt:asc', label: 'Date Added (Oldest)' },
-        ]}  
-      />
+      <div className={styles['sort-search-add-cont']}>
+          <SearchSortBar 
+          search={search}
+          sort={sort}
+          onSearchChange={handleSearchChange}
+          onSortChange={handleSortChange}
+          searchPlaceholder='Search lists by name...'
+          sortOptions={[
+            { value: 'name:asc', label: 'Name (A-Z)' },
+            { value: 'name:desc', label: 'Name (Z-A)' },
+            { value: 'createdAt:desc', label: 'Date Added (Newest)' },
+            { value: 'createAt:asc', label: 'Date Added (Oldest)' },
+          ]}  
+        />
 
-      <div className={styles['body-btn']}>
+        <div className={styles['body-btn']}>
 
-        <button 
-          className={styles['add-btn']}
-          onClick={openAddForm}
-        >
+          <button 
+            className={styles['add-btn']}
+            onClick={openAddForm}
+          >
 
-          <div className={styles['add-btn-holder']}>
+            <div className={styles['add-btn-holder']}>
 
-            <div className={styles['add-btn-icon']}>
+              <div className={styles['add-btn-icon']}>
 
-              <img src={addIcon} alt='empty state' />
+                <img src={addIcon} alt='empty state' />
 
+              </div>
+              <div className={styles['add-btn-text']}>
+
+                <span>Add List</span>
+
+              </div>
+            
             </div>
-            <div className={styles['add-btn-text']}>
+          </button>
 
-              <span>Add List</span>
-
-            </div>
-          
-          </div>
-        </button>
-
+        </div>
       </div>
+      
       
       {
         !hasLists ? (
