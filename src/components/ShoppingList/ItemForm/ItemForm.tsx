@@ -87,6 +87,7 @@ export function ItemForm({ userId, defaultValues, submitLabel, onSubmit, onCance
           <div>
 
               <textarea 
+                className={styles['item-notes']}
                 placeholder="Notes (optional)"
                 {...register('notes')} 
               />
@@ -95,13 +96,15 @@ export function ItemForm({ userId, defaultValues, submitLabel, onSubmit, onCance
         
         </div>
         <div className={styles['field']}>
-          
-          <input 
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
-            className={styles['item-image-input']}
-          />
+          <label className={styles['file-label']}>
+            {image ? 'Change Image' : 'Add Image'}
+            <input 
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              className={styles['item-image-input']}
+            />
+          </label>
           
           {image && <img className={styles['image-preview']} src={image} alt='Preview' width={80} height={80}/>}
         

@@ -90,7 +90,7 @@ export function CategorySelect({ userId, value, onChange }: CategorySelectProps)
         }
 
     return (
-        <select value={value} onChange={handleSelectChange}>
+        <select className={styles['select']} value={value} onChange={handleSelectChange}>
             <option value='' disabled>
                 Select a category
             </option>

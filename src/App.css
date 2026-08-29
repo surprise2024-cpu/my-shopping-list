@@ -16,4 +16,5 @@
     flex-direction: column;
     padding-top: 50px;
     background-color: #ffffff;
+    overflow-y: auto;
 }
