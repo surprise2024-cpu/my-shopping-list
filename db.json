@@ -64,7 +64,16 @@
       "name": "Grocery list",
       "userId": 2,
       "createdAt": "2026-08-28T06:22:46.153Z",
-      "items": [],
+      "items": [
+        {
+          "id": "79f81fb4-a712-4283-b3c6-a92336455fba",
+          "name": "groceries",
+          "quantity": 2,
+          "notes": "",
+          "category": "food",
+          "createdAt": "2026-08-29T18:28:42.478Z"
+        }
+      ],
       "id": 3
     },
     {
@@ -146,6 +155,11 @@
       "name": "tabe",
       "userId": 2,
       "id": 11
+    },
+    {
+      "name": "food",
+      "userId": 2,
+      "id": 12
     }
   ]
 }

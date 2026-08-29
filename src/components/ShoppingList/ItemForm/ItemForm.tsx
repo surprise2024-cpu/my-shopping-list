@@ -39,23 +39,27 @@ export function ItemForm({ userId, defaultValues, submitLabel, onSubmit, onCance
   }
 
   return (
-    <div className={styles['form-cont']}> 
+    <div className={styles['overlay']} onClick={onCancel} >
+      <div className={styles['form-cont']} onClick={(e) => e.stopPropagation()}> 
+
+        <h2 className={styles['form-title']}>{submitLabel}</h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
 
-        <div className={styles['']}>
+        <div className={styles['field']}>
 
           <input 
             type="text"
             {...register('name')}
             placeholder="Item name"
             className={styles['item-name']}
+            autoFocus
           />
 
           {errors.name && <span className={styles['error-text']}>{errors.name.message}</span>}
        
         </div>
-        <div className={styles['']}>
+        <div className={styles['field']}>
 
           <input 
             type="number"
@@ -67,7 +71,7 @@ export function ItemForm({ userId, defaultValues, submitLabel, onSubmit, onCance
           {errors.quantity && <span className={styles['error-text']}>{errors.quantity.message}</span>}
         
         </div>
-        <div className={styles['']}>
+        <div className={styles['field']}>
 
           <CategorySelect 
             userId={userId}
@@ -78,19 +82,7 @@ export function ItemForm({ userId, defaultValues, submitLabel, onSubmit, onCance
           {errors.category && <span className={styles['error-text']}>{errors.category.message}</span>}
         
         </div>
-        <div className={styles['']}>
-          
-          <input 
-            type="text"
-            {...register('name')}
-            placeholder="Item name"
-            className={styles['item-name']}
-          />
-          
-          {errors.name && <span className={styles['error-text']}>{errors.name.message}</span>}
-        
-        </div>
-        <div className={styles['']}>
+        <div className={styles['field']}>
           
           <div>
 
@@ -102,16 +94,16 @@ export function ItemForm({ userId, defaultValues, submitLabel, onSubmit, onCance
           </div>
         
         </div>
-        <div className={styles['']}>
+        <div className={styles['field']}>
           
           <input 
             type="file"
             accept="image/*"
             onChange={handleImageChange}
-            className={styles['item-image']}
+            className={styles['item-image-input']}
           />
           
-          {image && <img src={image} alt='Preview' width={80} height={80}/>}
+          {image && <img className={styles['image-preview']} src={image} alt='Preview' width={80} height={80}/>}
         
         </div>
         <div className={styles['btn-cont']}>
@@ -133,5 +125,7 @@ export function ItemForm({ userId, defaultValues, submitLabel, onSubmit, onCance
         </div>
       </form>
     </div>
+    </div>
+    
   )
 }
