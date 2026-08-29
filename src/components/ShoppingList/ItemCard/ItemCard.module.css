@@ -9,7 +9,6 @@
     padding: 20px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
     transition: box-shadow 0.15s ease, transform 0.15s ease;
-    overflow-y: auto;
 }
 
 .item-card:hover {
@@ -46,6 +45,7 @@
     display: flex;
     gap: 8px;
     width: 100%;
+    margin-top: 16px;
 }
 
 .edit-btn, 
