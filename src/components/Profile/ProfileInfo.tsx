@@ -60,74 +60,80 @@ export function ProfileForm() {
             <form onSubmit={handleSubmit(onSubmit)}>
 
                 <h3>Personal information</h3>
-                <div>
-                <label>Name: </label>
-                <input 
-                    type='text'
-                    {...register('name')}
-                />
 
-                {
-                    errors.name 
-                    && 
-                    <p className={styles['error-text']}>
+                <div className={styles['field']}>
+                    <label>Name: </label>
+                    <input 
+                        type='text'
+                        {...register('name')}
+                        placeholder='Name'
+                    />
 
-                        {errors.name.message}
-                    </p>
-                }
+                    {
+                        errors.name 
+                        && 
+                        <p className={styles['error-text']}>
+
+                            {errors.name.message}
+                        </p>
+                    }
                 </div>
-                <div>
-                <label>Surname: </label>
-                <input 
-                    type='text'
-                    {...register('surname')}
-                />
+                <div className={styles['field']}>
+                    <label>Surname: </label>
+                    <input 
+                        type='text'
+                        {...register('surname')}
+                        placeholder='Surname'
+                    />
 
-                {
-                    errors.surname 
-                    && 
-                    <p className={styles['error-text']}>
-                        
-                        {errors.surname.message}
-                    </p>
-                }
+                    {
+                        errors.surname 
+                        && 
+                        <p className={styles['error-text']}>
+                            
+                            {errors.surname.message}
+                        </p>
+                    }
                 </div>
-                <div>
-                <label>Email: </label>
-                <input 
-                    type='text'
-                    {...register('email')}
-                />
+                <div className={styles['field']}>
+                    <label>Email: </label>
+                    <input 
+                        type='email'
+                        {...register('email')}
+                        placeholder='Email'
+                    />
 
-                {
-                    errors.email 
-                    && 
-                    <p className={styles['error-text']}>
-                        
-                        {errors.email.message}
-                    </p>
-                }
+                    {
+                        errors.email 
+                        && 
+                        <p className={styles['error-text']}>
+                            
+                            {errors.email.message}
+                        </p>
+                    }
                 </div>
-                <div>
-                <label>Phone: </label>
-                <input 
-                    type='text'
-                    {...register('phone')}
-                />
+                <div className={styles['field']}>
+                    <label>Phone: </label>
+                    <input 
+                        type='tel'
+                        {...register('phone')}
+                        placeholder='Phone'
+                    />
 
-                {
-                    errors.phone 
-                    && 
-                    <p className={styles['error-text']}>
-                        
-                        {errors.phone.message}
-                    </p>
-                }
+                    {
+                        errors.phone 
+                        && 
+                        <p className={styles['error-text']}>
+                            
+                            {errors.phone.message}
+                        </p>
+                    }
                 </div>
 
                 <button 
                     type='submit'
                     disabled={!isDirty}
+                    className={styles['submit-btn']}
                 >
                     {isSubmitting ? 'Saving...' : 'Save changes'}
                 </button>

@@ -69,6 +69,7 @@ export function PasswordForm() {
                         type="password" 
                         {...register('currentPassword')} 
                         placeholder="Current password"
+                        autoComplete="current-password"
                     />
 
                     {errors.currentPassword && <p className={styles['error-text']}>{errors.currentPassword.message}</p>}
@@ -80,6 +81,7 @@ export function PasswordForm() {
                         type="password" 
                         {...register('newPassword')} 
                         placeholder="New password"
+                        autoComplete="new-password"
                     />
 
                     {errors.newPassword && <p className={styles['error-text']}>{errors.newPassword.message}</p>}
@@ -91,6 +93,7 @@ export function PasswordForm() {
                         type="password" 
                         {...register('confirmPassword')} 
                         placeholder="Confirm new password"
+                        autoComplete="new-password"
                     />
 
                     {errors.confirmPassword && <p className={styles['error-text']}>{errors.confirmPassword.message}</p>}
@@ -98,7 +101,7 @@ export function PasswordForm() {
 
                 <button     
                     type="submit"
-                    className={styles['']}
+                    className={styles['submit-btn']}
                     disabled={isSubmitting}
                 >
                     {isSubmitting ? 'Updating...' : 'Change Password'}

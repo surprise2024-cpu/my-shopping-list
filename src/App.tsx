@@ -49,7 +49,7 @@ function App() {
             <Route path='profile' element = {<ProfilePage />} />
             <Route path='lists/:id' element={<ListDetailsPage />} />
             <Route path='search' element={<SearchResultsPage />} />
-            <Route path='profile/edit' element={<EditProfilePage />} />
+            
           </Route>
 
           

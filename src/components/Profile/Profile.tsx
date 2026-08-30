@@ -15,6 +15,7 @@ import { ProfileForm } from './ProfileInfo'
 import { useState, type ChangeEvent } from 'react'
 import { useUi } from '../../store/useUi'
 import { useUpdateUserMutation } from '../../store/api/apiSlice'
+import { EditProfileModal } from './EditProfileModal'
 
 type Panel = 'none' | 'settings' | 'notifications' 
 
@@ -26,7 +27,7 @@ export function Profile() {
   const { theme, toggleTheme, notificationsEnabled, toggleNotifications } = useUi()
 
   const [ openPanel, setOpenPanel ] = useState<Panel>('none')
-
+  const [ showEditModal, setShowEditModal ] = useState(false)
 
 
   const handleLogout = () => {
@@ -80,115 +81,113 @@ export function Profile() {
           className={styles['avatar-input']}
           />
       </label>
-          <div className={styles['profile-menu-dropdown']}>
+        <div className={styles['profile-menu-dropdown']}>
 
-            <div className={styles['profile-header']}>
+          <div className={styles['profile-header']}>
 
-              <strong className={styles['profile-name']}>{user?.name} {user?.surname}</strong>
-              <p className={styles['profile-email']}>{user?.email}</p>
-              <p className={styles['profile-cell']}>{user?.cellNumber}</p>
-
-            </div>
-            
-
-            <NavLink
-              to='/profile/edit'
-            >
-              <button 
-                className={styles['profile-btn']}
-                
-              >
-                <div className={styles['btn-icon']}>
-                  <img src={person} alt='person icon' className={styles['icon-img']} />
-                </div>
-                <div className={styles['btn-label']}>
-
-                  Edit Profile
-
-                </div>
-                <div className={styles['btn-icon']}>
-                  <img src={greater} alt='chevron icon' className={styles['chevron-img']} />
-                </div>
-              </button>
-            </NavLink>
-            <button 
-              onClick={() => togglePanel('settings')}
-              className={styles['profile-btn']}
-            >
-                <div className={styles['btn-icon']}>
-                  <img src={settings} alt='settings icon' className={styles['icon-img']} />
-              </div>
-              <div className={styles['btn-label']}>
-                Settings
-              </div>
-              <div className={styles['btn-icon']}>
-                  <img src={greater} alt='chevron icon' className={styles['chevron-img']} />
-              </div>
-            </button>
-
-            {
-              openPanel === 'settings' && (
-                <div className={styles['profile-menu-panel']}>
-                  <span>Theme</span>
-                  <button 
-                    className={styles['panel-btn']}
-                    onClick={toggleTheme}
-                  >
-                    {theme === 'light' ? 'dark' : 'light'}
-                  </button>
-                </div>
-              )
-            }
-
-            <button 
-              className={styles['profile-btn']}
-              onClick={() => togglePanel('notifications')} 
-            >
-              <div className={styles['btn-icon']}>
-                <img src={notifications} alt='placeholder' className={styles['icon-img']} />
-              </div>
-              <div className={styles['btn-label']}>
-                Notifications
-              </div>
-              <div className={styles['btn-icon']}>
-                <img src={greater} alt='placeholder' className={styles['chevron-img']} />
-              </div>
-            </button>
-
-            {
-              openPanel === 'notifications' && (
-                <div className={styles['profile-menu-panel']}>
-                  <span>Notifications</span>
-                  <button
-                    className={styles['panel-btn']}
-                    onClick={toggleNotifications}
-                  >
-                    {notificationsEnabled ? 'Allow' : 'Deny'}
-                  </button>
-                </div>
-              ) 
-            }
-
-            <button 
-              className={styles['profile-btn']}
-              onClick={handleLogout} 
-            >
-              <div className={styles['btn-icon']}>
-                <img src={Logout} alt='placeholder' className={styles['icon-img']}/>
-              </div>
-              <div className={styles['btn-label']}>
-                Log Out
-              </div>
-              <div className={styles['btn-icon']}>
-                <img src={greater} alt='placeholder' className={styles['chevron-img']}/>
-              </div>
-            </button>
+            <strong className={styles['profile-name']}>{user?.name} {user?.surname}</strong>
+            <p className={styles['profile-email']}>{user?.email}</p>
+            <p className={styles['profile-cell']}>{user?.cellNumber}</p>
 
           </div>
+        
+          <button 
+            className={styles['profile-btn']}
+            onClick={() => setShowEditModal(true)}
+          >
+            <div className={styles['btn-icon']} >
+              <img src={person} alt='person icon' className={styles['icon-img']} />
+            </div>
+            <div className={styles['btn-label']}>
+
+              Edit Profile
+
+            </div>
+            <div className={styles['btn-icon']}>
+              <img src={greater} alt='chevron icon' className={styles['chevron-img']} />
+            </div>
+          </button>
+          
+          <button 
+            onClick={() => togglePanel('settings')}
+            className={styles['profile-btn']}
+          >
+              <div className={styles['btn-icon']}>
+                <img src={settings} alt='settings icon' className={styles['icon-img']} />
+            </div>
+            <div className={styles['btn-label']}>
+              Settings
+            </div>
+            <div className={styles['btn-icon']}>
+                <img src={greater} alt='chevron icon' className={styles['chevron-img']} />
+            </div>
+          </button>
+
+          {
+            openPanel === 'settings' && (
+              <div className={styles['profile-menu-panel']}>
+                <span>Theme</span>
+                <button 
+                  className={styles['panel-btn']}
+                  onClick={toggleTheme}
+                >
+                  {theme === 'light' ? 'dark' : 'light'}
+                </button>
+              </div>
+            )
+          }
+
+          <button 
+            className={styles['profile-btn']}
+            onClick={() => togglePanel('notifications')} 
+          >
+            <div className={styles['btn-icon']}>
+              <img src={notifications} alt='placeholder' className={styles['icon-img']} />
+            </div>
+            <div className={styles['btn-label']}>
+              Notifications
+            </div>
+            <div className={styles['btn-icon']}>
+              <img src={greater} alt='placeholder' className={styles['chevron-img']} />
+            </div>
+          </button>
+
+          {
+            openPanel === 'notifications' && (
+              <div className={styles['profile-menu-panel']}>
+                <span>Notifications</span>
+                <button
+                  className={styles['panel-btn']}
+                  onClick={toggleNotifications}
+                >
+                  {notificationsEnabled ? 'Allow' : 'Deny'}
+                </button>
+              </div>
+            ) 
+          }
+
+          <button 
+            className={styles['profile-btn']}
+            onClick={handleLogout} 
+          >
+            <div className={styles['btn-icon']}>
+              <img src={Logout} alt='placeholder' className={styles['icon-img']}/>
+            </div>
+            <div className={styles['btn-label']}>
+              Log Out
+            </div>
+            <div className={styles['btn-icon']}>
+              <img src={greater} alt='placeholder' className={styles['chevron-img']}/>
+            </div>
+          </button>
+
+
+          {
+            showEditModal && <EditProfileModal onClose={() => setShowEditModal(false)} />
+          }
+        </div>
 
     </div>
-
-
     
   )
 }
