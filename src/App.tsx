@@ -15,6 +15,7 @@ import { useAuth } from './store/useAuth'
 import { SearchResultsPage } from './pages/SearchResultsPage'
 import { useUi } from './store/useUi'
 import { useEffect } from 'react'
+import { EditProfilePage } from './pages/EditProfilePage'
 
 function App() {
 
@@ -48,7 +49,7 @@ function App() {
             <Route path='profile' element = {<ProfilePage />} />
             <Route path='lists/:id' element={<ListDetailsPage />} />
             <Route path='search' element={<SearchResultsPage />} />
-            <Route path='profile/edit element={<EditProfilePage />}' />
+            <Route path='profile/edit' element={<EditProfilePage />} />
           </Route>
 
           

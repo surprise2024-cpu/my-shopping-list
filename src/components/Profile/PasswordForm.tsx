@@ -5,11 +5,13 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import styles from './Profile.module.css'
 import { API_BASE_URL } from "../../config";
+import { useAuth } from "../../store/useAuth";
 
 
 export function PasswordForm() {
 
-    const { user, token } = useAppSelector((state) => state.auth);
+    const { user, token } = useAuth()
+
     const { 
         register, 
         handleSubmit, 
@@ -27,7 +29,7 @@ export function PasswordForm() {
         try {
 
             //verify old password
-            const verifyRes = await fetch(API_BASE_URL, {
+            const verifyRes = await fetch(`${API_BASE_URL}/login`, {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: user?.email, password: data.currentPassword }),
@@ -35,17 +37,17 @@ export function PasswordForm() {
 
             if (!verifyRes.ok) throw new Error('Password is incorrect.');
 
-            const patchRes = await fetch(`{API_BASE_URL}`, {
+            const patchRes = await fetch(`${API_BASE_URL}/users/${user?.id}`, {
                 method: 'PATCH',
                 headers: {
-                    "content-Type": "application/json",
+                    "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`
                 },
 
                 body: JSON.stringify({ password: data.newPassword }),
             });
 
-            if (!patchRes.ok) throw new Error('Faile to update password on server.');
+            if (!patchRes.ok) throw new Error('Failed to update password on server.');
 
             toast.success('Password updated Successfully!')
             reset();
@@ -60,33 +62,33 @@ export function PasswordForm() {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <h3>Update Password</h3>
 
-                <div className={styles['']}>
+                <div className={styles['field']}>
 
                     <label>Current Password</label>
                     <input 
-                        type="text" 
+                        type="password" 
                         {...register('currentPassword')} 
                         placeholder="Current password"
                     />
 
                     {errors.currentPassword && <p className={styles['error-text']}>{errors.currentPassword.message}</p>}
                 </div>
-                <div className={styles['']}>
+                <div className={styles['field']}>
 
                     <label>New Password</label>
                     <input 
-                        type="text" 
+                        type="password" 
                         {...register('newPassword')} 
                         placeholder="New password"
                     />
 
                     {errors.newPassword && <p className={styles['error-text']}>{errors.newPassword.message}</p>}
                 </div>
-                <div className={styles['']}>
+                <div className={styles['field']}>
 
                     <label>Confirm new password</label>
                     <input 
-                        type="text" 
+                        type="password" 
                         {...register('confirmPassword')} 
                         placeholder="Confirm new password"
                     />
