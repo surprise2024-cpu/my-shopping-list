@@ -9,11 +9,14 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { updateUser } from '../../store/authSlice';
 import { toast } from 'react-toastify';
 import { API_BASE_URL } from '../../config';
+import { useUpdateUserMutation } from '../../store/api/apiSlice';
+import { useAuth } from '../../store/useAuth';
 
 export function ProfileForm() {
-    const dispatch = useDispatch();
 
-    const { user, token } = useAppSelector((state) => state.auth);
+    const { user } = useAuth();
+    const [updateUser, {isLoading}] = useUpdateUserMutation();
+
 
     const { 
         register, 
@@ -33,21 +36,17 @@ export function ProfileForm() {
     });
 
     const onSubmit = async (data: ProfileFormData) => {
+        if (!user) return
+
         try {
-            const res = await fetch(API_BASE_URL, {
-                method: 'PATCH',
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}` 
-                },
-                
-                body: JSON.stringify(data),
-            });
-
-            if (!res.ok) throw new Error('Could not update profile information');
-            const updatedUser = await res.json();
-
-            dispatch(updateUser(updatedUser));
+           await updateUser({
+            id: user.id,
+            name: data.name,
+            surname: data.surname,
+            email: data.email,
+            cellNumber: data.phone,
+           }).unwrap()
+           
             toast.success('Profile successfully updated');
         }
         catch (error: any) {
