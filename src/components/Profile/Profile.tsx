@@ -10,19 +10,19 @@ import { NavLink } from 'react-router'
 import { toast } from 'react-toastify'
 import { useAuth } from '../../store/useAuth'
 import { ProfileForm } from './ProfileInfo'
-import { useState } from 'react'
-import { current } from '@reduxjs/toolkit'
+import { useState, type ChangeEvent } from 'react'
 import { useUi } from '../../store/useUi'
+import { useUpdateUserMutation } from '../../store/api/apiSlice'
 
 type Panel = 'none' | 'settings' | 'notifications' 
 
 export function Profile() {
 
   const { user, logout } = useAuth();
+  const [updateUser] = useUpdateUserMutation()
   
   const { theme, toggleTheme, notificationsEnabled, toggleNotifications } = useUi()
 
-  const [ isOpen, setIsOpen ] = useState(false)
   const [ openPanel, setOpenPanel ] = useState<Panel>('none')
 
 
@@ -30,56 +30,82 @@ export function Profile() {
   const handleLogout = () => {
     logout()
     toast.success('Logged out')
-    setIsOpen(false)
   }
 
   const togglePanel = (panel: Panel) => {
     setOpenPanel((current) => (current === panel ? 'none' : panel))
   }
 
+  const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+   
+    const file = e.target.files?.[0]
+
+    if (!file || !user) return 
+
+    const reader = new FileReader()
+
+    reader.onload = async () => {
+      try {
+        await updateUser({id: user.id, avatar: reader.result as string}).unwrap()
+        toast.success('Profile photo updated')
+      }
+      catch {
+        toast.error('Profile photo could not be updated')
+      }
+    }
+
+    reader.readAsDataURL(file)
+  }
+
 
   return (
 
     <div className={styles['profile-cont']}>
-      <button onClick={() => setIsOpen((open) => !open)}>
+
+      <label className={styles['avatar-upload']}>
         { 
           user?.avatar ? (
-            <img src={user.avatar} alt='Profile' width={32} height={32} style={{ borderRadius: '50%' }}/>
+            <img src={user.avatar} alt='Profile' className={styles['avatar-image']} />
           ) : (
-            <div style={{width: 32,  height: 32, borderRadius: '50%', background: '#ccc'}} />
+            <div className={styles['avatar-placeholder']} />
             
           )
         }
-      </button>
-          <div className='profile-menu-dropdown'>
+        <span className={styles['avatar-edit-badge']} >✎</span>
+        <input type='file'
+          accept='image/*'
+          onChange={handleAvatarChange}
+          className={styles['avatar-input']}
+          />
+      </label>
+          <div className={styles['profile-menu-dropdown']}>
 
-            <div>
+            <div className={styles['profile-header']}>
 
-              <strong>{user?.name} {user?.surname}</strong>
-              <p>{user?.email}</p>
-              <p>{user?.cellNumber}</p>
+              <strong className={styles['profile-name']}>{user?.name} {user?.surname}</strong>
+              <p className={styles['profile-email']}>{user?.email}</p>
+              <p className={styles['profile-cell']}>{user?.cellNumber}</p>
 
             </div>
             
 
             <NavLink
               to='/ProfileForm'
-              onClick={() => setIsOpen(false)}
             >
               <button 
                 className={styles['profile-btn']}
                 
               >
-                <div >
-                  <img src={person} alt='placeholder' width={30} height={30} />
+                <div className={styles['btn-icon']}>
+                  <img src={person} alt='placeholder'className={styles['icon-img']} />
                 </div>
-                <div>
+                <div className={styles['btn-label']}>
 
                   Edit Profile
 
                 </div>
-                <div>
-                  <img src={greater} alt='placeholder' width={10} height={10} />
+                <div className={styles['btn-icon']}>
+                  <img src={greater} alt='placeholder' className={styles['chevron-img']} />
                 </div>
               </button>
             </NavLink>
@@ -87,22 +113,23 @@ export function Profile() {
               onClick={() => togglePanel('settings')}
               className={styles['profile-btn']}
             >
-                <div>
-                  <img src={settings} alt='placeholder' width={30} height={30} />
+                <div className={styles['btn-icon']}>
+                  <img src={settings} alt='placeholder' className={styles['icon-img']} />
               </div>
-              <div>
+              <div className={styles['btn-label']}>
                 Settings
               </div>
-              <div>
-                  <img src={greater} alt='placeholder' width={10} height={10} />
+              <div className={styles['btn-icon']}>
+                  <img src={greater} alt='placeholder' className={styles['chevron-img']} />
               </div>
             </button>
 
             {
               openPanel === 'settings' && (
-                <div className='profile-menu-panel'>
+                <div className={styles['profile-menu-panel']}>
                   <span>Theme</span>
                   <button 
+                    className={styles['panel-btn']}
                     onClick={toggleTheme}
                   >
                     {theme === 'light' ? 'dark' : 'light'}
@@ -115,22 +142,23 @@ export function Profile() {
               className={styles['profile-btn']}
               onClick={() => togglePanel('notifications')} 
             >
-              <div>
-                <img src={Logout} alt='placeholder' width={30} height={30} />
+              <div className={styles['btn-icon']}>
+                <img src={Logout} alt='placeholder' className={styles['icon-img']} />
               </div>
-              <div>
+              <div className={styles['btn-label']}>
                 Notifications
               </div>
-              <div>
-                <img src={greater} alt='placeholder' width={10} height={10} />
+              <div className={styles['btn-icon']}>
+                <img src={greater} alt='placeholder' className={styles['chevron-img']} />
               </div>
             </button>
 
             {
               openPanel === 'notifications' && (
-                <div className='profile-menu-panel'>
+                <div className={styles['profile-menu-panel']}>
                   <span>Notifications</span>
                   <button
+                    className={styles['panel-btn']}
                     onClick={toggleNotifications}
                   >
                     {notificationsEnabled ? 'Allow' : 'Deny'}
@@ -143,14 +171,14 @@ export function Profile() {
               className={styles['profile-btn']}
               onClick={handleLogout} 
             >
-              <div>
-                <img src={Logout} alt='placeholder' width={30} height={30} />
+              <div className={styles['btn-icon']}>
+                <img src={Logout} alt='placeholder' className={styles['icon-img']}/>
               </div>
-              <div>
+              <div className={styles['btn-label']}>
                 Log Out
               </div>
-              <div>
-                <img src={greater} alt='placeholder' width={10} height={10} />
+              <div className={styles['btn-icon']}>
+                <img src={greater} alt='placeholder' className={styles['chevron-img']}/>
               </div>
             </button>
 
