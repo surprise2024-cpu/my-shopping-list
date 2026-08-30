@@ -6,6 +6,8 @@ import person from '../../assets/person.png'
 import greater from '../../assets/greater-than-symbol.png'
 import Logout from '../../assets/log-out.png'
 import settings from '../../assets/setting.png'
+import notifications from '../../assets/notification.png'
+
 import { NavLink } from 'react-router'
 import { toast } from 'react-toastify'
 import { useAuth } from '../../store/useAuth'
@@ -97,7 +99,7 @@ export function Profile() {
                 
               >
                 <div className={styles['btn-icon']}>
-                  <img src={person} alt='placeholder'className={styles['icon-img']} />
+                  <img src={person} alt='person icon' className={styles['icon-img']} />
                 </div>
                 <div className={styles['btn-label']}>
 
@@ -105,7 +107,7 @@ export function Profile() {
 
                 </div>
                 <div className={styles['btn-icon']}>
-                  <img src={greater} alt='placeholder' className={styles['chevron-img']} />
+                  <img src={greater} alt='chevron icon' className={styles['chevron-img']} />
                 </div>
               </button>
             </NavLink>
@@ -114,13 +116,13 @@ export function Profile() {
               className={styles['profile-btn']}
             >
                 <div className={styles['btn-icon']}>
-                  <img src={settings} alt='placeholder' className={styles['icon-img']} />
+                  <img src={settings} alt='settings icon' className={styles['icon-img']} />
               </div>
               <div className={styles['btn-label']}>
                 Settings
               </div>
               <div className={styles['btn-icon']}>
-                  <img src={greater} alt='placeholder' className={styles['chevron-img']} />
+                  <img src={greater} alt='chevron icon' className={styles['chevron-img']} />
               </div>
             </button>
 
@@ -143,7 +145,7 @@ export function Profile() {
               onClick={() => togglePanel('notifications')} 
             >
               <div className={styles['btn-icon']}>
-                <img src={Logout} alt='placeholder' className={styles['icon-img']} />
+                <img src={notifications} alt='placeholder' className={styles['icon-img']} />
               </div>
               <div className={styles['btn-label']}>
                 Notifications
