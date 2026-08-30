@@ -92,7 +92,7 @@ export function Profile() {
             
 
             <NavLink
-              to='/prifile/edit'
+              to='/profile/edit'
             >
               <button 
                 className={styles['profile-btn']}

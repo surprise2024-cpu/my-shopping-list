@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import  type { AuthUser } from "../authSlice";
 import { API_BASE_URL } from "../../config";
+import { updateUser as syncUser } from '../authSlice';
 
 export interface ShoppingListItem {
     id: string
@@ -128,6 +129,18 @@ export const apiSlice = createApi({
                 method: 'PATCH',
                 body: patch
             }),
+
+            //takes changes made on the profile instantly visible instead of having to reload the page or logout and in again
+            async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
+                
+                try {
+                    const { data: updatedUser } = await queryFulfilled
+                    dispatch(syncUser(updatedUser))
+                }
+                catch {
+
+                }
+            }
         }),
 
     }),
