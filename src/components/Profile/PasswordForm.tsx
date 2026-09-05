@@ -31,7 +31,7 @@ export function PasswordForm() {
             //verify old password
             const verifyRes = await fetch(`${API_BASE_URL}/login`, {
                 method: 'POST',
-                headers: { "Content-Type": "application/json" },
+                headers: { "Content-Type": "text/plain" },
                 body: JSON.stringify({ email: user?.email, password: data.currentPassword }),
             });
 
@@ -40,7 +40,7 @@ export function PasswordForm() {
             const patchRes = await fetch(`${API_BASE_URL}/users/${user?.id}`, {
                 method: 'PATCH',
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "text/plain",
                     "Authorization": `Bearer ${token}`
                 },
 
@@ -52,8 +52,9 @@ export function PasswordForm() {
             toast.success('Password updated Successfully!')
             reset();
         }
-        catch (err: any) {
-            toast.error(err.message || 'Password update Failed')
+        catch (err: unknown) {
+            const errMsg = err instanceof Error ? err.message : 'Password update Failed';
+            toast.error(errMsg);
         }
     };
 

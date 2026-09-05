@@ -28,7 +28,7 @@ export const SignIn: React.FC = () => {
         try {
             const res = await fetch(`${API_BASE_URL}/login`, {
                 method: "POST",
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'text/plain' },
                 body: JSON.stringify(data),
             });
 
@@ -42,8 +42,8 @@ export const SignIn: React.FC = () => {
 
             toast.success('Successfully logged in!')
         }
-        catch (err: any) {
-            const errMsg = err.response?.data || 'Failed to Login. Please try again.';
+        catch (err: unknown) {
+            const errMsg = err instanceof Error ? err.message : 'Failed to Login. Please try again.';
             toast.error(errMsg);
         }
 
