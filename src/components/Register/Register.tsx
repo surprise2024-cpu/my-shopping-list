@@ -44,10 +44,9 @@ export const SignUp: React.FC = () => {
             toast.success('Successful registered!')
 
         }
-        catch (error: any) {
-            console.log('Registration error: ', error)
-        
-            toast.error(`DEBUG: ${error.message || 'ERROR'} - ${error.message || String(error)}`);
+        catch (error: unknown) {
+            const errMsg = error instanceof Error ? error.message : 'Failed to Register. Please try again.';
+            toast.error(errMsg);
         }
         
         await new Promise((resolve) => setTimeout(resolve, 1000));
