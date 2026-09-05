@@ -1,13 +1,13 @@
 import { useParams, useSearchParams } from "react-router";
-import { useAuth } from "../store/useAuth";
-import { useGetListQuery, useUpdateListMutation, type ShoppingListItem } from "../store/api/apiSlice";
+import { useAuth } from "../../store/useAuth";
+import { useGetListQuery, useUpdateListMutation, type ShoppingListItem } from "../../store/api/apiSlice";
 import { useMemo, useState } from "react";
-import type { ItemFormValues } from "../schema/itemSchema";
+import type { ItemFormValues } from "../../schema/itemSchema";
 import { toast } from "react-toastify";
-import { ItemForm } from "../components/ShoppingList/ItemForm/ItemForm";
-import { ConfirmModal } from "../components/ConfirmModal/ConfirmModal";
-import { ItemCard } from "../components/ShoppingList/ItemCard/ItemCard";
-import { SearchSortBar } from "../components/ShoppingList/Search/SearchSortBar";
+import { ItemForm } from "../../components/ShoppingList/ItemForm/ItemForm";
+import { ConfirmModal } from "../../components/ConfirmModal/ConfirmModal";
+import { ItemCard } from "../../components/ShoppingList/ItemCard/ItemCard";
+import { SearchSortBar } from "../../components/ShoppingList/Search/SearchSortBar";
 import styles from './ListDetailPage.module.css'
 
 export function ListDetailsPage() {

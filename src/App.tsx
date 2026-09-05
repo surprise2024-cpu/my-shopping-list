@@ -10,12 +10,11 @@ import { SignUpPage } from './pages/RegisterPage'
 import { ToastContainer } from 'react-toastify'
 import { ProtectedRoute, PublicOnlyRoute } from './RouteWrappers'
 import { ProfilePage } from './pages/ProfilePage/ProfilePage'
-import { ListDetailsPage } from './pages/ListDetailPage'
+import { ListDetailsPage } from './pages/ListDetailPage/ListDetailPage' 
 import { useAuth } from './store/useAuth'
 import { SearchResultsPage } from './pages/SearchResultsPage'
 import { useUi } from './store/useUi'
 import { useEffect } from 'react'
-import { EditProfilePage } from './pages/EditProfilePage'
 
 function App() {
 
