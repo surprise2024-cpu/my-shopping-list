@@ -1,0 +1,9 @@
+.profile-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 40px 16px;
+}
