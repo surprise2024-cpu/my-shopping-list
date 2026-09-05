@@ -9,6 +9,8 @@ const middlewares = jsonServer.defaults()
 
 server.db = router.db
 
+server.use(express.json({ type: () => true }))
+
 const rules = jsonServer.rewriter(require('./routes.json'))
 server.use(rules)
 
