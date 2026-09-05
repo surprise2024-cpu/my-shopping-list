@@ -29,12 +29,12 @@ export const SignUp: React.FC = () => {
 
             const response = await fetch(`${API_BASE_URL}/register`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'text/plain' },
                 body: JSON.stringify(data),
             });
 
             const result = await response.json();
-            if (!response.ok) throw new Error(result || 'Sign Up Failed');
+            if (!response.ok) throw new Error(result || 'Registration Failed');
 
             dispatch(setCredentials({ token: result.accessToken, user: result.user }));
 
@@ -61,7 +61,7 @@ export const SignUp: React.FC = () => {
 
             <div className={styles['heading']}>
 
-                <span>Sign Up Form</span>
+                <span>Registration Form</span>
                 
             </div>
             <div className={styles['field-cont']}>
@@ -176,44 +176,6 @@ export const SignUp: React.FC = () => {
                 </div>
             </div>
         </form>
-
-        <button
-    type="button"
-    onClick={async () => {
-        try {
-            const r3 = await fetch('https://jsonplaceholder.typicode.com/posts', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ title: 'test', body: 'test', userId: 1 }),
-            });
-            const d3 = await r3.json();
-            toast.success(`Test 3 OK: ${JSON.stringify(d3).slice(0, 50)}`);
-        } catch (e: any) {
-            toast.error(`Test 3 FAILED: ${e.name} - ${e.message}`);
-        }
-
-        try {
-            const r4 = await fetch(`${API_BASE_URL}/register`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    name: 'Test',
-                    surname: 'User',
-                    email: `test${Date.now()}@example.com`,
-                    phone: '0123456789',
-                    password: 'testpass123',
-                    confirmPassword: 'testpass123',
-                }),
-            });
-            const text = await r4.text();
-            toast.success(`Test 4: status ${r4.status} - ${text.slice(0, 80)}`);
-        } catch (e: any) {
-            toast.error(`Test 4 FAILED: ${e.name} - ${e.message}`);
-        }
-    }}
->
-    Run POST Test
-</button>
     </div>
   );
 };

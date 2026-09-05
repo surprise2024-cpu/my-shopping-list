@@ -1,12 +1,13 @@
 {
-    "name": "shoppg-list-backend",
+    "name": "shopping-list-backend",
     "version": "1.0.0",
     "scripts": {
-        "start": "json-server-auth db.json --port $PORT --host 0.0.0.0 -r routes.json"
+        "start": "node server.js"
     },
     "dependencies": {
         "json-server": "0.17.4",
-        "json-server-auth": "^2.1.0"
+        "json-server-auth": "^2.1.0",
+        "express": "^4.22.2"
     },
     "overrides": {
         "jsonwebtoken": "9.0.3"
