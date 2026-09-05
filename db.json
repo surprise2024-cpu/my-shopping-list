@@ -37,6 +37,24 @@
       "phone": "0123654789",
       "confirmPassword": "123456789",
       "id": 4
+    },
+    {
+      "email": "test1788617865473@example.com",
+      "password": "$2a$10$nHu7bWvUZmQYmy.hQ97SMeHA77.C0M32hWe5FtbynGuUT7waK5pL2",
+      "name": "Test",
+      "surname": "User",
+      "phone": "0123456789",
+      "confirmPassword": "testpass123",
+      "id": 5
+    },
+    {
+      "email": "test1788617873038@example.com",
+      "password": "$2a$10$DVxyYUCjoqtBhhlYEAyUQu55XsQmtTstFTMGq7ZjzWJDNTJGarWza",
+      "name": "Test",
+      "surname": "User",
+      "phone": "0123456789",
+      "confirmPassword": "testpass123",
+      "id": 6
     }
   ],
   "lists": [
