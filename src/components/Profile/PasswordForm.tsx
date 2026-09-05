@@ -1,6 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { passwordSchema, type PasswordFormData } from "../../schema/profileSchema";
-import { useAppSelector } from "../../store/hooks";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import styles from './Profile.module.css'
@@ -31,7 +30,7 @@ export function PasswordForm() {
             //verify old password
             const verifyRes = await fetch(`${API_BASE_URL}/login`, {
                 method: 'POST',
-                headers: { "Content-Type": "text/plain" },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: user?.email, password: data.currentPassword }),
             });
 
@@ -40,7 +39,7 @@ export function PasswordForm() {
             const patchRes = await fetch(`${API_BASE_URL}/users/${user?.id}`, {
                 method: 'PATCH',
                 headers: {
-                    "Content-Type": "text/plain",
+                    "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`
                 },
 
@@ -53,8 +52,7 @@ export function PasswordForm() {
             reset();
         }
         catch (err: unknown) {
-            const errMsg = err instanceof Error ? err.message : 'Password update Failed';
-            toast.error(errMsg);
+            toast.error((err as Error).message || 'Password update Failed')
         }
     };
 

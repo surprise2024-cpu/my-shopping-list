@@ -29,12 +29,12 @@ export const SignUp: React.FC = () => {
 
             const response = await fetch(`${API_BASE_URL}/register`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'text/plain' },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
             });
 
             const result = await response.json();
-            if (!response.ok) throw new Error(result || 'Registration Failed');
+            if (!response.ok) throw new Error(result || 'Sign Up Failed');
 
             dispatch(setCredentials({ token: result.accessToken, user: result.user }));
 
@@ -61,7 +61,7 @@ export const SignUp: React.FC = () => {
 
             <div className={styles['heading']}>
 
-                <span>Registration Form</span>
+                <span>Sign Up Form</span>
                 
             </div>
             <div className={styles['field-cont']}>
@@ -112,7 +112,7 @@ export const SignUp: React.FC = () => {
 
                         <label>Phone Number: </label>
                         <input 
-                            type='text'
+                            type='tel'
                             {...register('phone')}
                             placeholder='0215789566'
                         />

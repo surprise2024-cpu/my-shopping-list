@@ -9,7 +9,14 @@ const middlewares = jsonServer.defaults()
 
 server.db = router.db
 
-server.use(express.json({ type: () => true }))
+server.use((req, res, next) => {
+    if (req.headers['content-type'] && req.headers['content-type'].startsWith('text/plain')) {
+        req.headers['content-type'] = 'application/json'
+    }
+    
+    next()
+
+ })
 
 const rules = jsonServer.rewriter(require('./routes.json'))
 server.use(rules)

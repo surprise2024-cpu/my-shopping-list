@@ -2,7 +2,7 @@
     "name": "shopping-list-backend",
     "version": "1.0.0",
     "scripts": {
-        "start": "node server.js"
+        "start": "json-server-auth db.json --port $PORT --host 0.0.0.0 -r routes.json"
     },
     "dependencies": {
         "json-server": "0.17.4",
