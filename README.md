@@ -113,11 +113,13 @@ to be continued
 
 ### Frontend installations
 
----bash
+---
 
-npm install
+  bash
 
-Create a `.ens' file (or configures `src/config.tsx` with your base API base URL:)`
+  npm install
+  
+  Create a `.ens' file (or configures `src/config.tsx` with your base API base URL:)`
 
 ---
 
@@ -125,8 +127,10 @@ API_URL=http://localhost:3001
 
 Run the app
 
----bash
-npm run dev
+---
+  bash
+  
+  npm run dev
 
 ---
 
