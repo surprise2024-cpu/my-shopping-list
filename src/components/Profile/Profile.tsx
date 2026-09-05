@@ -160,7 +160,7 @@ export function Profile() {
                   className={styles['panel-btn']}
                   onClick={toggleNotifications}
                 >
-                  {notificationsEnabled ? 'Allow' : 'Deny'}
+                  {notificationsEnabled ? 'Enabled' : 'Disabled'}
                 </button>
               </div>
             ) 
