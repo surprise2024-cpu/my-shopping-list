@@ -73,7 +73,8 @@ export const apiSlice = createApi({
             query: (body) => ({
                 url: '/lists',
                 method: 'POST',
-                body,
+                body: JSON.stringify(body),
+                headers: {'Content-Type': 'text/plain' },
             }),
             invalidatesTags: [{ type: 'List', id: 'LIST' }]
         }),
@@ -82,7 +83,8 @@ export const apiSlice = createApi({
             query: ({ id, ...patch }) => ({
                 url: `/lists/${id}`,
                 method: 'PATCH',
-                body: patch,
+                body: JSON.stringify(patch),
+                headers: {'Content-Type': 'text/plain' },
             }),
             invalidatesTags: (_result, _error, { id }) => [{ type: 'List', id }],
         }),
@@ -110,7 +112,8 @@ export const apiSlice = createApi({
             query: (body) => ({
                 url: '/categories',
                 method: 'POST',
-                body,
+                body: JSON.stringify(body),
+                headers: {'Content-Type': 'text/plain' },
             }),
             invalidatesTags: [{ type: 'Category', id: 'LIST' }],
         }),
@@ -127,7 +130,8 @@ export const apiSlice = createApi({
             query: ({ id, ...patch }) => ({
                 url: `/users/${id}`,
                 method: 'PATCH',
-                body: patch
+                body: JSON.stringify(patch),
+                headers: {'Content-Type': 'text/plain' },
             }),
 
             //takes changes made on the profile instantly visible instead of having to reload the page or logout and in again
@@ -137,10 +141,8 @@ export const apiSlice = createApi({
                     const { data: updatedUser } = await queryFulfilled
                     dispatch(syncUser(updatedUser))
                 }
-                catch {
-
-                }
-            }
+                catch { /* empty */ }
+            },
         }),
 
     }),
