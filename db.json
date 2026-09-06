@@ -22,12 +22,13 @@
     },
     {
       "email": "kimpro@gmail.com",
-      "password": "$2a$10$U3bdpTIvH64Fn.ePjaw1jeVg9W00.4b/3i3ckqYyUf9fs.hy.2u/2",
+      "password": "$2a$10$KFE8l5.pven7lmM2BnwRbOPtOFpeV/.HQCPcsmWRh.PTgn7btOOlm",
       "name": "kim",
       "surname": "pro",
       "phone": "0124567896",
       "confirmPassword": "123456789",
-      "id": 3
+      "id": 3,
+      "cellNumber": "0785266548"
     },
     {
       "email": "nickgalos@gmail.com",

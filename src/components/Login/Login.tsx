@@ -35,7 +35,7 @@ export const SignIn: React.FC = () => {
             const result = await res.json();
             if (!res.ok) throw new Error(result || 'Invalid Details')
 
-            dispatch(setCredentials({ token: result.aaccessToken, user: result.user }));
+            dispatch(setCredentials({ token: result.accessToken, user: result.user }));
 
             localStorage.setItem('token', result.accessToken);
             localStorage.setItem('user', JSON.stringify(result.user));
