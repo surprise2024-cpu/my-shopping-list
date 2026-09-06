@@ -24,8 +24,8 @@
 }
 
 .body-image img {
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
 }
 
 .holder {
@@ -34,22 +34,36 @@
     align-items: center;
     justify-content: center;
     gap: 5px;
+    margin-top: 25px;
+}
+
+.sort-search-add-cont {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.search-sort-wrapper {
+    flex: 1 1 0px;
 }
 
 .body-btn {
     display: flex;
     justify-content: center;
-    margin-top: -6px;
-    padding-top: 40px;
+    flex: 0 0 auto;
 }
 
 .add-btn {
-    width: 200px;
-    height: 40px;
+    height: 44px;
+    padding: 0 24px;
     background-color: #000000;
     border-radius: 30px;
     border: none;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 .add-btn-holder {
@@ -71,11 +85,6 @@
     padding: 24px 20px 0;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.sort-search-add-cont {
-    display: flex;
-    align-items: center;
 }
 
 @media (max-width: 480px) {
@@ -114,7 +123,7 @@
     }
 
     .holder {
-        padding-top: 120px;
+        padding-top: 30px;
     }
 
     .list-grid {

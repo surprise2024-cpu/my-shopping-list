@@ -131,20 +131,24 @@ export const Body: React.FC = () => {
     <div className={styles['body-cont']}>
 
       <div className={styles['sort-search-add-cont']}>
-          <SearchSortBar 
-          search={search}
-          sort={sort}
-          onSearchChange={handleSearchChange}
-          onSortChange={handleSortChange}
-          searchPlaceholder='Search lists by name...'
-          sortOptions={[
-            { value: 'name:asc', label: 'Name (A-Z)' },
-            { value: 'name:desc', label: 'Name (Z-A)' },
-            { value: 'createdAt:desc', label: 'Date Added (Newest)' },
-            { value: 'createAt:asc', label: 'Date Added (Oldest)' },
-          ]}  
-        />
 
+        <div className={styles['sort-search-wrapper']}>
+
+          <SearchSortBar 
+            search={search}
+            sort={sort}
+            onSearchChange={handleSearchChange}
+            onSortChange={handleSortChange}
+            searchPlaceholder='Search lists by name...'
+            sortOptions={[
+              { value: 'name:asc', label: 'Name (A-Z)' },
+              { value: 'name:desc', label: 'Name (Z-A)' },
+              { value: 'createdAt:desc', label: 'Date Added (Newest)' },
+              { value: 'createAt:asc', label: 'Date Added (Oldest)' },
+            ]}  
+          />
+          
+        </div>
         <div className={styles['body-btn']}>
 
           <button 
