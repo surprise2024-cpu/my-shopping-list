@@ -165,7 +165,7 @@ export const Body: React.FC = () => {
               </div>
               <div className={styles['add-btn-text']}>
 
-                <span>Add List</span>
+                <span>Create List</span>
 
               </div>
             
@@ -182,7 +182,7 @@ export const Body: React.FC = () => {
 
             <div className={styles['body-text']}>
 
-              <span>List is Empty</span>
+              <span>No lists created yet</span>
 
             </div>
             <div className={styles['body-image']}>
@@ -192,7 +192,7 @@ export const Body: React.FC = () => {
             </div>
             <div className={styles['body-text']}>
 
-              <span>Add your First item today</span>
+              <span>Create your first list today</span>
 
             </div>
           </div>

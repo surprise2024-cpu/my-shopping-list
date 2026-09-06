@@ -166,18 +166,23 @@ export function ListDetailsPage() {
                     />
                 </div>
                 <div className={styles['action-row']}>
-                    <button className={styles['share-btn']} onClick={handleShare}>Share</button>
+                    <button 
+                        className={styles['share-btn']} 
+                        onClick={handleShare}
+                    >
+                        <span>Share List</span>
+                    </button>
 
                     {
                         isOwner ? (
                             <button 
                                 className={styles['add-item-btn']}
-                            onClick={() => { 
+                                onClick={() => { 
                                 setEditItem(null)
                                 setShowForm(true)
                                 
                             }}>
-                                + Add Item
+                                <span>+ Add Item</span>
                             </button>
                         ) : (
                             <p className={styles['readonly-text']}><em>You're viewing a shared list (read-only)</em></p>
@@ -201,7 +206,6 @@ export function ListDetailsPage() {
                 ) 
                 
             }
-
             {
                 list.items.length === 0 && (
 
@@ -209,7 +213,7 @@ export function ListDetailsPage() {
                         <p 
                             className={styles['status-text']}
                         >
-                            No items added yet
+                            <span>No items in this list yet</span>
                         </p>
                         <div className={styles['empty-image']}>
                             <img src={emptyState} alt="Empty state" />
@@ -217,7 +221,7 @@ export function ListDetailsPage() {
                         <p 
                             className={styles['status-text']}
                         >
-                            Add your first item today
+                            <span>Add your first item today</span>
                         </p>
                     </div>
 
