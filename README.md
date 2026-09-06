@@ -56,27 +56,27 @@ A full-stack shopping list manager built with React, TypeScript and Redux Toolki
 
 ### Login
 
-![login page]()
+![login page](/src/assets/login.png)
 
 ### Registration
 
-![registration page]()
+![registration page](/src/assets/register.png)
 
 ### List Creation
 
-![list creation]()
+![list creation](/src/assets/list-creation.png)
 
 ### Managig Items in a List
 
-~[list management]()
+~[list management](/src/assets/item-list-management.png)
 
 ### Adding an items
 
-![adding item]()
+![adding item](/src/assets/adding-item.png)
 
 ### Profile
 
-![profile]()
+![profile](/src/assets/profile.png)
 
 ---
 
@@ -113,9 +113,7 @@ to be continued
 
 ### Frontend installations
 
----
-
-  bash
+---bash
 
   npm install
   
@@ -127,8 +125,7 @@ API_URL=http://localhost:3001
 
 Run the app
 
----
-  bash
+---bash
   
   npm run dev
 
