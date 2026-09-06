@@ -10,6 +10,8 @@ import { ItemCard } from "../../components/ShoppingList/ItemCard/ItemCard";
 import { SearchSortBar } from "../../components/ShoppingList/Search/SearchSortBar";
 import styles from './ListDetailPage.module.css'
 
+import emptyState from '../../assets/shopping.png'
+
 export function ListDetailsPage() {
     const { id } = useParams()
     const listId = Number(id)
@@ -142,24 +144,47 @@ export function ListDetailsPage() {
         <div className={styles['page-cont']}>
             <h1 className={styles['list-title']}>{list.name}</h1>
 
-            <div className={styles['action-row']}>
-                <button className={styles['share-btn']} onClick={handleShare}>Share</button>
+            <div className={styles['control-row']}>
 
-                {
-                    isOwner ? (
-                        <button 
-                            className={styles['add-item-btn']}
-                        onClick={() => { 
-                            setEditItem(null)
-                            setShowForm(true)
-                            
-                        }}>
-                            + Add Item
-                        </button>
-                    ) : (
-                        <p className={styles['readonly-text']}><em>You're viewing a shared list (read-only)</em></p>
-                    )
-                }
+                <div className={styles['search-sort-wrapper']}>
+
+                    {/*Search/Sort for items controlled by the URL */}
+                    <SearchSortBar 
+                        search={search}
+                        sort={sort}
+                        onSearchChange={handleSearchChange}
+                        onSortChange={handleSortChange}
+                        searchPlaceholder="Search items by name..."
+                        sortOptions={[
+                            { value: 'name:asc', label: 'Name (A-Z)' },
+                            { value: 'name:desc', label: 'Name (ZZ-A)' },
+                            { value: 'category:asc', label: 'Category (A-Z)' },
+                            { value: 'category:desc', label: 'Category (Z-A)' },
+                            { value: 'createdAt:desc', label: 'Date Added (Newest)' },
+                            { value: 'createdAt:asc', label: 'Date Added (Oldest)' },
+                        ]}
+                    />
+                </div>
+                <div className={styles['action-row']}>
+                    <button className={styles['share-btn']} onClick={handleShare}>Share</button>
+
+                    {
+                        isOwner ? (
+                            <button 
+                                className={styles['add-item-btn']}
+                            onClick={() => { 
+                                setEditItem(null)
+                                setShowForm(true)
+                                
+                            }}>
+                                + Add Item
+                            </button>
+                        ) : (
+                            <p className={styles['readonly-text']}><em>You're viewing a shared list (read-only)</em></p>
+                        )
+                    }
+                </div>
+                
             </div>
             {
                 showForm && (
@@ -177,24 +202,29 @@ export function ListDetailsPage() {
                 
             }
 
-            {/*Search/Sort for items controlled by the URL */}
-            <SearchSortBar 
-                search={search}
-                sort={sort}
-                onSearchChange={handleSearchChange}
-                onSortChange={handleSortChange}
-                searchPlaceholder="Search items by name..."
-                sortOptions={[
-                    { value: 'name:asc', label: 'Name (A-Z)' },
-                    { value: 'name:desc', label: 'Name (ZZ-A)' },
-                    { value: 'category:asc', label: 'Category (A-Z)' },
-                    { value: 'category:desc', label: 'Category (Z-A)' },
-                    { value: 'createdAt:desc', label: 'Date Added (Newest)' },
-                    { value: 'createdAt:asc', label: 'Date Added (Oldest)' },
-                ]}
-            />
+            {
+                list.items.length === 0 && (
 
-            {list.items.length === 0 && <p className={styles['status-text']}>No items added yet</p>}
+                    <div className={styles['empty-holder']}>
+                        <p 
+                            className={styles['status-text']}
+                        >
+                            No items added yet
+                        </p>
+                        <div className={styles['empty-image']}>
+                            <img src={emptyState} alt="Empty state" />
+                        </div>
+                        <p 
+                            className={styles['status-text']}
+                        >
+                            Add your first item today
+                        </p>
+                    </div>
+
+                    
+                )
+                
+            }
             
             {list.items.length > 0 && filteredItems.length === 0 && <p className={styles['status-text']}>No items match your search. Try again</p>}
 

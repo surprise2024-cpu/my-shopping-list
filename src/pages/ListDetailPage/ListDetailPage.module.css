@@ -15,14 +15,30 @@
     text-align: center;
 }
 
+.control-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.search-sort-wrapper {
+    flex: 0 1 auto;
+}
+
 .action-row {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex: 0 0 auto;
 }
 
 .share-btn,
 .add-item-btn {
+    height: 44px;
     width: 120px;
     font-size: 14px;
     border-radius: 30px;
@@ -71,4 +87,34 @@
     max-width: 1200px;
     margin: 0 auto;
     align-items: start;
+}
+
+.empty-holder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 30px;
+}
+
+.empty-image img {
+    width: 300px;
+    height: 300px;
+}
+
+@media (max-width: 480px) {
+
+    .empty-image img {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .empty-image img {
+        width: 200px;
+        height: 200px;
+    }
 }
