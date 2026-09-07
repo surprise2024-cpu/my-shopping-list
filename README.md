@@ -113,23 +113,25 @@ to be continued
 
 ### Frontend installations
 
----bash
+```
+bash
 
   npm install
   
   Create a `.ens' file (or configures `src/config.tsx` with your base API base URL:)`
 
----
+```
 
 API_URL=http://localhost:3001
 
 Run the app
 
----bash
+```
+bash
   
   npm run dev
 
----
+```
 
 > **Deploying to vercel or similar?** Environment variables must be set in your hosting providers's dashboard and the project **redeploy** afterwards
 
