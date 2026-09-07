@@ -61,7 +61,7 @@ export const SignIn: React.FC = () => {
 
             <div className={styles['form-heading']}>
 
-                <span>Sign In Form</span>
+                <span>Login Form</span>
 
             </div>
             <div className={styles['form-section']}>
