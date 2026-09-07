@@ -68,7 +68,7 @@ A full-stack shopping list manager built with React, TypeScript and Redux Toolki
 
 ### Managig Items in a List
 
-~[list management](/src/assets/item-list-management.png)
+![list management](/src/assets/item-list-management.png)
 
 ### Adding an items
 
@@ -113,23 +113,29 @@ to be continued
 
 ### Frontend installations
 
----bash
+```
+bash
+
+  git clone https://github.com/surprise2024-cpu/my-shopping-list.git
+
+  cd my-shpping-list
 
   npm install
   
-  Create a `.env' file (or configures `src/config.tsx` with your base API base URL:)`
+  Create a `.env' file (or configure `src/config.tsx` with your API base URL:)`
 
----
+```
 
 API_URL=http://localhost:3001
 
 Run the app
 
----bash
+```
+bash
   
   npm run dev
 
----
+```
 
 > **Deploying to vercel or similar?** Environment variables must be set in your hosting providers's dashboard and the project **redeploy** afterwards
 
