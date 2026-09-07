@@ -116,6 +116,10 @@ to be continued
 ```
 bash
 
+  git clone https://github.com/surprise2024-cpu/my-shopping-list.git
+
+  cd my-shpping-list
+
   npm install
   
   Create a `.env' file (or configure `src/config.tsx` with your base API base URL:)`
