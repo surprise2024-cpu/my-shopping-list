@@ -237,25 +237,25 @@
       "id": 6
     },
     {
-      "name": "S",
+      "name": "First ",
       "userId": 3,
-      "createdAt": "2026-09-06T18:37:11.123Z",
+      "createdAt": "2026-09-07T09:18:39.889Z",
       "items": [
         {
-          "id": "3ab79b8b-c304-4b98-ad95-48cfa6505f71",
-          "name": "chicken",
-          "quantity": 3,
-          "notes": "Beef should be priority",
-          "category": "meat",
-          "createdAt": "2026-09-06T19:09:56.028Z"
-        },
-        {
-          "id": "ceabf347-d4f8-45a2-b8ed-fea61646eedc",
+          "id": "0b2d2a87-434e-4309-99cc-cddde718e583",
           "name": "beef",
           "quantity": 3,
-          "notes": "",
-          "category": "test",
-          "createdAt": "2026-09-07T08:45:43.988Z"
+          "notes": "something tasty",
+          "category": "meat",
+          "createdAt": "2026-09-07T09:19:33.688Z"
+        },
+        {
+          "id": "1c793d3b-37ab-418d-8c88-332f201f3b77",
+          "name": "chichen",
+          "quantity": 3,
+          "notes": "just chicken",
+          "category": "meat",
+          "createdAt": "2026-09-07T09:21:21.376Z"
         }
       ],
       "id": 7
