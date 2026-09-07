@@ -118,7 +118,7 @@ bash
 
   npm install
   
-  Create a `.ens' file (or configures `src/config.tsx` with your base API base URL:)`
+  Create a `.env' file (or configure `src/config.tsx` with your base API base URL:)`
 
 ```
 
