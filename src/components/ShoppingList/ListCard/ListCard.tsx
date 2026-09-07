@@ -17,7 +17,7 @@ export function ListCard({ list, onOpen, onEdit, onDelete }: ListCardProps) {
 
             <div className={styles['actions']}>
                 <button className={styles['view-btn']} onClick={onOpen}>View Items</button>
-                <button className={styles['rename-btn']} onClick={onEdit}>Rename</button>
+                <button className={styles['rename-btn']} onClick={onEdit}>Rename List</button>
                 <button className={styles['delete-btn']} onClick={onDelete}>Delete List</button>
             </div>
         </div>

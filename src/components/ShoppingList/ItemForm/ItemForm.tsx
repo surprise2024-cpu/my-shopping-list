@@ -42,7 +42,7 @@ export function ItemForm({ userId, defaultValues, submitLabel, onSubmit, onCance
     <div className={styles['overlay']} onClick={onCancel} >
       <div className={styles['form-cont']} onClick={(e) => e.stopPropagation()}> 
 
-        <h2 className={styles['form-title']}>{submitLabel}</h2>
+      <h2 className={styles['form-title']}>{submitLabel}</h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
 
