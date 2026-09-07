@@ -68,7 +68,7 @@ A full-stack shopping list manager built with React, TypeScript and Redux Toolki
 
 ### Managig Items in a List
 
-~[list management](/src/assets/item-list-management.png)
+![list management](/src/assets/item-list-management.png)
 
 ### Adding an items
 
