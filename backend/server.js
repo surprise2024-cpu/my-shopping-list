@@ -13,7 +13,7 @@ server.db = router.db
 server.use(cors({
     origin: [
         'http://localhost:5137',
-        'https://my-shopping-list-alpha.vercel.app/'
+        process.env.FRONTEND_URL
     ],
     credentials: true
 }))
