@@ -12,6 +12,23 @@
     font-family: "Playfair Display", serif;
 }
 
+.search-bar {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000;
+    border-radius: 30px;
+    border: none;
+}
+
+.search-icon {
+    width: 22px;
+    height: 22px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
 .search-input {
     flex: 1;
     min-width: 200px;
@@ -31,7 +48,7 @@
     color: #cccccc;
 }
 
-.search-input:focus {
+.search-bar:focus {
     outline: 2px solid #000000;
     outline-offset: 2px;
 }

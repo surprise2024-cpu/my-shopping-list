@@ -78,7 +78,7 @@
 }
 
 .field-btn {
-    width: min(320px, 100%);
+    width: min(420px, 100%);
     max-width: 100%;
     height: clamp(30px, 4.5vh, 38px);
     background-color: #000000;
