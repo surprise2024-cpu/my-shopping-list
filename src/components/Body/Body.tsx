@@ -195,6 +195,31 @@ export const Body: React.FC = () => {
               <span>Create your first list today</span>
 
             </div>
+            <div className={styles['body-btn']}>
+
+          <button 
+            className={styles['add-btn']}
+            onClick={openAddForm}
+          >
+
+            <div className={styles['add-btn-holder']}>
+
+              <div className={styles['add-btn-icon']}>
+
+                <img src={addIcon} alt='empty state' />
+
+              </div>
+              <div className={styles['add-btn-text']}>
+
+                <span>Create List</span>
+
+              </div>
+            
+            </div>
+          </button>
+
+        </div>
+            
           </div>
         ) : (
           <div className={styles['list-grid']}>
