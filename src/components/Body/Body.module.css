@@ -7,9 +7,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-y: auto;
     gap: 5px;
     padding-top: 24px;
+}
+
+.body-cont-loading {
+    padding: 200px;
 }
 
 .body-text {

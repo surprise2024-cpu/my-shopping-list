@@ -223,6 +223,15 @@ export function ListDetailsPage() {
                         >
                             <span>Add your first item today</span>
                         </p>
+                        <button 
+                                className={styles['add-item-btn']}
+                                onClick={() => { 
+                                setEditItem(null)
+                                setShowForm(true)
+                                
+                            }}>
+                                <span>+ Add Item</span>
+                            </button>
                     </div>
 
                     

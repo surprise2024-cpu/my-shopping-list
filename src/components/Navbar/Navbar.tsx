@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from 'react'
-
-import search from '../../assets/shopping.png';
+import { useState } from 'react'
 
 import styles from './Navbar.module.css'
-import { Search } from '../Search/Search';
-import { NavLink, useLocation } from 'react-router';
+import { NavLink } from 'react-router';
 import { useAuth } from '../../store/useAuth';
 import { toast } from 'react-toastify';
 
@@ -14,14 +11,10 @@ export const Navbar = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-    const location = useLocation()
-
-    useEffect(() => {
-        setIsMenuOpen(false)
-    }, [location.pathname])
 
     const handleLogout = () => {
         logout()
+        setIsMenuOpen(false)
         toast.success('Logged out')
     }
 
@@ -32,7 +25,7 @@ export const Navbar = () => {
              
             <div className={styles['nav-heading']}>
 
-                <h2>My Shopping List</h2>
+                <h2>ShopLify</h2>
 
             </div>
 

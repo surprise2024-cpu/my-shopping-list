@@ -1,5 +1,7 @@
 import styles from './SearchSortBar.module.css'
 
+import searchIcon from '../../../assets/search.png'
+
 interface SortOption {
     value: string
     label: string
@@ -24,13 +26,26 @@ export function SearchSortBar({
 }: SearchSortBarProps) {
     return (
         <div className={styles['search-sort-bar']}>
-            <input 
-                className={styles['search-input']}
-                type="text"
-                placeholder={searchPlaceholder}
-                value={search}
-                onChange={(e) => onSearchChange(e.target.value)}    
-            />
+
+            <div className={styles['search-bar']}>
+
+                <div className={styles['search-icon']}>
+
+                    <img src={searchIcon} alt='search' width={22} height={22}/>
+
+                </div>
+                <div className={styles['search-input']}>
+
+                    <input 
+                        className={styles['search-input']}
+                        type="text"
+                        placeholder={searchPlaceholder}
+                        value={search}
+                        onChange={(e) => onSearchChange(e.target.value)}    
+                    />
+
+                </div>
+            </div>
 
             <select
                 className={styles['sort-select']}
