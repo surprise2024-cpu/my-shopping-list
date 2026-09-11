@@ -25,7 +25,7 @@ export const Navbar = () => {
              
             <div className={styles['nav-heading']}>
 
-                <h2>My Shopping List</h2>
+                <h2>ShopLify</h2>
 
             </div>
 
