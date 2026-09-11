@@ -100,7 +100,119 @@ A full-stack shopping list manager built with React, TypeScript and Redux Toolki
 
 ---
 
-to be continued
+```
+backend/
+  .gitignore
+  db.json
+  package-lock.json
+  package.json
+  routes.json
+  server.js
+node_modules/
+public/
+src/
+  assets/
+  components/
+    body/
+      Body.module.css
+      Body.tsx
+    Category/
+      CategorySelect.module.css
+      CategorySelect.tsx
+    ConfirmModal/
+      ConfirmModal.module.css
+      ConfirmModal.tsx
+    Footer/
+      Footer.module.css
+      Footer.tsx
+    Login/
+      Login.module.css
+      Login.tsx
+    Navbar/
+      Navbar.module.css
+      Navbar.tsx
+    Profile/
+      EditProfileModal.tsx
+      PasswordForm.tsx
+      Profile.module.css
+      Profile.tsx
+      ProfileInfo.tsx
+    Register/
+      Register.module.css
+      Register.tsx
+    Search/
+      Search.module.css
+      Search.tsx
+    ShoppingList/
+      ItemCard/
+        ItemCard.module.css
+        ItemCard.tsx
+      ItemForm/
+        ItemForm.module.css
+        ItemForm.tsx
+      ListCard/
+        ListCard.module.css
+        ListCard.tsx
+      ListForm/
+        ListForm.module.css
+        ListForm.tsx
+      Search/
+        SearchSortBar.module.css
+        SearchSortBar.tsx
+  pages/
+    ListDetailpage/
+      ListDetailPage.module.css
+      ListDetailPage.tsx
+    LoginPage/
+      LoginPage.module.css
+      LoginPage.tsx
+    ProfilePage/
+      ProfilePage.module.css
+      ProcessPage.tsx
+    RegisterPage/
+      Registerpage.module.css
+      RegisterPage.tsx
+    EditProfilePage.tsx
+    HomePage.tsx
+    SearchResultsPage.tsx
+  schema/
+    authSchemas.tsx
+    itemSchema.tsx
+    listSchema.tsx
+    profileSchema.tsx
+  store/
+    api/
+      apiSlice.tsx
+    authSlice.tsx
+    hooks.tsx
+    store.tsx
+    uiSlice.tsx
+    useAuth.tsx
+    useUi.tsx
+  App.css
+  App.tsx
+  config.tsx
+  index.css
+  main.tsx
+  RouteWrapper.tsx
+.env
+.gitignore
+asset-attribution.txt
+bash.exe.stackdump
+db.json
+eslint.config.js
+index.html
+package-lock.json
+package.json
+README.md
+routes.json
+tsconfig.app.json
+tsconfig.json
+tsconfig.node.json
+vercel.json 
+vite.config.ts
+
+```
 
 ---
 
