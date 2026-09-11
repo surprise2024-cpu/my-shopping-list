@@ -235,22 +235,6 @@
         }
       ],
       "id": 6
-    },
-    {
-      "name": "S",
-      "userId": 3,
-      "createdAt": "2026-09-06T18:37:11.123Z",
-      "items": [
-        {
-          "id": "3ab79b8b-c304-4b98-ad95-48cfa6505f71",
-          "name": "chicken",
-          "quantity": 3,
-          "notes": "Beef should be priority",
-          "category": "meat",
-          "createdAt": "2026-09-06T19:09:56.028Z"
-        }
-      ],
-      "id": 7
     }
   ],
   "categories": [

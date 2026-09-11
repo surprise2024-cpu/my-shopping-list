@@ -119,7 +119,7 @@ export const Body: React.FC = () => {
   if (isLoading) {
 
     return (
-      <div className={styles['body-cont']}>
+      <div className={styles['body-cont-loading']}>
         <p>Loading....</p>
       </div>
     )

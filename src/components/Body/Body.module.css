@@ -12,6 +12,10 @@
     padding-top: 24px;
 }
 
+.body-cont-loading {
+    padding: 200px;
+}
+
 .body-text {
     padding-top: 10px;
     padding-bottom: 10px;
