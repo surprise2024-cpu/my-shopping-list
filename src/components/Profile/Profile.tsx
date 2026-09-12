@@ -20,7 +20,7 @@ type Panel = 'none' | 'settings' | 'notifications'
 export function Profile() {
 
   const { user, logout } = useAuth();
-  const [updateUser] = useUpdateUserMutation()
+  const [updateUser, { isLoading: isUploadingAvatar }] = useUpdateUserMutation()
   
   const { theme, toggleTheme, notificationsEnabled, toggleNotifications } = useUi()
 
@@ -63,7 +63,7 @@ export function Profile() {
 
     <div className={styles['profile-cont']}>
 
-      <label className={styles['avatar-upload']}>
+      <label className={`${styles['avatar-upload']} ${isUploadingAvatar ? styles['avatar-upload-disabled'] : ''}`} >
         { 
           user?.avatar ? (
             <img src={user.avatar} alt='Profile' className={styles['avatar-image']} />
@@ -72,11 +72,12 @@ export function Profile() {
             
           )
         }
-        <span className={styles['avatar-edit-badge']} >✎</span>
+        <span className={styles['avatar-edit-badge']} >{isUploadingAvatar ? '\u2026' : '\u270E'}</span>
         <input type='file'
           accept='image/*'
           onChange={handleAvatarChange}
           className={styles['avatar-input']}
+          disabled={isUploadingAvatar}
           />
       </label>
         <div className={styles['profile-menu-dropdown']}>

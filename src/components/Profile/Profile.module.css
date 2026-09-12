@@ -31,6 +31,12 @@
     margin-bottom: 16px;
 }
 
+.avatar-upload-disabled {
+    opacity: 0.6;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
 .avatar-image {
     width: 96px;
     height: 96px;
