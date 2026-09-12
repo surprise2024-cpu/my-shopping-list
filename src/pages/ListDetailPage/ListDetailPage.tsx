@@ -24,6 +24,7 @@ export function ListDetailsPage() {
     const [editItem, setEditItem] = useState<ShoppingListItem | null>(null)
     const [deleteTarget, setDeleteTarget] = useState<ShoppingListItem | null>(null)
     const [isDeleting, setIsDeleting] = useState(false)
+    const [isSharing, setIsSharing] = useState(false)
 
     const [searchParams, setSearchParams] = useSearchParams()
     const search = searchParams.get('search') ?? ''
@@ -88,12 +89,17 @@ export function ListDetailsPage() {
     const handleShare = async () => {
         const url = `${window.location.origin}/lists/${list.id}`
 
+        setIsSharing(true)
+
         try {
             await navigator.clipboard.writeText(url)
             toast.success('Link copied to clipboard')
         }
         catch {
             toast.error('Could not copy link')
+        }
+        finally {
+            setIsSharing(false)
         }
     }
 
@@ -172,8 +178,9 @@ export function ListDetailsPage() {
                     <button 
                         className={styles['share-btn']} 
                         onClick={handleShare}
+                        disabled={isSharing}
                     >
-                        <span>Share List</span>
+                        <span>{ isSharing ? 'Copying...' : 'Share List'}</span>
                     </button>
 
                     {
