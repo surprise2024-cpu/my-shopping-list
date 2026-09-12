@@ -15,44 +15,48 @@ export function ListForm({ defaultValues, submitLabel, onSubmit, onCancel}: List
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { errors, isSubmitting },
     } = useForm<ListFormValues>({
         resolver: zodResolver(listSchema),
         defaultValues,
     });
 
     return (
-        <div className={styles['overlay']} onClick={onCancel}>
+        <div className={styles['overlay']} onClick={ isSubmitting ? undefined : onCancel}>
             <div className={styles['form-cont']} onClick={(e) => e.stopPropagation()}>
-            <h2 className={styles['form-title']}>
-                {defaultValues ? 'Rename List' : 'Create a New List'}
-            </h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className={styles['list-name']}>
-                    <input 
-                        type="text" 
-                        {...register('name')}
-                        placeholder="List name"
-                    />
-                    {errors.name && <span className={styles['error-text']}>{errors.name.message}</span>}
-                </div>
-                <div className={styles['btn-cont']}>
-                    <button 
-                        type="submit"
-                        className={styles['submit-btn']} 
-                    >
-                        {submitLabel}
-                    </button>
-                    <button 
-                        type="button" 
-                        onClick={onCancel}
-                        className={styles['cancel-btn']}
-                    >
-                        Cancel
-                    </button>
-                </div>
-            </form>
-        </div>
+                <h2 className={styles['form-title']}>
+                    {submitLabel}
+                </h2>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className={styles['list-name']}>
+                        <input 
+                            type="text" 
+                            {...register('name')}
+                            placeholder="List name"
+                            autoFocus
+                            disabled={isSubmitting}
+                        />
+                        {errors.name && <span className={styles['error-text']}>{errors.name.message}</span>}
+                    </div>
+                    <div className={styles['btn-cont']}>
+                        <button 
+                            type="submit"
+                            className={styles['submit-btn']} 
+                            disabled={isSubmitting}
+                        >
+                            { isSubmitting ? 'Saving...' : submitLabel}
+                        </button>
+                        <button 
+                            type="button" 
+                            onClick={onCancel}
+                            className={styles['cancel-btn']}
+                            disabled={isSubmitting}
+                        >
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
         
     )

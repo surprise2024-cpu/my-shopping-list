@@ -20,7 +20,7 @@ export function ItemForm({ userId, defaultValues, submitLabel, onSubmit, onCance
     handleSubmit,
     setValue,
     watch,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<ItemFormValues>({
     resolver: zodResolver(itemSchema),
     defaultValues,
@@ -39,95 +39,97 @@ export function ItemForm({ userId, defaultValues, submitLabel, onSubmit, onCance
   }
 
   return (
-    <div className={styles['overlay']} onClick={onCancel} >
+    <div className={styles['overlay']} onClick={ isSubmitting ? undefined : onCancel} >
       <div className={styles['form-cont']} onClick={(e) => e.stopPropagation()}> 
 
-      <h2 className={styles['form-title']}>{submitLabel}</h2>
+        <h2 className={styles['form-title']}>{submitLabel}</h2>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
 
-        <div className={styles['field']}>
+          <div className={styles['field']}>
 
-          <input 
-            type="text"
-            {...register('name')}
-            placeholder="Item name"
-            className={styles['item-name']}
-            autoFocus
-          />
-
-          {errors.name && <span className={styles['error-text']}>{errors.name.message}</span>}
-       
-        </div>
-        <div className={styles['field']}>
-
-          <input 
-            type="number"
-            {...register('quantity', { valueAsNumber: true })}
-            placeholder="Quantity"
-            className={styles['item-qty']}
-          />
-
-          {errors.quantity && <span className={styles['error-text']}>{errors.quantity.message}</span>}
-        
-        </div>
-        <div className={styles['field']}>
-
-          <CategorySelect 
-            userId={userId}
-            value={watch('category') ?? ''}
-            onChange={(category) => setValue('category', category, { shouldValidate: true })}
+            <input 
+              type="text"
+              {...register('name')}
+              placeholder="Item name"
+              className={styles['item-name']}
+              autoFocus
             />
-          
-          {errors.category && <span className={styles['error-text']}>{errors.category.message}</span>}
-        
-        </div>
-        <div className={styles['field']}>
-          
-          <div>
 
-              <textarea 
-                className={styles['item-notes']}
-                placeholder="Notes (optional)"
-                {...register('notes')} 
-              />
+            {errors.name && <span className={styles['error-text']}>{errors.name.message}</span>}
+        
+          </div>
+          <div className={styles['field']}>
+
+            <input 
+              type="number"
+              {...register('quantity', { valueAsNumber: true })}
+              placeholder="Quantity"
+              className={styles['item-qty']}
+            />
+
+            {errors.quantity && <span className={styles['error-text']}>{errors.quantity.message}</span>}
           
           </div>
-        
-        </div>
-        <div className={styles['field']}>
-          <label className={styles['file-label']}>
-            {image ? 'Change Image' : 'Add Image'}
-            <input 
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              className={styles['item-image-input']}
-            />
-          </label>
+          <div className={styles['field']}>
+
+            <CategorySelect 
+              userId={userId}
+              value={watch('category') ?? ''}
+              onChange={(category) => setValue('category', category, { shouldValidate: true })}
+              />
+            
+            {errors.category && <span className={styles['error-text']}>{errors.category.message}</span>}
           
-          {image && <img className={styles['image-preview']} src={image} alt='Preview' width={80} height={80}/>}
-        
-        </div>
-        <div className={styles['btn-cont']}>
+          </div>
+          <div className={styles['field']}>
+            
+            <div>
+
+                <textarea 
+                  className={styles['item-notes']}
+                  placeholder="Notes (optional)"
+                  {...register('notes')} 
+                />
+            
+            </div>
           
-          <button
-            type="submit" 
-            className={styles['submit-btn']}
-          >
-            {submitLabel}
+          </div>
+          <div className={styles['field']}>
+            <label className={styles['file-label']}>
+              {image ? 'Change Image' : 'Add Image'}
+              <input 
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                className={styles['item-image-input']}
+              />
+            </label>
+            
+            {image && <img className={styles['image-preview']} src={image} alt='Preview' width={80} height={80}/>}
           
-          </button>
-          <button
-            type="button"
-            onClick={onCancel}
-            className={styles['cancel-btn']} 
-          >
-            Cancel
-          </button>
-        </div>
-      </form>
-    </div>
+          </div>
+          <div className={styles['btn-cont']}>
+            
+            <button
+              type="submit" 
+              className={styles['submit-btn']}
+              disabled={isSubmitting}
+            >
+              { isSubmitting ? 'Saving...' : submitLabel}
+            
+            </button>
+            <button
+              type="button"
+              onClick={onCancel}
+              className={styles['cancel-btn']} 
+              disabled={isSubmitting}
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
     
   )

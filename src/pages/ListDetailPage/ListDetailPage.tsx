@@ -23,6 +23,7 @@ export function ListDetailsPage() {
     const [showForm, setShowForm] = useState(false)
     const [editItem, setEditItem] = useState<ShoppingListItem | null>(null)
     const [deleteTarget, setDeleteTarget] = useState<ShoppingListItem | null>(null)
+    const [isDeleting, setIsDeleting] = useState(false)
 
     const [searchParams, setSearchParams] = useSearchParams()
     const search = searchParams.get('search') ?? ''
@@ -127,6 +128,7 @@ export function ListDetailsPage() {
 
     const handleDelete = async () => {
         if (!deleteTarget) return
+        setIsDeleting(true)
         try {
             const newItems = list.items.filter((item) => item.id !== deleteTarget.id)
             await updateList({ id: list.id, items: newItems }).unwrap()
@@ -137,6 +139,7 @@ export function ListDetailsPage() {
         }
         finally {
             setDeleteTarget(null)
+            setIsDeleting(false)
         }
     }
 
@@ -263,6 +266,7 @@ export function ListDetailsPage() {
                 message={`Are you sure that you want to delete ${deleteTarget?.name}`}
                 onConfirm={handleDelete}
                 onCancel={() => setDeleteTarget(null) }
+                isLoading={isDeleting}
             />
 
         </div>
