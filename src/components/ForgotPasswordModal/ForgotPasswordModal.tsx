@@ -48,7 +48,7 @@ export function ForgotPasswordModal({ onClose }: ForgotPasswordModalProps) {
 
     return (
         <div className={styles['modal-overlay']} onClick={isSubmitting ? undefined : onClose}>
-            <div className={styles['modal-overlay']} onClick={(e) => e.stopPropagation()}>
+            <div className={styles['modal']} onClick={(e) => e.stopPropagation()}>
                 <h3>Reset Your Password</h3>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className={styles['field']}>
@@ -86,7 +86,7 @@ export function ForgotPasswordModal({ onClose }: ForgotPasswordModalProps) {
                         <label>Confirm Password::</label>
                         <div className={styles['password-wrapper']}>
                             <input 
-                                type={showNew ? 'text' : 'password'}
+                                type={showConfirm ? 'text' : 'password'}
                                 {...register('confirmPassword')}
                                 placeholder="********"
                                 disabled={isSubmitting}
