@@ -18,7 +18,7 @@ import { useEffect } from 'react'
 
 function App() {
 
-  const {isAuthenticated} = useAuth(); 
+  const {isAuthenticated, isGuest} = useAuth(); 
 
   const { theme, notificationsEnabled } = useUi()
   useEffect(() => {

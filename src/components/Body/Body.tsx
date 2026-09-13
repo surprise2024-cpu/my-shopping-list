@@ -235,14 +235,6 @@ export const Body: React.FC = () => {
 
         </div>
       </div>
-
-      {
-        isGuest && (
-          <p className={styles['guest-banner']}>
-            You're browsing as aguest. Your lists are saved on this device only.
-          </p>
-        )
-      }
       
       {
         !hasLists ? (

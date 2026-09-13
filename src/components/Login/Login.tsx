@@ -23,6 +23,9 @@ export const SignIn: React.FC = () => {
 
     const handleGuestContinue = () => {
         continueAsGuest()
+        toast.info('You are browsing as a guest. Your lists are saved on this device only', {
+            autoClose: 6000,
+        })
         navigate('/')
     }
 
