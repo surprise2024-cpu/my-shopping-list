@@ -135,7 +135,7 @@ export const Body: React.FC = () => {
       } else {
         await addList({
           name: values.name,
-          userId: user.id,
+          userId: user?.id,
           createdAt: new Date().toISOString(),
           items: [],
         }).unwrap()
