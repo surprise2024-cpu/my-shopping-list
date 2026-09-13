@@ -37,7 +37,13 @@ export const SignIn: React.FC = () => {
             });
 
             const result = await res.json();
-            if (!res.ok) throw new Error(result || 'Invalid Details')
+            if (!res.ok) {
+                throw new Error(
+                    result.message || 
+                    result.error ||
+                    'Invalid email or password'
+                )
+            }
 
             dispatch(setCredentials({ token: result.accessToken, user: result.user }));
 
