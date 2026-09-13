@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import type { ShoppingList } from "../../../store/api/apiSlice";
 import styles from './ListCard.module.css'
 
@@ -9,6 +10,21 @@ interface ListCardProps {
 }
 
 export function ListCard({ list, onOpen, onEdit, onDelete }: ListCardProps) {
+
+    const [menuOpen, setMenuOpen] = useState(false)
+    const menuRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+                setMenuOpen(false)
+            }
+        }
+
+        document.addEventListener('mousedown', handleClickOutside)
+        return () => document.removeEventListener('mousedown', handleClickOutside)
+    }, [])
+
     return (
         <div className={styles['list-card']}>
             <h3>{list.name}</h3>
