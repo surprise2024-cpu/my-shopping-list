@@ -74,7 +74,7 @@ export function ForgotPasswordModal({ onClose }: ForgotPasswordModalProps) {
                                 type="button"
                                 className={styles['password-toggle']}
                                 onClick={() => setShowNew((p) => !p)}
-                                tabIndex={-1}
+                                
                             >
                                 {showNew ? '\u{1f648}' : '\u{1f441}\u{fe0f}'}
                             </button>
@@ -95,7 +95,7 @@ export function ForgotPasswordModal({ onClose }: ForgotPasswordModalProps) {
                                 type="button"
                                 className={styles['password-toggle']}
                                 onClick={() => setShowConfirm((p) => !p)}
-                                tabIndex={-1}
+                                
                             >
                                 {showConfirm ? '\u{1f648}' : '\u{1f441}\u{fe0f}'}
                             </button>

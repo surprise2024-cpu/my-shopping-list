@@ -78,7 +78,7 @@ export const SignIn: React.FC = () => {
                         <input 
                             type='email' 
                             {...register('email')} 
-                            placeholder='****@gmail.com'
+                            placeholder='example@gmail.com'
                         />
                         {
                             errors.email 
@@ -113,9 +113,8 @@ export const SignIn: React.FC = () => {
                                 className={styles['password-toggle']}
                                 onClick={() => setShowPassword((prev) => !prev)}
                                 aria-label={showPassword ? 'Hide password' : 'Show password'}
-                                tabIndex={-1}
                             >
-                                {showPassword ? '\u{1f648}' : '\u{1441}\u{fe0f}'}
+                                {showPassword ? '\u{1f648}' : '\u{1f441}\u{fe0f}'}
                             </button>
                         </div>
                         

@@ -103,7 +103,7 @@ export const SignUp: React.FC = () => {
                         <input 
                             type='email' 
                             {...register('email')}
-                            placeholder='*****@gmail.com'
+                            placeholder='example@gmail.com'
                         />
                         {errors.email && <p className={styles['error-text']}>{errors.email.message}</p>}
                     </div>
@@ -138,7 +138,7 @@ export const SignUp: React.FC = () => {
                                 className={styles['password-toggle']}
                                 onClick={() => setShowPassword((prev) => !prev)}
                                 aria-label={showPassword ? 'Hide password' : 'Show password'}
-                                tabIndex={-1}
+                                
                             >
                                 {showPassword ? '\u{1f648}' : '\u{1f441}\u{fe0f}'}
                             </button>
@@ -165,12 +165,12 @@ export const SignUp: React.FC = () => {
                                 className={styles['password-toggle']}
                                 onClick={() => setShowPassword((prev) => !prev)}
                                 aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
-                                tabIndex={-1}
+                                
                             >
                                 {showConfirmPassword ? '\u{1f648}' : '\u{1f441}\u{fe0f}'}
                             </button>
                         </div>
-                        
+
                         {errors.confirmPassword && <p className={styles['error-text']}>{errors.confirmPassword.message}</p>}
                     </div>
                 </div>
