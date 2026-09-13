@@ -22,11 +22,16 @@ const storedToken = localStorage.getItem('token')
 const storedUser = localStorage.getItem('user')
 const storedGuest = localStorage.getItem('isGuest') === 'true'
 
+// checks whether a user has a token and is stored in the database
+const hasAuthenticationSession = Boolean(
+    storedToken && storedUser
+)
+
 const initialState: AuthState = {
-    token: storedToken,
-    user: storedUser ? JSON.parse(storedUser) : null,
-    isAuthenticated: Boolean(storedToken),
-    isGuest: storedGuest,
+    token: hasAuthenticationSession ? storedToken : null,
+    user: hasAuthenticationSession && storedUser ? JSON.parse(storedUser) : null,
+    isAuthenticated: hasAuthenticationSession,
+    isGuest: !hasAuthenticationSession && storedGuest,
 }
 
 const authSlice = createSlice({
@@ -40,14 +45,40 @@ const authSlice = createSlice({
             state.user = action.payload.user
             state.token = action.payload.token
             state.isAuthenticated = true
+
+            // makes sure that a guest and a user cannot be the same
             state.isGuest = false
+
             localStorage.setItem('token', action.payload.token)
             localStorage.setItem('user', JSON.stringify(action.payload.user))
+
+            localStorage.removeItem('isGuest')
         },
 
         continueAsGuest: (state) => {
-            state.isGuest = true
-            localStorage.setItem('isGuest', 'true')
+
+            state.user = null;
+            state.token = null;
+            state.isAuthenticated = false;
+
+            state.isGuest = true;
+
+            localStorage.removeItem('token');
+            localStorage.remove('user');
+
+            localStorage.setItem('isGuest', 'true');
+
+        },
+
+        exitGuest: (state) => {
+
+            state.user = null;
+            state.token = null;
+
+            state.isAuthenticated = false;
+            state.isGuest = false
+
+            localStorage.removeItem('isGuest')
         },
 
         updateUser: (state, action: PayloadAction<AuthUser>) => {
@@ -67,5 +98,11 @@ const authSlice = createSlice({
     },
 })
 
-export const { setCredentials, updateUser, continueAsGuest ,logout } = authSlice.actions
+export const { 
+    setCredentials, 
+    updateUser, 
+    continueAsGuest,
+    exitGuest, 
+    logout } = authSlice.actions
+
 export default authSlice.reducer
