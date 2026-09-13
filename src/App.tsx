@@ -8,7 +8,7 @@ import { HomePage } from './pages/HomePage'
 import { SignInPage } from './pages/LoginPage/LoginPage'
 import { SignUpPage } from './pages/RegisterPage/RegisterPage'
 import { ToastContainer } from 'react-toastify'
-import { ProtectedRoute, PublicOnlyRoute } from './RouteWrappers'
+import { ProtectedRoute, GuestRoute, PublicOnlyRoute } from './RouteWrappers'
 import { ProfilePage } from './pages/ProfilePage/ProfilePage'
 import { ListDetailsPage } from './pages/ListDetailPage/ListDetailPage' 
 import { useAuth } from './store/useAuth'
@@ -35,21 +35,28 @@ function App() {
         
         <Routes>
 
-          <Route element={<PublicOnlyRoute isAuthenticated={isAuthenticated} isGuest={isGuest} />}>
-
-            <Route path='register' element={<SignUpPage />}/>
-            <Route path='login' element={<SignInPage />}/>
+          <Route element={<PublicOnlyRoute isAuthenticated={isAuthenticated} />}>
             
-
+            <Route path='register' element={<SignUpPage />} />
+            <Route path='login' element={<SignInPage />}/>
           </Route>
 
-          <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} isGuest={isGuest} />}>
+          
+          
+          <Route element={<GuestRoute isAuthenticated={isAuthenticated} isGuest={isGuest} />}>
             <Route index element = {<HomePage />} />
-            <Route path='profile' element = {<ProfilePage />} />
             <Route path='lists/:id' element={<ListDetailsPage />} />
             <Route path='search' element={<SearchResultsPage />} />
+
+          </Route>
+
+          <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
+         
+            <Route path='profile' element = {<ProfilePage />} />
             
           </Route>
+
+          
 
           
         </Routes>

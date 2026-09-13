@@ -5,13 +5,25 @@ interface RouteWrapperProps {
     isGuest?: boolean
 }
 
-export const ProtectedRoute = ({ isAuthenticated, isGuest }: RouteWrapperProps) => {
-
-    return (isAuthenticated || isGuest) ? <Outlet /> : <Navigate to='/login' replace/>;
+export const PublicOnlyRoute = ({
+    isAuthenticated
+}: RouteWrapperProps) => {
+    return !isAuthenticated ? <Outlet /> : <Navigate to='/' replace />
 }
 
-export const PublicOnlyRoute = ({ isAuthenticated, isGuest }: RouteWrapperProps) => {
+export const ProtectedRoute = ({ 
+    isAuthenticated 
+}: RouteWrapperProps) => {
 
-    return (!isAuthenticated && !isGuest) ? <Outlet /> : <Navigate to='/' replace/>;
+    return isAuthenticated ? <Outlet /> : <Navigate to='/login' replace/>;
 }
+
+export const GuestRoute = ({ 
+    isAuthenticated, 
+    isGuest
+}: RouteWrapperProps) => {
+
+    return  (isAuthenticated || isGuest) ? <Outlet /> : <Navigate to='/login' replace/>;
+}
+
 

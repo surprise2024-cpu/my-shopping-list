@@ -64,7 +64,7 @@ const authSlice = createSlice({
             state.isGuest = true;
 
             localStorage.removeItem('token');
-            localStorage.remove('user');
+            localStorage.removeItem('user');
 
             localStorage.setItem('isGuest', 'true');
 
