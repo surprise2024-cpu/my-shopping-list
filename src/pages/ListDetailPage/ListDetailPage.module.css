@@ -4,8 +4,8 @@
     align-items: center;
     width: 100%;
     box-sizing: border-box;
-    padding: 24px 20px 60px;
-    gap: 32px;
+    padding: 20px 20px 32px;
+    gap: 20px;
 }
 
 .list-title {
@@ -76,7 +76,7 @@
 .status-text {
     color: #000000;
     font-size: 15px;
-    margin: 20px 0;
+    margin: 6px 0;
 }
 
 .item-grid {
@@ -99,8 +99,8 @@
 }
 
 .empty-image img {
-    width: 300px;
-    height: 300px;
+    width: 180px;
+    height: 180px;
 }
 
 @media (max-width: 480px) {

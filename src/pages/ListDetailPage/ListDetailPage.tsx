@@ -251,21 +251,26 @@ export function ListDetailsPage() {
             
             {list.items.length > 0 && filteredItems.length === 0 && <p className={styles['status-text']}>No items match your search. Try again</p>}
 
-            <div className={styles['item-grid']}>
-                {
-                    filteredItems.map((item) => (
-                        <ItemCard
-                            key={item.id}
-                            item={item}
-                            onEdit={() => {
-                                setEditItem(item)
-                                setShowForm(true)
-                            }}
-                            onDelete={() => setDeleteTarget(item)}
-                        />
-                    ))
-                }
-            </div>
+            {
+                filteredItems.length > 0 && (
+                    <div className={styles['item-grid']}>
+                        {
+                            filteredItems.map((item) => (
+                                <ItemCard
+                                    key={item.id}
+                                    item={item}
+                                    onEdit={() => {
+                                        setEditItem(item)
+                                        setShowForm(true)
+                                    }}
+                                    onDelete={() => setDeleteTarget(item)}
+                                />
+                            ))
+                        }
+                    </div>
+                )
+            }
+            
 
             <ConfirmModal 
                 isOpen={deleteTarget !== null}
