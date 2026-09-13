@@ -9,10 +9,14 @@ import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { setCredentials } from '../../store/authSlice';
 import { API_BASE_URL } from '../../config';
+import { ForgotPasswordModal } from '../ForgotPasswordModal/ForgotPasswordModal';
 
 export const SignIn: React.FC = () => {
 
     const dispatch = useDispatch();
+    const [showPassword, setShowPassword] = useState(false)
+    const [showForgotPassword, setShowForgotPassword] = useState(false)
+
 
     const {
         register, 
@@ -88,17 +92,35 @@ export const SignIn: React.FC = () => {
 
                     <div className={styles['field']}>
 
-                        <label>Password:</label>
-                        <input 
-                            type='password'
+                        <div className={styles['label-row']}>
+                            <label>Password: </label>
+                            <button
+                                type='button'
+                                className={styles['forgot-link']}
+                                onClick={() => setShowForgotPassword(true)}
+                            >
+                                Forgot password?
+                            </button>
+                        </div>
+                        <div className={styles['password-wrapper']}>
+                            <input 
+                            type={showPassword ? 'text' : 'password'}
                             {...register('password')}
                             placeholder='********'
                         />
+                        <button
+                                type='button'
+                                className={styles['password-toggle']}
+                                onClick={() => setShowPassword((prev) => !prev)}
+                                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                                tabIndex={-1}
+                            >
+                                {showPassword ? '\u{1f648}' : '\u{1441}\u{fe0f}'}
+                            </button>
+                        </div>
                         
                         {
-                            errors.password 
-                            && 
-                            <p className={styles['error-text']}>{errors.password.message}</p>
+                            errors.password && <p className={styles['error-text']}>{errors.password.message}</p>
                         }
 
                     </div>
@@ -128,13 +150,15 @@ export const SignIn: React.FC = () => {
                             className={styles['link']} 
                         >
 
-                            Register
+                            Create an account
 
                         </NavLink>
                     </p>
                 </div>
             </div>
         </form>
+
+        {showForgotPassword && <ForgotPasswordModal onClose={() => setShowForgotPassword(false)} />}
     </div>
   )
 }
