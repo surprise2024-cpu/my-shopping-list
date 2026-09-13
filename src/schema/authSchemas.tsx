@@ -27,11 +27,11 @@ export const signUpSchema = z.object({
 export const forgotPasswordSchema = z.object({
     email: z.string().email('Invalid email address'),
     newPassword: z.string().min(6, 'Password must at least be 6 characters long'),
-    consfirmPasword: z.string(),
-}).refine((data) => data.newPassword === data.consfirmPasword, {
+    confirmPassword: z.string(),
+}).refine((data) => data.newPassword === data.confirmPassword, {
     message: 'Passwords do not match',
     path: ['confirmPassword'],
 })
 
 export type signUpFormData = z.infer<typeof signUpSchema>;
-export type ForgotPasswordForm = z.infer<typeof forgotPasswordSchema>
+export type ForgotPasswordFormData = z.infer<typeof forgotPasswordSchema>
