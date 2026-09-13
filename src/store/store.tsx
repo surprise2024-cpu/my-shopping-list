@@ -3,12 +3,14 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import { apiSlice } from "./api/apiSlice";
 import authReducer from './authSlice';
 import uiReducer from "./uiSlice";
+import guestReducer from './guestSlice'
 
 
 export const store = configureStore({
     reducer: {
         auth: authReducer,
         ui: uiReducer,
+        guest: guestReducer,
         [apiSlice.reducerPath]: apiSlice.reducer,
     },
     middleware: (getDefaultMiddleware) => 

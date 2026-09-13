@@ -90,6 +90,19 @@
     margin: 0 auto;
 }
 
+.guest-banner {
+    width: 100%;
+    max-width: 600px;
+    margin: 12px auto 0;
+    padding: 10px 16px;
+    background-color: #fff8e1;
+    border: 1px solid #ffe082;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #7a5c00;
+    text-align: center;
+}
+
 @media (max-width: 480px) {
     .body-image img {
         width: 220px;

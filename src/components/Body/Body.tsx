@@ -14,26 +14,55 @@ import {
 import type { ShoppingList } from '../../store/api/apiSlice'
 import { useNavigate, useSearchParams } from 'react-router'
 import { useAuth } from '../../store/useAuth'
+
 import type { ListFormValues } from '../../schema/listSchema'
 import { toast } from 'react-toastify'
 import { ListCard } from '../ShoppingList/ListCard/ListCard'
 import { ListForm } from '../ShoppingList/ListForm/ListForm'
 import { ConfirmModal } from '../ConfirmModal/ConfirmModal'
 import { SearchSortBar } from '../ShoppingList/Search/SearchSortBar'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { addGuestList, deleteGuestList, updateGuestList } from '../../store/guestSlice'
 
 export const Body: React.FC = () => {
 
-  const { user } = useAuth()
+  const { user, isGuest } = useAuth()
+
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
 
   const [searchParams, setSearchParams] = useSearchParams()
   const search = searchParams.get('search') ?? ''
   const sort = searchParams.get('sort') ?? ''
 
-  const { data: lists, isLoading } = useGetListsQuery(
+  const { data: fetchedLists, isLoading } = useGetListsQuery(
     { userId: user?.id ?? 0, search: search || undefined, sort: sort || undefined },
-    { skip: !user }
+    { skip: !user || isGuest }
   )
+
+  const guestLists = useAppSelector((state) => state.guest.lists);
+
+  const lists = React.useMemo(() => {
+    if (!isGuest) return fetchedLists
+
+    let result = guestLists
+
+    if (search) {
+      const q = search.toLowerCase()
+      result = result.filter((l) => l.name.toLowerCase().includes(q))
+    }
+
+    if (sort) {
+      const [field, order] = sort.split(':') as [keyof ShoppingList, 'asc' | 'desc']
+      result = [...result].sort((a, b) => {
+        const cmp = String(a[field] ?? '').localeCompare(String(b[field] ?? ''))
+        return order === 'desc' ? -cmp : cmp
+      })
+    }
+
+    return result;
+
+  }, [isGuest, fetchedLists, guestLists, search, sort])
 
   const [ addList ] = useAddListMutation()
   const [ updateList ] = useUpdateListMutation()
@@ -44,7 +73,7 @@ export const Body: React.FC = () => {
   const [deleteTarget, setDeleteTarget] = useState<ShoppingList | null>(null)
   const [isDeleting, setIsDeleting] = useState(false)
 
-  if (!user) return null
+  if (!user && !isGuest) return null
 
   const openAddForm = () => {
     setEditingList(null)
@@ -76,6 +105,27 @@ export const Body: React.FC = () => {
   }
 
   const handleSubmit= async (values: ListFormValues) => {
+
+    if (isGuest) {
+      try {
+        if (editingList) {
+          dispatch(updateGuestList({ id: editingList.id, name: values.name }))
+          toast.success('List renamed successfully')
+        } else {
+          dispatch(addGuestList({ name: values.name }))
+          toast.success('List created successfully')
+        }
+
+        setShowForm(false)
+        setEditingList(null)
+
+      } catch {
+        toast.error('Something went wrong. Please try again.')
+      }
+
+      return;
+    }
+
     try {
       if (editingList) {
         await updateList({ id: editingList.id, name: values.name }).unwrap()
@@ -102,16 +152,24 @@ export const Body: React.FC = () => {
   }
 
   const handleDelete = async () => {
+
     if (!deleteTarget) return
+
+    if (isGuest) {
+      dispatch(deleteGuestList(deleteTarget.id))
+      toast.success('List deleted successfully')
+      setDeleteTarget(null)
+      return
+    }
 
     setIsDeleting(true)
     try {
       await deleteList(deleteTarget.id).unwrap()
-      toast.success('List deleted')
+      toast.success('List deleted successfully')
       setDeleteTarget(null)
     } 
     catch {
-      toast.error('Could not delete list')
+      toast.error('List could not be deleted. Try Again.')
     }
     finally {
       setDeleteTarget(null)
@@ -119,7 +177,7 @@ export const Body: React.FC = () => {
     } 
   }
 
-  if (isLoading) {
+  if (isLoading && !isGuest) {
 
     return (
       <div className={styles['body-cont-loading']}>
@@ -177,7 +235,14 @@ export const Body: React.FC = () => {
 
         </div>
       </div>
-      
+
+      {
+        isGuest && (
+          <p className={styles['guest-banner']}>
+            You're browsing as aguest. Your lists are saved on this device only.
+          </p>
+        )
+      }
       
       {
         !hasLists ? (
