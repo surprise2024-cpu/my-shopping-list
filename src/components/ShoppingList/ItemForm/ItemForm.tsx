@@ -47,7 +47,7 @@ export function ItemForm({ userId, defaultValues, submitLabel, onSubmit, onCance
         <form onSubmit={handleSubmit(onSubmit)}>
 
           <div className={styles['field']}>
-
+            <label>Item Name: </label>
             <input 
               type="text"
               {...register('name')}
@@ -60,7 +60,7 @@ export function ItemForm({ userId, defaultValues, submitLabel, onSubmit, onCance
         
           </div>
           <div className={styles['field']}>
-
+            <label>Quantity: </label>
             <input 
               type="number"
               {...register('quantity', { valueAsNumber: true })}
@@ -72,7 +72,7 @@ export function ItemForm({ userId, defaultValues, submitLabel, onSubmit, onCance
           
           </div>
           <div className={styles['field']}>
-
+            <label>Category: </label>
             <CategorySelect 
               userId={userId}
               value={watch('category') ?? ''}
@@ -83,7 +83,7 @@ export function ItemForm({ userId, defaultValues, submitLabel, onSubmit, onCance
           
           </div>
           <div className={styles['field']}>
-            
+            <label>Notes: </label>
             <div>
 
                 <textarea 
