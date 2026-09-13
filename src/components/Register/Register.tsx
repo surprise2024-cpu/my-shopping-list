@@ -14,7 +14,7 @@ export const SignUp: React.FC = () => {
 
     const dispatch = useDispatch();
     const [showPassword, setShowPassword] = useState(false)
-    const [showConfirmPassword, SetShowConfirmPassword] = useState(false)
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
     const {
         register,
@@ -36,14 +36,20 @@ export const SignUp: React.FC = () => {
             });
 
             const result = await response.json();
-            if (!response.ok) throw new Error(result || 'Sign Up Failed');
+            if (!response.ok) {
+                throw new Error(
+                    result?.message || 
+                    result?.error || 
+                    'Sign Up Failed'
+                );
+            }
 
             dispatch(setCredentials({ token: result.accessToken, user: result.user }));
 
             localStorage.setItem('token', result.accessToken);
             localStorage.setItem('user', JSON.stringify(result.user)); 
             
-            toast.success('Successful registered!')
+            toast.success('Successfully registered!')
 
         }
         catch (error: unknown) {
@@ -129,7 +135,7 @@ export const SignUp: React.FC = () => {
 
                         <div className={styles['password-wrapper']}>
                             <input 
-                                type='password' 
+                                type={showPassword ? 'text' : 'password'} 
                                 {...register('password')}
                                 placeholder='********'
                             />
@@ -163,7 +169,7 @@ export const SignUp: React.FC = () => {
                             <button 
                                 type='button'
                                 className={styles['password-toggle']}
-                                onClick={() => setShowPassword((prev) => !prev)}
+                                onClick={() => setShowConfirmPassword((prev) => !prev)}
                                 aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
                                 
                             >
