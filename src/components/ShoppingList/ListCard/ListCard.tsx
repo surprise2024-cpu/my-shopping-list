@@ -6,10 +6,11 @@ interface ListCardProps {
     list: ShoppingList;
     onOpen: () => void;
     onEdit: () => void;
+    onShare: () => void;
     onDelete: () => void;
 }
 
-export function ListCard({ list, onOpen, onEdit, onDelete }: ListCardProps) {
+export function ListCard({ list, onOpen, onEdit, onShare, onDelete }: ListCardProps) {
 
     const [menuOpen, setMenuOpen] = useState(false)
     const menuRef = useRef<HTMLDivElement>(null)
@@ -24,6 +25,21 @@ export function ListCard({ list, onOpen, onEdit, onDelete }: ListCardProps) {
         document.addEventListener('mousedown', handleClickOutside)
         return () => document.removeEventListener('mousedown', handleClickOutside)
     }, [])
+
+    const handleEdit = () => {
+        setMenuOpen(false)
+        onEdit()
+    }
+
+    const handleShare = () => {
+        setMenuOpen(false)
+        onShare()
+    }
+
+    const handleDelete = () => {
+        setMenuOpen(false)
+        onDelete()
+    }
 
     return (
         <div className={styles['list-card']}>
