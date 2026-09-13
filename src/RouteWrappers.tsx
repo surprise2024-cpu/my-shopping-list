@@ -2,15 +2,16 @@ import { Navigate, Outlet } from "react-router";
 
 interface RouteWrapperProps {
     isAuthenticated: boolean;
+    isGuest?: boolean
 }
 
-export const ProtectedRoute = ({ isAuthenticated }: RouteWrapperProps) => {
+export const ProtectedRoute = ({ isAuthenticated, isGuest }: RouteWrapperProps) => {
 
-    return isAuthenticated ? <Outlet /> : <Navigate to='/login' replace/>;
+    return (isAuthenticated || isGuest) ? <Outlet /> : <Navigate to='/login' replace/>;
 }
 
-export const PublicOnlyRoute = ({ isAuthenticated }: RouteWrapperProps) => {
+export const PublicOnlyRoute = ({ isAuthenticated, isGuest }: RouteWrapperProps) => {
 
-    return !isAuthenticated ? <Outlet /> : <Navigate to='/' replace/>;
+    return (!isAuthenticated && !isGuest) ? <Outlet /> : <Navigate to='/' replace/>;
 }
 

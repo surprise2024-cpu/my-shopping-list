@@ -35,7 +35,7 @@ function App() {
         
         <Routes>
 
-          <Route element={<PublicOnlyRoute isAuthenticated={isAuthenticated} />}>
+          <Route element={<PublicOnlyRoute isAuthenticated={isAuthenticated} isGuest={isGuest} />}>
 
             <Route path='register' element={<SignUpPage />}/>
             <Route path='login' element={<SignInPage />}/>
@@ -43,7 +43,7 @@ function App() {
 
           </Route>
 
-          <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
+          <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} isGuest={isGuest} />}>
             <Route index element = {<HomePage />} />
             <Route path='profile' element = {<ProfilePage />} />
             <Route path='lists/:id' element={<ListDetailsPage />} />
