@@ -34,7 +34,7 @@ export function SearchSortBar({
                     <img src={searchIcon} alt='search' width={22} height={22}/>
 
                 </div>
-                <div className={styles['search-input']}>
+                <div className={styles['search-input-wrapper']}>
 
                     <input 
                         className={styles['search-input']}
