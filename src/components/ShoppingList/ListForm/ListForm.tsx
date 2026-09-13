@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { listSchema, type ListFormValues } from "../../../schema/listSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styles from './ListForm.module.css'
+import { X } from "lucide-react";
 
 interface ListFormProps {
     defaultValues?: Partial<ListFormValues>;
@@ -24,6 +25,16 @@ export function ListForm({ defaultValues, submitLabel, onSubmit, onCancel}: List
     return (
         <div className={styles['overlay']} onClick={ isSubmitting ? undefined : onCancel}>
             <div className={styles['form-cont']} onClick={(e) => e.stopPropagation()}>
+
+                <button 
+                    type="button"
+                    className={styles['close-btn']}
+                    onClick={onCancel}
+                    aria-label='Close form'
+                    >
+                    <X size={18} />
+                </button>
+
                 <h2 className={styles['form-title']}>
                     {submitLabel}
                 </h2>

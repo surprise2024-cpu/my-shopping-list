@@ -11,6 +11,7 @@
 }
 
 .form-cont {
+    position: relative;
     background-color: #fff;
     border-radius: 12px;
     padding: 32px;
@@ -123,4 +124,35 @@
 
 .cancel-btn:hover {
     background-color: #f5f5f5;
+}
+
+.close-btn {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: none;
+    border: none;
+
+    color: #555555;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.close-btn:hover {
+    background-color: #f3f3f3;
+    color: #000000;
+}
+
+.close-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }

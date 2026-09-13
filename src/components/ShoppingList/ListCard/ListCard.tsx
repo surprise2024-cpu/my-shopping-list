@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { ShoppingList } from "../../../store/api/apiSlice";
 import styles from './ListCard.module.css'
+import { X } from "lucide-react";
 
 interface ListCardProps {
     list: ShoppingList;
@@ -8,9 +9,10 @@ interface ListCardProps {
     onEdit: () => void;
     onShare: () => void;
     onDelete: () => void;
+    onCancel: () => void;
 }
 
-export function ListCard({ list, onOpen, onEdit, onShare, onDelete }: ListCardProps) {
+export function ListCard({ list, onOpen, onEdit, onShare, onCancel, onDelete }: ListCardProps) {
 
     const [menuOpen, setMenuOpen] = useState(false)
     const menuRef = useRef<HTMLDivElement>(null)
@@ -43,6 +45,7 @@ export function ListCard({ list, onOpen, onEdit, onShare, onDelete }: ListCardPr
 
     return (
         <div className={styles['list-card']}>
+
             <h3>{list.name}</h3>
             
             <p>{list.items.length} item{list.items.length === 1 ? '' : 's'}</p>
