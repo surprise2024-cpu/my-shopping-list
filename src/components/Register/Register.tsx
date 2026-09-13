@@ -9,6 +9,7 @@ import { toast } from 'react-toastify'
 import { useDispatch } from 'react-redux'
 import { setCredentials } from '../../store/authSlice'
 import { API_BASE_URL } from '../../config'
+import { Eye, EyeOff } from 'lucide-react'
 
 export const SignUp: React.FC = () => {
 
@@ -28,6 +29,11 @@ export const SignUp: React.FC = () => {
     const onSubmit = async (data: signUpFormData) => {
 
         try {
+
+            // To stop the confirmed password from being stored
+            {/*const {
+                ...registrationData
+            } = data*/}
 
             const response = await fetch(`${API_BASE_URL}/register`, {
                 method: 'POST',
@@ -138,6 +144,8 @@ export const SignUp: React.FC = () => {
                                 type={showPassword ? 'text' : 'password'} 
                                 {...register('password')}
                                 placeholder='********'
+                                autoComplete='new-password'
+
                             />
                             <button 
                                 type='button'
@@ -157,7 +165,7 @@ export const SignUp: React.FC = () => {
 
                     <div className={styles['field']}>
 
-                        <label>Confirm password:</label>
+                        <label>Confirm password: </label>
 
                         <div className={styles['password-wrapper']}>
 
@@ -165,6 +173,7 @@ export const SignUp: React.FC = () => {
                                 type={ showConfirmPassword ? 'text' : 'password'}
                                 {...register('confirmPassword')}
                                 placeholder='********'
+                                autoComplete='new-password'
                             />
                             <button 
                                 type='button'
