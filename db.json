@@ -138,6 +138,15 @@
       "phone": "0123456789",
       "confirmPassword": "testpass123",
       "id": 15
+    },
+    {
+      "email": "jackaku@gmail.com",
+      "password": "$2a$10$DCdB0TIJrVxFMYiD5DpAXeHWUwboXtDyGWWLJme3Z4SkJs48rqvXW",
+      "name": "jack",
+      "surname": "aku",
+      "phone": "0124567896",
+      "confirmPassword": "zixHM4E$#JC8njU",
+      "id": 16
     }
   ],
   "lists": [
