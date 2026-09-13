@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import styles from './Login.module.css';
 import { NavLink } from 'react-router';
@@ -47,7 +47,7 @@ export const SignIn: React.FC = () => {
             toast.success('Successfully logged in!')
         }
         catch (err: unknown) {
-            const errMsg = (err as { response?: { data?: string } }).response?.data || 'Failed to Login. Please try again.';
+            const errMsg = err instanceof Error ? err.message : 'Failed to Login. Please try again.';
             toast.error(errMsg);
         }
 
