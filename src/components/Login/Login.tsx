@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 
+import { useAuth } from '../../store/useAuth';
 import styles from './Login.module.css';
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
 import { signInSchema, type signInFormData } from '../../schema/authSchemas';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -17,6 +18,13 @@ export const SignIn: React.FC = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [showForgotPassword, setShowForgotPassword] = useState(false)
 
+    const { continueAsGuest } = useAuth();
+    const navigate = useNavigate();
+
+    const handleGuestContinue = () => {
+        continueAsGuest()
+        navigate('/')
+    }
 
     const {
         register, 
@@ -159,6 +167,13 @@ export const SignIn: React.FC = () => {
 
                         </NavLink>
                     </p>
+                    <button 
+                        type='button'
+                        className={styles['guest-btn']}
+                        onClick={handleGuestContinue}
+                    >
+                        Continue as Guest
+                    </button>
                 </div>
             </div>
         </form>

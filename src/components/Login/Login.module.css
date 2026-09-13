@@ -196,3 +196,14 @@
     color: #555555;
 }
 
+.guest-btn {
+    margin-top: 10px;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 13px;
+    color: #666666;
+    cursor: pointer;
+    display: block;
+    text-decoration: underline;
+}
