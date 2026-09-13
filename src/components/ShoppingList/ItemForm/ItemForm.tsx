@@ -3,6 +3,7 @@ import { itemSchema, type ItemFormValues } from "../../../schema/itemSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styles from './ItemForm.module.css'
 import { CategorySelect } from "../../Category/CategorySelect";
+import { X } from "lucide-react";
 
 
 interface ItemFormProps {
@@ -41,6 +42,16 @@ export function ItemForm({ userId, defaultValues, submitLabel, onSubmit, onCance
   return (
     <div className={styles['overlay']} onClick={ isSubmitting ? undefined : onCancel} >
       <div className={styles['form-cont']} onClick={(e) => e.stopPropagation()}> 
+
+        <button
+          type="button"
+          className={styles['close-btn']}
+          onClick={onCancel}
+          disabled={isSubmitting}
+          aria-label='Close item form'
+        >
+          <X size={18}/>
+        </button>
 
         <h2 className={styles['form-title']}>{submitLabel}</h2>
 
@@ -84,16 +95,14 @@ export function ItemForm({ userId, defaultValues, submitLabel, onSubmit, onCance
           </div>
           <div className={styles['field']}>
             <label>Notes: </label>
-            <div>
-
-                <textarea 
-                  className={styles['item-notes']}
-                  placeholder="Notes (optional)"
-                  {...register('notes')} 
-                />
-            
-            </div>
           
+
+            <textarea 
+              className={styles['item-notes']}
+              placeholder="Notes (optional)"
+              {...register('notes')} 
+            />
+            
           </div>
           <div className={styles['field']}>
             <label className={styles['file-label']}>
