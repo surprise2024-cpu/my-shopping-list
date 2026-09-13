@@ -141,13 +141,7 @@ export const Navbar = () => {
                                     Profile
                                 </NavLink>
 
-                                <button 
-                                    className={styles.link}
-                                    onClick={handleLogout}
-                                    style={{ background: 'none', border: 'none', font: 'inherit' }}    
-                                >
-                                    Logout
-                                </button>
+                                
                             </>
                         )
                     }
