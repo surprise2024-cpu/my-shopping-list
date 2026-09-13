@@ -36,10 +36,21 @@
     flex: 0 0 auto;
 }
 
+.btn-comb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.btn-icon img{
+    width: 25px;
+    height: 25px;
+}
+
 .share-btn,
 .add-item-btn {
     height: 44px;
-    width: 120px;
     font-size: 14px;
     border-radius: 30px;
     padding: 10px 20px;

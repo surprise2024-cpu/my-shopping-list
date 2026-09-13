@@ -235,6 +235,13 @@
         }
       ],
       "id": 6
+    },
+    {
+      "name": "groceries",
+      "userId": 3,
+      "createdAt": "2026-09-13T18:25:05.258Z",
+      "items": [],
+      "id": 7
     }
   ],
   "categories": [

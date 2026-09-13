@@ -11,6 +11,7 @@ import { SearchSortBar } from "../../components/ShoppingList/Search/SearchSortBa
 import styles from './ListDetailPage.module.css'
 
 import emptyState from '../../assets/shopping.png'
+import addIcon from '../../assets/add-button.png'
 
 export function ListDetailsPage() {
     const { id } = useParams()
@@ -192,7 +193,15 @@ export function ListDetailsPage() {
                                 setShowForm(true)
                                 
                             }}>
-                                <span>+ Add Item</span>
+                                <div className={styles['btn-comb']}>
+                                    <div className={styles['btn-icon']}>
+                                        <img src={addIcon} alt="Add icon" />
+                                    </div>
+                                    <div className={styles['btn-text']}>
+                                        <span>Add Item</span>
+                                    </div>
+                                </div>
+                                
                             </button>
                         ) : (
                             <p className={styles['readonly-text']}><em>You're viewing a shared list (read-only)</em></p>
@@ -240,8 +249,15 @@ export function ListDetailsPage() {
                                 setShowForm(true)
                                 
                             }}>
-                                <span>+ Add Item</span>
-                            </button>
+                                <div className={styles['btn-comb']}>
+                                    <div className={styles['btn-icon']}>
+                                        <img src={addIcon} alt="Add icon" />
+                                    </div>
+                                    <div className={styles['btn-text']}>
+                                        <span>Add Item</span>
+                                    </div>
+                                </div>
+                        </button>
                     </div>
 
                     

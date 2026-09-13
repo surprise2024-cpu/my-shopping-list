@@ -221,7 +221,7 @@ export const Body: React.FC = () => {
 
               <div className={styles['add-btn-icon']}>
 
-                <img src={addIcon} alt='empty state' />
+                <img src={addIcon} alt='add state' />
 
               </div>
               <div className={styles['add-btn-text']}>
