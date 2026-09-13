@@ -155,6 +155,18 @@ export const SignIn: React.FC = () => {
 
                     </div>
                 </div>
+                <div className={styles['guest-section']}>
+                    <div className={styles['divider']}>
+                        <span>OR</span>
+                    </div>
+                    <button 
+                        type='button'
+                        className={styles['guest-btn']}
+                        onClick={handleGuestContinue}
+                    >
+                        Continue as Guest
+                    </button>
+                </div>
                 <div className={styles['field-redirect']}>
 
                     <p className={styles['redirect-text']}>
@@ -170,13 +182,7 @@ export const SignIn: React.FC = () => {
 
                         </NavLink>
                     </p>
-                    <button 
-                        type='button'
-                        className={styles['guest-btn']}
-                        onClick={handleGuestContinue}
-                    >
-                        Continue as Guest
-                    </button>
+                    
                 </div>
             </div>
         </form>
