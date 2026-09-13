@@ -51,6 +51,31 @@ server.use(middlewares)
 
 server.use(express.json({ type: () => true }))
 
+server.post('/forgot-password', (req, res) => {
+
+    const {email, newPassword} = req.body
+
+    if (!email || !newPassword) {
+        return res.status(400).json('Email and new password are required')
+    }
+
+    // checks to see if the user is actually in the server or not
+    const user = server.db.get('users').find({ email }).value()
+
+    if(!user) {
+        return res.status(404).jsonp('No account found with that email')
+    }
+
+    const hashed = bcrypt.hashSync(newPassword, 10)
+
+    server.db.get('users')
+        .find({ email })
+        .assign({ password: hashed })
+        .write()
+        
+    return res.status(200).jsonp({ message: 'Password updated successfully' })
+})
+
 server.use(auth) // adds authentication to the server
 server.use(router) // activates my db.jsonn  rest api
 

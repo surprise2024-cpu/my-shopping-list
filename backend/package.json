@@ -2,12 +2,14 @@
     "name": "shopping-list-backend",
     "version": "1.0.0",
     "scripts": {
-        "start": "json-server-auth db.json --port $PORT --host 0.0.0.0 -r routes.json"
+        "start": "node server.js"
     },
     "dependencies": {
         "json-server": "0.17.4",
         "json-server-auth": "^2.1.0",
-        "express": "^4.22.2"
+        "express": "^4.22.2",
+        "cors": "^2.8.6",
+        "bcryptjs": "^2.4.3"
     },
     "overrides": {
         "jsonwebtoken": "9.0.3"
