@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { API_BASE_URL } from "../../config"
 import { toast } from "react-toastify"
 import styles from './ForgotPasswordModal.module.css'
+import { X } from "lucide-react"
 
 
 interface ForgotPasswordModalProps {
@@ -31,14 +32,20 @@ export function ForgotPasswordModal({ onClose }: ForgotPasswordModalProps) {
 
             const res = await fetch(`${API_BASE_URL}/forgot-password`, {
                 method: 'POST',
-                headers: {'content-type': 'application/json'},
+                headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ email: data.email, newPassword: data.newPassword }),
             })
 
             const result = await res.json()
-            if (!res.ok) throw new Error(typeof result === 'string' ? result : 'Could not reset password, please try again.')
+            if (!res.ok) {
+                throw new Error(
+                    typeof result === 'string'
+                    ? result 
+                    : result?.message ||
+                    result?.error ||
+                    'Could not reset password, please try again.')}
 
-            toast.success('Password updated \u2024 you can log in now')
+            toast.success('Password updated. You can log in now.')
             onClose()
 
         } catch (err: unknown) {
@@ -49,6 +56,16 @@ export function ForgotPasswordModal({ onClose }: ForgotPasswordModalProps) {
     return (
         <div className={styles['modal-overlay']} onClick={isSubmitting ? undefined : onClose}>
             <div className={styles['modal']} onClick={(e) => e.stopPropagation()}>
+
+                <button 
+                    type="button"
+                    className={styles['close-btn']}
+                    onClick={onClose}
+                    disabled={isSubmitting}
+                >
+                    <X size={18} />
+                </button>
+
                 <h3>Reset Your Password</h3>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className={styles['field']}>
@@ -56,13 +73,13 @@ export function ForgotPasswordModal({ onClose }: ForgotPasswordModalProps) {
                         <input 
                             type="email"
                             {...register('email')}
-                            placeholder="****@gmail.com"
+                            placeholder="example@gmail.com"
                             disabled={isSubmitting}
                         />
                         {errors.email && <p className={styles['error-text']}>{errors.email.message}</p>}
                     </div>
                     <div className={styles['field']}>
-                        <label>New Password::</label>
+                        <label>New Password: </label>
                         <div className={styles['password-wrapper']}>
                             <input 
                                 type={showNew ? 'text' : 'password'}
@@ -83,7 +100,7 @@ export function ForgotPasswordModal({ onClose }: ForgotPasswordModalProps) {
                         {errors.newPassword && <p className={styles['error-text']}>{errors.newPassword.message}</p>}
                     </div>
                     <div className={styles['field']}>
-                        <label>Confirm Password::</label>
+                        <label>Confirm Password: </label>
                         <div className={styles['password-wrapper']}>
                             <input 
                                 type={showConfirm ? 'text' : 'password'}
@@ -94,7 +111,7 @@ export function ForgotPasswordModal({ onClose }: ForgotPasswordModalProps) {
                             <button 
                                 type="button"
                                 className={styles['password-toggle']}
-                                onClick={() => setShowConfirm((p) => !p)}
+                                onClick={() => setShowConfirm((prev) => !prev)}
                                 
                             >
                                 {showConfirm ? '\u{1f648}' : '\u{1f441}\u{fe0f}'}
