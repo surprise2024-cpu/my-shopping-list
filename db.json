@@ -157,6 +157,15 @@
       "phone": "0142583698",
       "confirmPassword": "123456789",
       "id": 17
+    },
+    {
+      "email": "mansick@gmail.com",
+      "password": "$2a$10$yvTGCibzarLKRHv5/L3uyeDt3COgHWK/UVroPE7WKQnWXtenOKlqS",
+      "name": "man",
+      "surname": "sick",
+      "phone": "0142583698",
+      "confirmPassword": "123456789",
+      "id": 18
     }
   ],
   "lists": [

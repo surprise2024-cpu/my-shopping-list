@@ -18,6 +18,8 @@ const middlewares = jsonServer.defaults()
 // Gives json-server-auth access to your database
 server.db = router.db
 
+console.log('FRONT_URL:', process.env.FRONTEND_URL)
+
 const allowedOrigins = [
     'http://localhost:5173',
     process.env.FRONTEND_URL
