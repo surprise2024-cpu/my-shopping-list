@@ -211,7 +211,7 @@
     max-width: 420px;
     max-height: 90vh;
     overflow-y: auto;
-    box-sizing: 0 10px 40px rhba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 40px rhba(0, 0, 0, 0.2);
     box-sizing: border-box;
 }
 
@@ -254,10 +254,14 @@
 .field {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
     margin-bottom: 16px;
 }
 
 .field label {
+    width: 100%;
+    text-align: left;
     font-size: 13px;
     color: #666666;
     margin-bottom: 6px;
@@ -278,7 +282,7 @@
 }
 
 .field input:focus {
-    border: #000000;
+    border-color: #000000;
 }
 
 .submit-btn {
@@ -301,5 +305,37 @@
 .submit-btn:disabled {
     opacity: 0.4;
     cursor: not-allowed;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 42px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: #666666;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+}
+
+.password-toggle:hover {
+    color: #000000;
 }
 
