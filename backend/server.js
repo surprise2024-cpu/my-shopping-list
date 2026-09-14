@@ -4,6 +4,8 @@ const express = require('express') // imports express, so the server understands
 const path = require('path') // imports Node.js built-in path modules, builds file paths safely.
 const cors = require('cors') // imports cors(cross-origin resource sharing), which controls which front end websites are allowed to communicate with the backend
 
+const bcrypt = require('bcryptjs')
+
 const server = jsonServer.create()
 
 // turns JSON file into API routes. 
@@ -16,14 +18,18 @@ const middlewares = jsonServer.defaults()
 // Gives json-server-auth access to your database
 server.db = router.db
 
+const allowedOrigins = [
+    'http://localhost:5173',
+    process.env.FRONTEND_URL
+].filter(Boolean)
+
+console.log('FRONT_URL:', process.env.FRONTEND_URL)
 // tells server to use cors(cross-origin resource sharing)
 server.use(cors({
     // starts the list of frontend addresses allowed to commmunicate with the backend
-    origin: [
-        'http://localhost:5173',
-        process.env.FRONTEND_URL
-    ],
-
+    origin:
+        allowedOrigins,
+    
     // sends credentials between frontend and backend
     credentials: true
 })) // Allow my local frontend and my deployed frontend to communicate with this backend

@@ -148,6 +148,15 @@
       "confirmPassword": "zixHM4E$#JC8njU",
       "id": 16,
       "cellNumber": "0123654789"
+    },
+    {
+      "email": "sickman@gmail.com",
+      "password": "$2a$10$6VSGgU0YXI2fEv7of4a79OlvkBJgT8/Hhf/w98IvOer159fMKd1Ke",
+      "name": "sick",
+      "surname": "man",
+      "phone": "0142583698",
+      "confirmPassword": "123456789",
+      "id": 17
     }
   ],
   "lists": [
