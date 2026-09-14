@@ -18,7 +18,7 @@ const middlewares = jsonServer.defaults()
 // Gives json-server-auth access to your database
 server.db = router.db
 
-console.log('ALLOWED ORIGINS:', allowedOrigins)
+
 
 const allowedOrigins = [
     'http://localhost:5173',
@@ -26,6 +26,7 @@ const allowedOrigins = [
 ].filter(Boolean)
 
 console.log('FRONT_URL:', process.env.FRONTEND_URL)
+console.log('ALLOWED ORIGINS:', allowedOrigins)
 // tells server to use cors(cross-origin resource sharing)
 server.use(cors({
     // starts the list of frontend addresses allowed to commmunicate with the backend
