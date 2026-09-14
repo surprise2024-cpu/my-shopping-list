@@ -1,4 +1,4 @@
-import { useParams, useSearchParams } from "react-router";
+import { useParams, useSearchParams, useNavigate } from "react-router";
 import { useAuth } from "../../store/useAuth";
 import { useGetListQuery, useUpdateListMutation, type ShoppingListItem } from "../../store/api/apiSlice";
 import { useMemo, useState } from "react";
@@ -12,13 +12,31 @@ import styles from './ListDetailPage.module.css'
 
 import emptyState from '../../assets/shopping.png'
 import addIcon from '../../assets/add-button.png'
+import { useAppSelector } from "../../store/hooks";
+import { ArrowLeft } from "lucide-react";
 
 export function ListDetailsPage() {
+
     const { id } = useParams()
     const listId = Number(id)
-    const { user } = useAuth()
+    const { user, isGuest } = useAuth()
 
-    const { data: list, isLoading, error } = useGetListQuery(listId, {skip: !listId })
+    const navigate = useNavigate();
+
+    const guestLists = useAppSelector(
+        (state) => state.guest.lists
+    );
+
+    const guestList = isGuest ? guestLists.find(
+        (list) => list.id === list.id
+    )
+    : undefined;
+
+    const { data: fetchedList, isLoading, error } = useGetListQuery(listId, {skip: !listId || isGuest || !user })
+
+    // user gets list from redux not api
+    const list = isGuest ? guestList : fetchedList
+
     const [updateList] = useUpdateListMutation()
 
     const [showForm, setShowForm] = useState(false)
@@ -78,14 +96,30 @@ export function ListDetailsPage() {
         return result
     }, [list, search, sort])
 
-    if (!user) return null
+    // (!user) return null
 
-    if(isLoading) return <p>Loading....</p>
+    if(isLoading && !isGuest) return <p>Loading....</p>
 
-    if (error || !list) return <p>List not found.</p>
+    if ((!isGuest && error) || !list) { 
+        return (
+            <div className={styles['not-found']}>
+                <p>List not found.</p>
+
+                <button
+                    type="button"
+                    className={styles['back-btn']}
+                    onClick={() => navigate('/')}
+                >
+                    <ArrowLeft size={18} />
+                    <span>Back to List</span>
+                </button>
+            </div>
+            
+        )
+    }
 
 
-    const isOwner = list.userId === user.id
+    const isOwner = isGuest ? true : list.userId === user?.id
 
     const handleShare = async () => {
         const url = `${window.location.origin}/lists/${list.id}`
@@ -152,6 +186,16 @@ export function ListDetailsPage() {
 
     return (
         <div className={styles['page-cont']}>
+
+            <button
+                type="button"
+                className={styles['back-btn']}
+                onClick={() => navigate('/')}
+            >
+                <ArrowLeft size={18} />
+                <span>Back to List</span>
+            </button>
+
             <h1 className={styles['list-title']}>{list.name}</h1>
 
             <div className={styles['control-row']}>
@@ -213,7 +257,8 @@ export function ListDetailsPage() {
             {
                 showForm && (
                     <ItemForm 
-                        userId={user.id}
+                        // takes guests users who have no account
+                        userId={user?.id ?? 0}
                         defaultValues={editItem ?? undefined}
                         submitLabel={editItem ? 'Save Changes' : 'Add Item'}
                         onSubmit={handleSubmit}

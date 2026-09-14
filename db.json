@@ -251,6 +251,13 @@
       "createdAt": "2026-09-13T18:25:05.258Z",
       "items": [],
       "id": 7
+    },
+    {
+      "name": "groceries",
+      "userId": 16,
+      "createdAt": "2026-09-14T04:30:50.792Z",
+      "items": [],
+      "id": 8
     }
   ],
   "categories": [
