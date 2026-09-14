@@ -141,12 +141,13 @@
     },
     {
       "email": "jackaku@gmail.com",
-      "password": "$2a$10$DCdB0TIJrVxFMYiD5DpAXeHWUwboXtDyGWWLJme3Z4SkJs48rqvXW",
+      "password": "$2a$10$8DKl9Fu19HatY3AljZwxmOD9iO.XiCsV93Pfa4k0T0mDM1Ham7dRu",
       "name": "jack",
       "surname": "aku",
       "phone": "0124567896",
       "confirmPassword": "zixHM4E$#JC8njU",
-      "id": 16
+      "id": 16,
+      "cellNumber": "0123654789"
     }
   ],
   "lists": [

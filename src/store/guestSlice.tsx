@@ -1,6 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { Category, ShoppingList, ShoppingListItem } from "./api/apiSlice";
-import { listSchema } from "../schema/listSchema";
 
 
 interface GuestState {
@@ -9,7 +8,7 @@ interface GuestState {
 }
 
 const GUEST_LISTS_KEY = 'guest_lists'
-const GUEST_CATEGORIES_KEY = 'guess_categories'
+const GUEST_CATEGORIES_KEY = 'guest_categories'
 
 const loadGuestLists = (): ShoppingList[] => {
     try {
@@ -51,7 +50,7 @@ const guestSlice = createSlice({
                 id: Date.now(),
                 name: action.payload.name,
                 userId: 0, // mock value, guests have no user id
-                createdAt: new Date().toString(),
+                createdAt: new Date().toISOString(),
                 items: [],
 
             }
@@ -65,7 +64,7 @@ const guestSlice = createSlice({
             const list = state.lists.find((l) => l.id === action.payload.id)
             if (!list) return
             if (action.payload.name !== undefined) list.name = action.payload.name
-            if (action.payload.items !== undefined) listSchema.items = action.payload.items
+            if (action.payload.items !== undefined) list.items = action.payload.items
             persistLists(state.lists)
         },
 

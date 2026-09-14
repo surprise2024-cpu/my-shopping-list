@@ -12,16 +12,20 @@ import styles from './ListDetailPage.module.css'
 
 import emptyState from '../../assets/shopping.png'
 import addIcon from '../../assets/add-button.png'
-import { useAppSelector } from "../../store/hooks";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { ArrowLeft } from "lucide-react";
+import { updateGuestList } from "../../store/guestSlice";
+
 
 export function ListDetailsPage() {
 
-    const { id } = useParams()
-    const listId = Number(id)
-    const { user, isGuest } = useAuth()
+    const { id } = useParams();
+    const listId = Number(id);
+    const { user, isGuest } = useAuth();
 
     const navigate = useNavigate();
+
+    const dispatch = useAppDispatch();
 
     const guestLists = useAppSelector(
         (state) => state.guest.lists
@@ -111,7 +115,7 @@ export function ListDetailsPage() {
                     onClick={() => navigate('/')}
                 >
                     <ArrowLeft size={18} />
-                    <span>Back to List</span>
+                    <span>Back to Lists</span>
                 </button>
             </div>
             
@@ -156,7 +160,19 @@ export function ListDetailsPage() {
                 newItems = [...list.items, newItem]
             }
 
-            await updateList({ id: list.id, items: newItems }).unwrap()
+            if (isGuest) {
+                dispatch(updateGuestList({
+                    id: list.id,
+                    items: newItems
+                }));
+            }
+            else {
+                await updateList({ 
+                    id: list.id, 
+                    items: newItems 
+                }).unwrap()
+            }
+            
             toast.success(editItem ? 'Item updated' : 'Item added')
 
             setShowForm(false)
@@ -172,8 +188,23 @@ export function ListDetailsPage() {
         setIsDeleting(true)
         try {
             const newItems = list.items.filter((item) => item.id !== deleteTarget.id)
-            await updateList({ id: list.id, items: newItems }).unwrap()
-            toast.success('Item Deleted')
+
+            // guest delete locally
+            if (isGuest) {
+                dispatch(updateGuestList({
+                    id: list.id,
+                    items: newItems
+                }));
+            }
+            else {
+                await updateList({ 
+                    id: list.id, 
+                    items: newItems 
+                }).unwrap()
+            }
+            
+            
+            toast.success('Item deleted successfully')
         }
         catch {
             toast.error('Item could not be deleted')
@@ -187,16 +218,19 @@ export function ListDetailsPage() {
     return (
         <div className={styles['page-cont']}>
 
-            <button
-                type="button"
-                className={styles['back-btn']}
-                onClick={() => navigate('/')}
-            >
-                <ArrowLeft size={18} />
-                <span>Back to List</span>
-            </button>
+            <div className={styles['page-header']}>
+                <button
+                    type="button"
+                    className={styles['back-btn']}
+                    onClick={() => navigate('/')}
+                >
+                    <ArrowLeft size={18} />
+                    <span>Back to Lists</span>
+                </button>
 
-            <h1 className={styles['list-title']}>{list.name}</h1>
+                <h1 className={styles['list-title']}>{list.name}</h1>
+            </div>
+            
 
             <div className={styles['control-row']}>
 
