@@ -21,7 +21,13 @@ export function ItemCard({ item, onEdit, onDelete, readOnly }: ItemCardProps) {
                 <p>Qty: {item.quantity}</p>
                 <p>Category: {item.category}</p>
                 <p>Notes: </p>
-                {item.notes && <p> {item.notes}</p>}
+                {item.notes && (
+                    <p 
+                        className={styles['item-notes']}
+                    > 
+                        {item.notes}
+                    </p>
+                )}
             </div>
 
             {
