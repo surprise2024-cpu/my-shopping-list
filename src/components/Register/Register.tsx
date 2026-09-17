@@ -9,7 +9,6 @@ import { toast } from 'react-toastify'
 import { useDispatch } from 'react-redux'
 import { setCredentials } from '../../store/authSlice'
 import { API_BASE_URL } from '../../config'
-import { Eye, EyeOff } from 'lucide-react'
 
 export const SignUp: React.FC = () => {
 
@@ -31,14 +30,14 @@ export const SignUp: React.FC = () => {
         try {
 
             // To stop the confirmed password from being stored
-            {/*const {
-                ...registrationData
-            } = data*/}
+            const {
+                confirmPassword, ...payload
+            } = data
 
             const response = await fetch(`${API_BASE_URL}/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data),
+                body: JSON.stringify(payload),
             });
 
             const result = await response.json();

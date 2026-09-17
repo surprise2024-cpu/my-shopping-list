@@ -148,6 +148,14 @@
       "confirmPassword": "zixHM4E$#JC8njU",
       "id": 16,
       "cellNumber": "0123654789"
+    },
+    {
+      "email": "kingkong@gmail.com",
+      "password": "$2a$10$1w22Owb5Pqlk2hOkVBYgweDXVT6X/CocR2jh.rLLDjkCzbpfRIYJe",
+      "name": "king",
+      "surname": "kong",
+      "phone": "0142583698",
+      "id": 17
     }
   ],
   "lists": [
