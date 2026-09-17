@@ -27,6 +27,7 @@ const allowedOrigins = [
 
 console.log('FRONT_URL:', process.env.FRONTEND_URL)
 console.log('ALLOWED ORIGINS:', allowedOrigins)
+
 // tells server to use cors(cross-origin resource sharing)
 server.use(cors({
     // starts the list of frontend addresses allowed to commmunicate with the backend
@@ -62,19 +63,26 @@ server.use(express.json({ type: () => true }))
 
 server.post('/forgot-password', (req, res) => {
 
+    console.log('FORGOT PASSWORD ROUTE HIT');
+
     const {email, newPassword} = req.body
 
     if (!email || !newPassword) {
-        return res.status(400).json('Email and new password are required')
+        return res.status(400).json({
+            message: 'Email and new password are required'
+        });
     }
 
     // checks to see if the user is actually in the server or not
     const user = server.db.get('users').find({ email }).value()
 
     if(!user) {
-        return res.status(404).jsonp('No account found with that email')
+        return res.status(404).json({
+            message: 'No account found with that email'
+        });
     }
 
+    // hasshing of passwords
     const hashed = bcrypt.hashSync(newPassword, 10)
 
     server.db.get('users')
@@ -82,8 +90,10 @@ server.post('/forgot-password', (req, res) => {
         .assign({ password: hashed })
         .write()
         
-    return res.status(200).jsonp({ message: 'Password updated successfully' })
-})
+    return res.status(200).jsonp({ 
+        message: 'Password updated successfully' 
+    });
+});
 
 server.use(auth) // adds authentication to the server
 server.use(router) // activates my db.jsonn  rest api
@@ -92,8 +102,8 @@ server.use(router) // activates my db.jsonn  rest api
 const port = process.env.PORT || 3001
 
 // starts the server.
-// 0.0.0.0 aalows the server to accept connnections from outside the local machine
+// 0.0.0.0 allows the server to accept connnections from outside the local machine
 server.listen(port, '0.0.0.0', () => { // runs after server successfuly starts
-    console.log(`JSON Server is running on port ${port}`)
+    console.log(`Custom JSON Server is running on port ${port}`)
 })
 

@@ -1,22 +1,21 @@
-import React from 'react'
+import { useRef } from 'react'
 
 import styles from './Profile.module.css'
-import { useDispatch } from 'react-redux'
-import { useAppSelector } from '../../store/hooks';
 import { useForm } from 'react-hook-form';
 import { profileSchema, type ProfileFormData } from '../../schema/profileSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { updateUser } from '../../store/authSlice';
 import { toast } from 'react-toastify';
-import { API_BASE_URL } from '../../config';
 import { useUpdateUserMutation } from '../../store/api/apiSlice';
 import { useAuth } from '../../store/useAuth';
 
 export function ProfileForm() {
 
     const { user } = useAuth();
-    const [updateUser, {isLoading}] = useUpdateUserMutation();
+    const [updateProfile, {isLoading}] = useUpdateUserMutation();
 
+    // locks submissions immediately
+    const submitLock = useRef(false);
+    // const submitButtonRef = useRef<HTMLButtonElement>(null);
 
     const { 
         register, 
@@ -36,21 +35,60 @@ export function ProfileForm() {
     });
 
     const onSubmit = async (data: ProfileFormData) => {
-        if (!user) return
+
+        if (!user) return;
+
+        // locks immmediately
+        if (submitLock.current) {
+            return;
+        }
+
+        submitLock.current = true;
+
+        // disabling the actual DOM button immmediately
+        {/*if (submitButtonRef.current) {
+            submitButtonRef.current.disabled = true;
+        }*/}
 
         try {
-           await updateUser({
+           const result = await updateProfile({
             id: user.id,
             name: data.name,
             surname: data.surname,
             cellNumber: data.phone,
            }).unwrap()
+
+           // newly added
+            console.log('UPDATE SUCCESS:', result);
            
-            toast.success('Profile successfully updated');
+            toast.success('Profile successfully updated', {
+                toastId: 'profile-update-success'
+            });
+
+        } catch (error: any) {
+
+            console.log('PROFILE UPDATE ERROR:', error);
+
+            toast.error(
+                error?.data?.message ||
+                error?.message ||
+                'Something went wrong', 
+                {
+                    toastId: 'profile-update-error'
+                }
+            );
+
+        } finally {
+
+            //unlock after request finishes
+            submitLock.current = false;
+
+            {/*if (submitButtonRef.current) {
+                submitButtonRef.current.disabled = false;
+            }*/}
+
         }
-        catch (error: any) {
-            toast.error(error.message || 'Something went wrong');
-        }
+
     };
 
     return (
@@ -132,11 +170,14 @@ export function ProfileForm() {
                 </div>
 
                 <button 
+                    //ref={submitButtonRef}
                     type='submit'
-                    disabled={!isDirty || isLoading}
+                    disabled={!isDirty || isLoading || isSubmitting}
                     className={styles['submit-btn']}
                 >
-                    {isSubmitting ? 'Saving...' : 'Save changes'}
+
+                    {isLoading || isSubmitting ? 'Saving...' : 'Save changes'}
+
                 </button>
             </form>
         </div>

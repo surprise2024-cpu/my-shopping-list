@@ -17,6 +17,14 @@
       "phone": "0122587419",
       "confirmPassword": "123456789",
       "id": 2
+    },
+    {
+      "email": "kimpro@gmail.com",
+      "password": "$2a$10$Ad.7wMzblVJhE9x7voYQFeumg/CE31/aAzocj.HRNknHaKO3INLVS",
+      "name": "kim",
+      "surname": "pro",
+      "phone": "0123457883",
+      "id": 3
     }
   ],
   "lists": [

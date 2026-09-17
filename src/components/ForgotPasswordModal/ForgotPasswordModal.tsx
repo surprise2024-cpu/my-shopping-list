@@ -43,9 +43,10 @@ export function ForgotPasswordModal({ onClose }: ForgotPasswordModalProps) {
                     ? result 
                     : result?.message ||
                     result?.error ||
-                    'Could not reset password, please try again.')}
+                    'Could not reset password, please try again.'
+                )}
 
-            toast.success('Password updated. You can log in now.')
+            toast.success('Password updated. You now can login.')
             onClose()
 
         } catch (err: unknown) {
