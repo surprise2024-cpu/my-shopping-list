@@ -4,7 +4,7 @@ import styles from './Footer.module.css'
 
 import copyright from '../../assets/copyright-symbol.png'
 
-export const Footer = () => {
+export const Footer: React.FC = () => {
   return (
     <footer>
 
@@ -17,7 +17,7 @@ export const Footer = () => {
             </div>
             <div className={styles['footer-text']}>
 
-                <span>2026 Supreme One. All rights reserved.</span>
+                <span>2026 ShopLify. All rights reserved.</span>
                 
             </div>
             

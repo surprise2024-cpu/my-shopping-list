@@ -20,10 +20,15 @@ export function ItemCard({ item, onEdit, onDelete, readOnly }: ItemCardProps) {
             <div className={styles['item-details']}>
                 <p>Qty: {item.quantity}</p>
                 <p>Category: {item.category}</p>
-                {item.notes && <p>Notes: {item.notes}</p>}
+                <p>Notes: </p>
+                {item.notes && (
+                    <p 
+                        className={styles['item-notes']}
+                    > 
+                        {item.notes}
+                    </p>
+                )}
             </div>
-
-            
 
             {
                 !readOnly && (
