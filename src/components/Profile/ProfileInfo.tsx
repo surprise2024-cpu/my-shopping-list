@@ -45,11 +45,6 @@ export function ProfileForm() {
 
         submitLock.current = true;
 
-        // disabling the actual DOM button immmediately
-        {/*if (submitButtonRef.current) {
-            submitButtonRef.current.disabled = true;
-        }*/}
-
         try {
            const result = await updateProfile({
             id: user.id,

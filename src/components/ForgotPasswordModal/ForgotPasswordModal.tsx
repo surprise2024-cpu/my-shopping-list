@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { useForm } from "react-hook-form"
 import { forgotPasswordSchema, type ForgotPasswordFormData } from "../../schema/authSchemas"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -17,6 +17,8 @@ export function ForgotPasswordModal({ onClose }: ForgotPasswordModalProps) {
     const [showNew, setShowNew] = useState(false)
     const [showConfirm, setShowConfirm] = useState(false)
 
+    const submitLock = useRef(false);
+
     const {
         register, 
         handleSubmit,
@@ -27,6 +29,12 @@ export function ForgotPasswordModal({ onClose }: ForgotPasswordModalProps) {
     })
 
     const onSubmit = async (data: ForgotPasswordFormData) => {
+
+        if (submitLock.current) {
+            return;
+        }
+
+        submitLock.current = true;
 
         try {
 
@@ -50,7 +58,14 @@ export function ForgotPasswordModal({ onClose }: ForgotPasswordModalProps) {
             onClose()
 
         } catch (err: unknown) {
-            toast.error(err instanceof Error ? err.message: 'Could not reset password')
+
+            toast.error(err instanceof Error ? err.message: 'Could not reset password');
+
+        } finally {
+
+            //unlock after request finishes
+            submitLock.current = false;
+            
         }
     }
 
