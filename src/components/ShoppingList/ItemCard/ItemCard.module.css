@@ -35,10 +35,17 @@
     margin-bottom: 16px;
 }
 
+
 .item-details p {
+    max-height: 80px;
     color: #555555;
     font-size: 14px;
     margin: 4px 0;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    overflow-y: auto;
+    padding-right: 4px;
+
 }
 
 .actions {
