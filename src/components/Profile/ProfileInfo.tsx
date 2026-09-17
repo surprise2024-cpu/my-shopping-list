@@ -43,7 +43,6 @@ export function ProfileForm() {
             id: user.id,
             name: data.name,
             surname: data.surname,
-            email: data.email,
             cellNumber: data.phone,
            }).unwrap()
            
@@ -99,6 +98,8 @@ export function ProfileForm() {
                     <label>Email: </label>
                     <input 
                         type='email'
+                        disabled
+                        className={styles['email-input']}
                         {...register('email')}
                         placeholder='Email'
                     />
@@ -132,7 +133,7 @@ export function ProfileForm() {
 
                 <button 
                     type='submit'
-                    disabled={!isDirty}
+                    disabled={!isDirty || isLoading}
                     className={styles['submit-btn']}
                 >
                     {isSubmitting ? 'Saving...' : 'Save changes'}

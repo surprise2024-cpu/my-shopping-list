@@ -189,6 +189,10 @@
     box-sizing: border-box;
 }
 
+.email-input {
+    color: #777777;
+}
+
 /*Edit modal*/
 .edit-overlay {
     position: fixed;

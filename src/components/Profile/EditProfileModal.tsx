@@ -1,3 +1,4 @@
+import { X } from 'lucide-react'
 import { PasswordForm } from './PasswordForm'
 import styles from './Profile.module.css'
 import { ProfileForm } from './ProfileInfo'
@@ -11,7 +12,7 @@ export function EditProfileModal({ onClose }: EditProfileModalProps) {
         <div className={styles['edit-overlay']} onClick={onClose}>
             <div className={styles['edit-modal']} onClick={(e) => e.stopPropagation()}>
                 <button className={styles['close-btn']} onClick={onClose}>
-                    x
+                    <X size={18} />
                 </button>
                 <ProfileForm />
                 <div className={styles['modal-divider']} />
