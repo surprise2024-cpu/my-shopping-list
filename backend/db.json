@@ -25,6 +25,14 @@
       "surname": "pro",
       "phone": "0123457883",
       "id": 3
+    },
+    {
+      "email": "jackakhu@gmail.com",
+      "password": "$2a$10$HbS4vxf/q.LfVN/UQoXgM.3OWroOXNLxgScRqk79GaCxODe.sxrDq",
+      "name": "jack",
+      "surname": "akhu",
+      "phone": "0123654789",
+      "id": 4
     }
   ],
   "lists": [
