@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { itemSchema, type ItemFormValues } from "../../../schema/itemSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styles from './ItemForm.module.css'
@@ -20,24 +20,36 @@ export function ItemForm({ userId, defaultValues, submitLabel, onSubmit, onCance
     register,
     handleSubmit,
     setValue,
-    watch,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<ItemFormValues>({
     resolver: zodResolver(itemSchema),
     defaultValues,
   });
 
-  const image = watch('image');
+  const image = useWatch({
+    control,
+    name: 'image',
+  });
+
+  const category = useWatch({
+    control,
+    name: 'category',
+  });
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     
     const file = e.target.files?.[0];
 
     if (!file) return 
+
     const reader = new FileReader();
-    reader.onload = () => setValue('image', reader.result as string);
+
+    reader.onload = () => 
+      setValue('image', reader.result as string);
+
     reader.readAsDataURL(file);
-  }
+  };
 
   return (
     <div className={styles['overlay']} onClick={ isSubmitting ? undefined : onCancel} >
@@ -86,7 +98,7 @@ export function ItemForm({ userId, defaultValues, submitLabel, onSubmit, onCance
             <label>Category: </label>
             <CategorySelect 
               userId={userId}
-              value={watch('category') ?? ''}
+              value={category ?? ''}
               onChange={(category) => setValue('category', category, { shouldValidate: true })}
               />
             

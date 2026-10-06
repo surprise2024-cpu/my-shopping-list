@@ -30,9 +30,19 @@ export const SignUp: React.FC = () => {
         try {
 
             // To stop the confirmed password from being stored
-            const {
-                confirmPassword, ...payload
-            } = data
+            const payload = {
+
+                name: data.name,
+
+                surname: data.surname,
+
+                email: data.email,
+
+                phone: data.phone,
+
+                password: data.password,
+
+            }
 
             const response = await fetch(`${API_BASE_URL}/register`, {
                 method: 'POST',

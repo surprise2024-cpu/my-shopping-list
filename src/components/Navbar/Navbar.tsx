@@ -9,21 +9,13 @@ import { useAppDispatch } from '../../store/hooks';
 
 export const Navbar = () => {
 
-    const { isAuthenticated, isGuest, logout } = useAuth()
+    const { isAuthenticated, isGuest} = useAuth()
 
     const dispatch = useAppDispatch()
 
     const navigate = useNavigate()
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-
-    const handleLogout = () => {
-        logout()
-        setIsMenuOpen(false)
-        toast.success('Logged out successfully')
-        navigate('/login')
-    }
 
     const handleGuestMode = () => {
         dispatch(continueAsGuest())

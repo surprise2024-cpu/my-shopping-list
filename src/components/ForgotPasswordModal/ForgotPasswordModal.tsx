@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { forgotPasswordSchema, type ForgotPasswordFormData } from "../../schema/authSchemas"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -17,7 +17,6 @@ export function ForgotPasswordModal({ onClose }: ForgotPasswordModalProps) {
     const [showNew, setShowNew] = useState(false)
     const [showConfirm, setShowConfirm] = useState(false)
 
-    const submitLock = useRef(false);
 
     const {
         register, 
@@ -30,44 +29,52 @@ export function ForgotPasswordModal({ onClose }: ForgotPasswordModalProps) {
 
     const onSubmit = async (data: ForgotPasswordFormData) => {
 
-        if (submitLock.current) {
-            return;
-        }
+    try {
 
-        submitLock.current = true;
+        const res = await fetch(`${API_BASE_URL}/forgot-password`, {
 
-        try {
+            method: 'POST',
 
-            const res = await fetch(`${API_BASE_URL}/forgot-password`, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ email: data.email, newPassword: data.newPassword }),
-            })
+            headers: {
+                'Content-Type': 'application/json'
+            },
 
-            const result = await res.json()
-            if (!res.ok) {
-                throw new Error(
-                    typeof result === 'string'
-                    ? result 
+            body: JSON.stringify({
+                email: data.email,
+                newPassword: data.newPassword
+            }),
+
+        })
+
+        const result = await res.json()
+
+        if (!res.ok) {
+
+            throw new Error(
+                typeof result === 'string'
+                    ? result
                     : result?.message ||
-                    result?.error ||
-                    'Could not reset password, please try again.'
-                )}
+                      result?.error ||
+                      'Could not reset password, please try again.'
+            )
 
-            toast.success('Password updated. You now can login.')
-            onClose()
-
-        } catch (err: unknown) {
-
-            toast.error(err instanceof Error ? err.message: 'Could not reset password');
-
-        } finally {
-
-            //unlock after request finishes
-            submitLock.current = false;
-            
         }
+
+        toast.success('Password updated. You can now login.')
+
+        onClose()
+
+    } catch (err: unknown) {
+
+        toast.error(
+            err instanceof Error
+                ? err.message
+                : 'Could not reset password'
+        )
+
     }
+
+}
 
     return (
         <div className={styles['modal-overlay']} onClick={isSubmitting ? undefined : onClose}>

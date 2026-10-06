@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 
 import styles from './Profile.module.css'
 import { useForm } from 'react-hook-form';
@@ -13,9 +12,6 @@ export function ProfileForm() {
     const { user } = useAuth();
     const [updateProfile, {isLoading}] = useUpdateUserMutation();
 
-    // locks submissions immediately
-    const submitLock = useRef(false);
-    // const submitButtonRef = useRef<HTMLButtonElement>(null);
 
     const { 
         register, 
@@ -36,55 +32,66 @@ export function ProfileForm() {
 
     const onSubmit = async (data: ProfileFormData) => {
 
-        if (!user) return;
+    if (!user) return;
 
-        // locks immmediately
-        if (submitLock.current) {
-            return;
-        }
+    try {
 
-        submitLock.current = true;
+        const result = await updateProfile({
 
-        try {
-           const result = await updateProfile({
             id: user.id,
+
             name: data.name,
+
             surname: data.surname,
+
             cellNumber: data.phone,
-           }).unwrap()
 
-           // newly added
-            console.log('UPDATE SUCCESS:', result);
-           
-            toast.success('Profile successfully updated', {
+        }).unwrap()
+
+        console.log('UPDATE SUCCESS:', result);
+
+        toast.success(
+            'Profile successfully updated',
+            {
                 toastId: 'profile-update-success'
-            });
+            }
+        );
 
-        } catch (error: any) {
+    } catch (error: unknown) {
 
-            console.log('PROFILE UPDATE ERROR:', error);
+        console.log('PROFILE UPDATE ERROR:', error);
 
-            toast.error(
-                error?.data?.message ||
-                error?.message ||
-                'Something went wrong', 
-                {
-                    toastId: 'profile-update-error'
-                }
-            );
+        let message = 'Something went wrong';
 
-        } finally {
+        if (
+            typeof error === 'object' &&
+            error !== null
+        ) {
 
-            //unlock after request finishes
-            submitLock.current = false;
+            const apiError = error as {
+                data?: {
+                    message?: string
+                };
+                message?: string;
+            };
 
-            {/*if (submitButtonRef.current) {
-                submitButtonRef.current.disabled = false;
-            }*/}
+            message =
+                apiError.data?.message ||
+                apiError.message ||
+                message;
 
         }
 
-    };
+        toast.error(
+            message,
+            {
+                toastId: 'profile-update-error'
+            }
+        );
+
+    }
+
+};
 
     return (
         <div className={styles['form-cont']}>
